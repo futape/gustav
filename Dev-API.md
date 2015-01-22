@@ -2,7 +2,7 @@ The Dev API contains class member that are not defined as `private` or those tha
 Please note, that, like the private API's ones, any class members documented in this section may change without releasing a new major version of Gustav. Therfore you should not rely on these members if you wish to update easily to future (non-major) versions.  
 The Dev API is spread across the following Gustav classes.
 
-+   [`Gustav`](Dev-API:-Gustav)
++   [`Gustav`](Dev-API%3A-Gustav)
 +   [`GustavSrc`](Dev-API:-GustavSrc)
 +   [`GustavDest`](Dev-API:-GustavDest)
 +   [`GustavContent`](Dev-API:-GustavContent)
