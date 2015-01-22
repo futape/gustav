@@ -1,0 +1,5 @@
+Gustav provides the ability to disable source files. A destination file for a source files that was generated **before** the source file has been disabled is still accessible, unless it is deleted. After a source file has been disabled no more destination files can be created for that source file until it is enabled again.  
+Moreover disabled source files are *not taken into account* when choosing a matching source file for automatically generating a destination file. For more detailed information see *Automatic generation of destination files*.  
+Furthermore disabled source files doesn't appear in the results of `Gustav::query()` by default. This also affectes `Gustav::getTags()` and `Gustav::getCategories()`.
+
+Source files are disabled by prepending a `_` to the filename. A source file with the filename (without file-extension) `_` is not considered to be disabled, at least one more character must follow the `_`.
