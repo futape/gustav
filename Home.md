@@ -7,7 +7,7 @@
 ##A selection of Gustav's features
 
 +   [Fast installation and setup](Getting-started)
-+   [Low system requirements](Getting-started)
++   Low system requirements (PHP 5.3)
 +   Lightweight
 +   [Automatic generation](Automatic-generation-of-destination-files)
 +   [Customizable](Gustav-configuration)
