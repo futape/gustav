@@ -20,7 +20,7 @@ All available configuration options are listed below, grouped by function and ca
     datatype   |
               Configuartion option
 
-How an option's value is processed is described for each option individually. If no default value is specified (i.e. no `=`), the configuration option is required. An option's default value is not processed an more.
+How an option's value is processed is described for each option individually. If no default value is specified (i.e. no `=`), the configuration option is required. An option's default value is not processed any more.
 
 ###Location options
 
@@ -82,7 +82,7 @@ If not a boolean, the value is casted as one.
 
 ###Auto-generation options
 
-For more information on how the configuration options in this category are used see *Choosing a matching source file* in *Automatic generation of destination files*.
+For more information on how the configuration options in this category are used see [*Automatic generation of destination files*](Automatic-generation-of-destination-files#choosing-a-matching-source-file).
 
 ####`bool generator_search_recursive = false`
 
@@ -96,4 +96,4 @@ Defines the preferred converters used for choosing a source file to use when aut
 
 ####`string replace_directory_separator = ""`
 
-Defines the character to replace with the OS's directory separator when processing the GvBlock options. This is done for paths defined by the `_ext` and `_dest` options. For more information see those options in *GvBlock option processing*. Non-string value is casted as a string. If set to an empty string, nothing is replaced. The specified string is truncated to one character.
+Defines the character to replace with the OS's directory separator when processing the GvBlock options. This is done for paths defined by the `_ext` and `_dest` options. For more information see those options in [*GvBlock option processing*](GvBlock-option-processing). Non-string value is casted as a string. If set to an empty string, nothing is replaced. The specified string is truncated to one character.
