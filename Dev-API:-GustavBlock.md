@@ -2,7 +2,7 @@
 
 ###`private void initBlock()`
 
-Creates the GvBlock array and initializes the object's `$block` property.
+Creates the GvBlock array and initializes the object's [`$block` property](#private-array-block).
 
 ###`public mixed __call( string $function_name, array $arguments )`
 
@@ -11,13 +11,13 @@ This function is used to emulate global getter functions for some of the object'
 
 <dl>
     <dt><code>getPath()</code></dt>
-    <dd>The path of the source file the GvBlock has been extracted from (<code>$path</code> property).</dd>
+    <dd>The path of the source file the GvBlock has been extracted from (<a href="#private-string-path"><code>$path</code> property</a>).</dd>
     
     <dt><code>getContent()</code></dt>
-    <dd>The content of the source file with the GvBlock definition stripped away (<code>$content</code> property).</dd>
+    <dd>The content of the source file with the GvBlock definition stripped away (<a href="#private-string-content"><code>$content</code> property</a>).</dd>
 </dl>
 
-If any other non-reachable function is called, a `BadMethodCallException` exception is thrown.
+If any other non-reachable function is called, a [`BadMethodCallException`](http://php.net/manual/en/class.badmethodcallexception.php) exception is thrown.
 
 <dl>
     <dt><code>$function_name</code></dt>
