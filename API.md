@@ -28,38 +28,38 @@ The following Gustav classes exist.
 This class provides useful functions for interacting with the Gustav system.  
 It's an abstract class and can therefore not be instantiated. All members are defined as `static`.  
 The class is defined in `Gustav.php`.  
-All Gustav classes, except for `GustavBase`, inherit from this class. This class extends `GustavBase`. When including `Gustav.php`, besides `GustavHooks.php`, also `GustavBase.php`, as well as `GustavSrc.php` and `GustavDest.php` are included.
+All Gustav classes, except for [`GustavBase`](#gustavbase), inherit from this class. This class extends [`GustavBase`](#gustavbase). When including `Gustav.php`, besides `GustavHooks.php`, also [`GustavBase.php`](#gustavbase), as well as [`GustavSrc.php`](#gustavsrc) and [`GustavDest.php`](#gustavdest) are included.
 
 ###`GustavSrc`
 
 A `GustavSrc` object represents a source file. It provides useful functions and information on that file.  
 The class is defined in `GustavSrc.php`.  
-This class extends `Gustav`. When including `GustavSrc.php`, besides `GustavSrcHooks.php`, also `Gustav.php`, as well as `GustavContent.php` and `GustavBlock.php` are included.  
+This class extends [`Gustav`](#gustav). When including `GustavSrc.php`, besides `GustavSrcHooks.php`, also [`Gustav.php`](#gustav), as well as [`GustavContent.php`](#gustavcontent) and [`GustavBlock.php`](#gustavblock) are included.  
 
 ###`GustavDest`
 
 A `GustavDest` object represents a destination file. It provides useful functions and information on that file.  
 The class is defined in `GustavDest.php`.  
-This class extends `Gustav`. When including `GustavDest.php`, besides `GustavDestHooks.php`, also `Gustav.php` and `GustavSrc.php` are included.  
+This class extends [`Gustav`](#gustav). When including `GustavDest.php`, besides `GustavDestHooks.php`, also [`Gustav.php`](#gustav) and [`GustavSrc.php`](#gustavsrc) are included.  
 
 ###`GustavContent`
 
 A `GustavContent` object represents a source file's content aka. [*source content*](Source-content).  
 The class is defined in `GustavContent.php`.  
-This class extends `Gustav`. When including `GustavContent.php`, besides `GustavContentHooks.php`, also `Gustav.php` and `GustavBlock.php` are included.  
+This class extends [`Gustav`](#gustav). When including `GustavContent.php`, besides `GustavContentHooks.php`, also [`Gustav.php`](#gustav) and [`GustavBlock.php`](#gustavblock) are included.  
 
 ###`GustavBlock`
 
 A `GustavBlock` object represents a source file's GvBlock.  
 The class is defined in `GustavBlock.php`.  
-This class extends `Gustav`. When including `GustavBlock.php`, besides `GustavBlockHooks.php`, also `GustavDestHooks.php` and `GustavContentHooks.php` are included.  
+This class extends [`Gustav`](#gustav). When including `GustavBlock.php`, besides `GustavBlockHooks.php`, also [`GustavDestHooks.php`](#gustavdesthooks) and [`GustavContentHooks.php`](#gustavcontenthooks) are included.  
 
 ###`GustavGenerator`
 
 This class provides useful functions for genrating destination files or destination contents. For example, this class is used by `generate.php` and PHP destination files.  
 It's an abstract class and can therefore not be instantiated. All members are defined as `static`.  
 The class is defined in `GustavGenerator.php`.  
-This class extends `Gustav`. When including `GustavGenerator.php`, besides `GustavGeneratorHooks.php`, also `GustavSrc.php` and `GustavDest.php` are included.  
+This class extends [`Gustav`](#gustav). When including `GustavGenerator.php`, besides `GustavGeneratorHooks.php`, also [`GustavSrc.php`](#gustavsrc) and [`GustavDest.php`](#gustavdest) are included.  
 
 ###`GustavBase`
 
@@ -76,4 +76,4 @@ For each Gustav class one Hooks class exists. When including a Gustav class, the
 Hooks classes make all static functions of the corresponding Gustav class publically available. They are all defined as `abstract` and can therefore not be instantiated.  
 When calling a function via a Hooks class and passing a variable as reference to a parameter, it's important to pass it as `myfunc(&$myvar)` for example, while the corresponding Gustav class's function may accept `myfunc($myvar)`.
 
-Hooks classes can be used to call functions documented in the private API.
+Hooks classes can be used to call functions documented in the [private API](Private-API).
