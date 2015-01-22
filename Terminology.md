@@ -81,7 +81,7 @@
     <dd>See <a href="GvBlock"><em>GvBlock</em></a>.</dd>
     
     <dt><em>Template variables</em>, <em>Templating variables</em></dt>
-    <dd>See <a href="GvBlock-option-templating"><em>GvBlock option templating</em></a> and <a href="Private-API:-GustavBase#string-templ-string-template--array-vars--array--bool-resolve_constants--true--bool-unescape_placeholders--true--"><code>GustavBase::templ()</code></a>.</dd>
+    <dd>See <a href="GvBlock-option-templating"><em>GvBlock option templating</em></a> and <a href="Private-API%3A-GustavBase#string-templ-string-template--array-vars--array--bool-resolve_constants--true--bool-unescape_placeholders--true--"><code>GustavBase::templ()</code></a>.</dd>
     
     
     
