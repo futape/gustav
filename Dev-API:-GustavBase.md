@@ -4,7 +4,7 @@
 
 This function calls one of its supported MB functions.  
 When calling one of that functions, the items of the array passed to this function are passed to the called function. Missing required parameters are set to `null`, wich will most likely cause an error, and missing optional parameters are set to their default values.  
-The only exception is the last parameter of each MB function - the character encoding definition. If not passed, it is set to the character encoding used by Gustav (`GustavBase::ENC`). This has the same effect as setting the character encoding used by MB functions globally using [`mb_internal_encoding()`](http://php.net/manual/en/function.mb-internal-encoding.php) without doing so and let the user define his own global multibyte string character encoding.  
+The only exception is the last parameter of each MB function - the character encoding definition. If not passed, it is set to the character encoding used by Gustav ([`GustavBase::ENC`](Private-API%3a-GustavBase#string-enc)). This has the same effect as setting the character encoding used by MB functions globally using [`mb_internal_encoding()`](http://php.net/manual/en/function.mb-internal-encoding.php) without doing so and let the user define his own global multibyte string character encoding.  
 The following MB functions are supported.
 
 +   [`mb_strtoupper()`](http://php.net/manual/en/function.mb-strtoupper.php)
