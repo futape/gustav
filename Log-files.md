@@ -1,4 +1,4 @@
-When specific events occur, Gustav writes helpful messages to log files. The log files are located in the a directory called `logs` which is located in the same directory as the PHP files defining the Gustav classes. The main log file is named `gustav.log` and is reanamed and archived when its filesize exceeds the limit. For more information on that limit see [*Gustav configuration*](Gustav-configuration#stringint-log_file_max_size---1).
+When specific events occur, Gustav writes helpful messages to log files. The log files are located in the a directory called `logs` which is located in the same directory as the PHP files defining the Gustav classes. The main log file is named `gustav.log` and is renamed and archived when its filesize exceeds the limit. For more information on that limit see [*Gustav configuration*](Gustav-configuration#stringint-log_file_max_size---1).
 
 
 
