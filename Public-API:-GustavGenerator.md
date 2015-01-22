@@ -21,7 +21,7 @@ If the content gets not printed, but rather a destination file is created, a red
     <dd>
         This parameter takes effect only when <code>$print_content</code> is set to <code>false</code>.<br />
         After creating the destination file, a redirection is done.<br />
-        If set to <code>null</code>, the client is redirected to the location of the created destination file. If this parameter's value is a string starting with <code>?</code>, the client is redirected to the same location, but this parameter's value is appended to the URL as a query string. If the value is a string not starting with <code>?</code>, the value is considered to be a properly encoded URL, either a <a href="https://tools.ietf.org/html/rfc3986#section-4.2">relative</a> or an <a href="https://tools.ietf.org/html/rfc3986#section-4.3>absolute</a> one, to redirect the client to.
+        If set to <code>null</code>, the client is redirected to the location of the created destination file. If this parameter's value is a string starting with <code>?</code>, the client is redirected to the same location, but this parameter's value is appended to the URL as a query string. If the value is a string not starting with <code>?</code>, the value is considered to be a properly encoded URL, either a <a href="https://tools.ietf.org/html/rfc3986#section-4.2">relative</a> or an <a href="https://tools.ietf.org/html/rfc3986#section-4.3">absolute</a> one, to redirect the client to.
     </dd>
 </dl>
 
