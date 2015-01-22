@@ -9,8 +9,8 @@ Gustav is compatible with PHP 5.3+.
 ##Setting up Gustav
 
 Setting up Gustav is not much more complicated than installing it.  
-First, the [`conf.json`](Gustav-configuration) file must be created or adjusted.  
-The next (and last) step can be done either automatically by simply calling [`Gustav::setup()`](Public-API%3A-Gustav#bool-setup) or manually by creating the directories specified by the `src_dir`, `dest_dir` and `templs_dir` configuration options and creating a `.htaccess` file in the directory specified by the `dest_dir` option that contains the following content.
+First, the [`conf.json`](Gustav-configuration#confjson) file must be created or adjusted.  
+The next (and last) step can be done either automatically by simply calling [`Gustav::setup()`](Public-API%3A-Gustav#bool-setup) or manually by creating the directories specified by the [`src_dir`](Gustav-configuration#string-src_dir), [`dest_dir`](Gustav-configuration#string-dest_dir) and [`templs_dir`](Gustav-configuration#string-templs_dir) configuration options and creating a `.htaccess` file in the directory specified by the [`dest_dir` option](Gustav-configuration#string-dest_dir) that contains the following content.
 
     DirectoryIndex index.html index.php
     ErrorDocument 404 <path of GvDir>/generate.php
