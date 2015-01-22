@@ -5,7 +5,7 @@
 Initializes some of the Gustav class's static properties.  
 For example, this function reads the configuration file and decodes it as JSON and saves the decoded array to a class-variable. Moreover it validates the configurations and resets invalid options to their default values. If no default value is available for an invalid option, a fatal Gustav-error may be raised. Otherwise a warning log entry is done for every invalid option.  
 Furthermore this function checks whether all required files and directories exist and logs on inexistence.  
-If the `check_status` configuration option is set to `false`, nothing is logged.
+If the [`check_status`](Gustav-configuration#bool-check_status--true) configuration option is set to `false`, nothing is logged.
 This function gets executed everytime `Gustav.php` is included and can be executed for just one time.
 
 
@@ -18,7 +18,7 @@ An array containing the configuration options and their values.
 
 ###`private bool $isInit`
 
-Whether `Gustav::init()` has already been executed.
+Whether [`Gustav::init()`](#public-void-init) has already been executed.
 
 
 
