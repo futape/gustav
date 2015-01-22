@@ -17,7 +17,7 @@ This function is used to emulate global getter functions for some of the object'
     <dd>The content of the source file with the GvBlock definition stripped away (<a href="#private-string-content"><code>$content</code> property</a>).</dd>
 </dl>
 
-If any other non-reachable function is called, a [`BadMethodCallException`](http://php.net/manual/en/class.badmethodcallexception.php) exception is thrown.
+If any other non-reachable function is called, a [`BadMethodCallException`](http://php.net/manual/en/class.badmethodcallexception.php) is thrown.
 
 <dl>
     <dt><code>$function_name</code></dt>
