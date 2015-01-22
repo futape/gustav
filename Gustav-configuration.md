@@ -20,7 +20,7 @@ All available configuration options are listed below, grouped by function and ca
     datatype   |
               Configuartion option
 
-How an option's value is processed is described for each option individually. If no default value is specified (i.e. no `=`), the configuration option is required. An option's default value is not processed any more.
+How an option's value is processed is described for each option individually. If no default value is specified (i.e. no `=`), the configuration option is required. An option's specified default won't be processed.
 
 ###Location options
 
@@ -59,24 +59,24 @@ Unlike the parser used by PHP for shorthand byte values in the `php.ini` file, G
 
 ####`bool exit_on_error = true`
 
-By default, Gustav calls `exit` if a Gustav-error is thrown. If this option is set to `false`, it doesn't. Disabling this behavior is not recommended since the code often assumes that when throwing a Gustav-error the script execution is stopped. If the script is executed on, many (non-Gustav-)errors may be thrown. Regardless of this option's value, Gustav-fatal-errors always stop the script execution. If not a boolean, the value is casted as one.
+By default, Gustav calls [`exit`](http://php.net/manual/en/function.exit.php) if a Gustav-error is thrown. If this option is set to `false`, it doesn't. Disabling this behavior is not recommended since the code often assumes that when throwing a Gustav-error the script execution is stopped. If the script is executed on, many (non-Gustav-)errors may be thrown. Regardless of this option's value, Gustav-fatal-errors always stop the script execution. If not a boolean, the value is casted as one.
 
 ####`bool check_status = true`
 
-Defines whether Gustav should check whether everything is properly set up when initializing the `Gustav` class. The following things are checked.
+Defines whether Gustav should check whether everything is properly set up when initializing the [`Gustav` class](API#gustav). The following things are checked.
 
-+   Do all configuration options exist? If not, a log-entry is created. In case of the `src_dir`, `dest_dir` and `templs_dir` options a Gustav-error is thrown instead.
++   Do all configuration options exist? If not, a log-entry is created. In case of the [`src_dir`](#string-src_dir), [`dest_dir`](#string-dest_dir) and [`templs_dir`](#string-templs_dir) options a Gustav-error is thrown instead.
 +   Do the configuration option values' datatypes match the expected ones? If not, a log-entry is created.
-+   Are the `src_dir`, `dest_dir` and `templs_dir` options pointing on a directory? If not, a Gustav-error is thrown.
++   Are the [`src_dir`](#string-src_dir), [`dest_dir`](#string-dest_dir) and [`templs_dir`](#string-templs_dir) options pointing on a directory? If not, a Gustav-error is thrown.
 +   Does a `.htaccess` file exist in the root of the destination directory? If not, a log-entry is created.
 +   Does the PHP file handling the auto-generation of destination files exist? If not, a log-entry is created.
-+   If the `exit_on_error` configuration option is disabled, a log-entry is created.
-+   Is PHP's `open_basedir` configuration option set to a null value (i.e. all files can be read)? If not, a log-entry is created.
++   If the [`exit_on_error` configuration option](#bool-exit_on_error--true) is disabled, a log-entry is created.
++   Is PHP's [`open_basedir` configuration option](http://php.net/manual/en/ini.core.php#ini.open-basedir) set to a null value (i.e. all files can be read)? If not, a log-entry is created.
 
 Regardless of this option's value, the following checks are always executed.
 
-+   Does the `conf.json` file exist? If not a Gustav-fatal-error is thrown.
-+   Does the `conf.json` file describe an object? If not a Gustav-fatal-error is thrown.
++   Does the [`conf.json` file](#confjson) exist? If not a Gustav-fatal-error is thrown.
++   Does the [`conf.json` file](#confjson) describe an object? If not a Gustav-fatal-error is thrown.
 
 If not a boolean, the value is casted as one.
 
@@ -96,4 +96,4 @@ Defines the preferred converters used for choosing a source file to use when aut
 
 ####`string replace_directory_separator = ""`
 
-Defines the character to replace with the OS's directory separator when processing the GvBlock options. This is done for paths defined by the `_ext` and `_dest` options. For more information see those options in [*GvBlock option processing*](GvBlock-option-processing). Non-string value is casted as a string. If set to an empty string, nothing is replaced. The specified string is truncated to one character.
+Defines the character to replace with the OS's directory separator when processing the GvBlock options. This is done for paths defined by the [`_ext`](Gustav-core-options#_ext) and [`_dest`](Gustav-core-options#_dest) options. For more information see those options in [*GvBlock option processing*](GvBlock-option-processing). Non-string value is casted as a string. If set to an empty string, nothing is replaced. The specified string is truncated to one character.
