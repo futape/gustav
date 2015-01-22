@@ -3,10 +3,10 @@ Please note, that, like the private API's ones, any class members documented in 
 The Dev API is spread across the following Gustav classes.
 
 +   [`Gustav`](Dev-API%3A-Gustav)
-+   [`GustavSrc`](Dev-API:-GustavSrc)
-+   [`GustavDest`](Dev-API:-GustavDest)
-+   [`GustavContent`](Dev-API:-GustavContent)
-+   [`GustavBlock`](Dev-API:-GustavBlock)
-+   [`GustavGenerator`](Dev-API:-GustavGenerator)
-+   [`GustavBase`](Dev-API:-GustavBase)
-+   [`Hooks classes`](Dev-API:-Hooks-classes)
++   [`GustavSrc`](Dev-API%3A-GustavSrc)
++   [`GustavDest`](Dev-API%3A-GustavDest)
++   [`GustavContent`](Dev-API%3A-GustavContent)
++   [`GustavBlock`](Dev-API%3A-GustavBlock)
++   [`GustavGenerator`](Dev-API%3A-GustavGenerator)
++   [`GustavBase`](Dev-API%3A-GustavBase)
++   [`Hooks classes`](Dev-API%3A-Hooks-classes)
