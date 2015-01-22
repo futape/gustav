@@ -1,4 +1,4 @@
-As described in *Destination files*, templates are, besides the source files, the second base a destination file is built on. Its function is, as described under *Generating the destination content* in *Generating destination files*, to take a content, either the source content or the one returned by the previous template, and combine it with its own content. By combining multiple templates, a very precisely manageable system can be created.
+As described in [*Destination files*](Destination-files), templates are, besides the source files, the second base a destination file is built on. Its function is, as described under [*Generating destination files*](Generating-destination-files#generating-the-destination-content), to take a content, either the source content or the one returned by the previous template, and combine it with its own content. By combining multiple templates, a very precisely manageable system can be created.
 
 
 
