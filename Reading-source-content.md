@@ -1,0 +1,2 @@
+The source content is read by getting the content of the source file and stripping away the GvBlock definition. Only the first linebreak (`\r\n`, `\n` or `\r`) following the GvBlock is removed. Any linebreaks following on that remain.  
+If the source file is a PHP source file, the file is executed as a PHP script and the printed text is used as source content.
