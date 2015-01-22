@@ -2,7 +2,7 @@
 
 ###`private void initContent()`
 
-Prepares and finalizes the content and initializes the object's `$content` property.
+Prepares and finalizes the content and initializes the object's [`$content` property](#private-string-content).
 
 ###`public mixed __call( string $function_name, array $arguments )`
 
@@ -11,10 +11,10 @@ This function is used to emulate global getter functions for some of the object'
 
 <dl>
     <dt><code>getPath()</code></dt>
-    <dd>The path of the source file containing the content (`$path` property).</dd>
+    <dd>The path of the source file containing the content ([`$path` property](#private-string-path)).</dd>
 </dl>
 
-If any other non-reachable function is called, a `BadMethodCallException` exception is thrown.
+If any other non-reachable function is called, a [`BadMethodCallException`](http://php.net/manual/en/class.badmethodcallexception.php) is thrown.
 
 <dl>
     <dt><code>$function_name</code></dt>
