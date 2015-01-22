@@ -3,13 +3,13 @@ Most often, to identify an object, being a GvBlock, a destination file or someth
 The API documentation is split into the following parts.
 
 <dl>
-    <dt><em>Public API</em></dt>
+    <dt><a href="Public-API"><em>Public API</em></a></dt>
     <dd>This section describes class member that are defined as <code>public</code> and don't belong to the Dev API.</dd>
     
-    <dt><em>Private API</em></dt>
+    <dt><a href="Private-API"><em>Private API</em></a></dt>
     <dd>The private API contains class members that are defined as <code>protected static</code> and don't belong to the Dev API.</dd>
     
-    <dt><em>Dev API</em></dt>
+    <dt><a href="Dev-API"><em>Dev API</em></a></dt>
     <dd>Class members defined as <code>pivate</code> or such that actually should be but aren't due to technical restrictions for example are contained in the Dev API. This section contains information on the <em>real</em> implementation details and not just on the public interfaces.</dd>
 </dl>
 
@@ -44,7 +44,7 @@ This class extends `Gustav`. When including `GustavDest.php`, besides `GustavDes
 
 ###`GustavContent`
 
-A `GustavContent` object represents a source file's content aka. *source content*.  
+A `GustavContent` object represents a source file's content aka. [*source content*](Source-content).  
 The class is defined in `GustavContent.php`.  
 This class extends `Gustav`. When including `GustavContent.php`, besides `GustavContentHooks.php`, also `Gustav.php` and `GustavBlock.php` are included.  
 
