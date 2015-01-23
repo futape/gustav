@@ -556,7 +556,7 @@ If included in the bitmask of [`GustavBase::scandir()`](#string-scandir-stringst
     
 ###`int SCANDIR_TYPE_LINK`
 
-Include symbolic and hard links.
+Include symbolic links.
 
 If included in the bitmask of [`GustavBase::scandir()`](#string-scandir-stringstring-path--int-types--gustavbasescandir_types--)'s second parameter that function's returned array will contain symbolic links (if there are some).
     
