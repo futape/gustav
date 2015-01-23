@@ -25,9 +25,9 @@ Finalizes a source file's content.
 Steps:
 
 <pre><code>1.  If <a href="Gustav-core-options#_ext"><code>_ext</code></a> is defined:
-    If content is empty or constists of whitespaces only (not 3.):
-        Use content (not converted) of extended source file instead.
-2.  [Convert](Converting-source-content) content using the source file's converter(s).
+        If content is empty or constists of whitespaces only (not 3.):
+            Use content (not converted) of extended source file instead.
+2.  <a href="Converting-source-content">Convert</a> content using the source file's converter(s).
 3.  If <a href="Gustav-core-options#_ext"><code>_ext</code></a> is defined:
         If the source file's original content is not empty and doesn't consist of whitespaces only (not 1.):
             If <a href="Gustav-core-options#_ext_content"><code>_ext_content</code></a> is defined:
