@@ -1,8 +1,8 @@
 <dl>
-    <dt><em>Linebreak</em>, <em>Newline</em></dt>
+    <dt><em>Linebreak</em>, <em>Newline</em>, <em>Newline character</em></dt>
     <dd>
         Gustav always accepts any kind of linebreaks, being either <code>\n</code>, <code>\r\n</code> or <code>\r</code>. <em>Linebreak</em> or <em>Newline</em> mean a linebreak in any of these forms.<br />
-        However, <em>newline character</em> or <code>\n</code>, for example, doesn't mean any of the linebreaks above, rather it means the line feed character (<code>0x0a</code>) specifically.
+        However, <em>line feed character</em> or <code>\n</code>, for example, doesn't mean any of the linebreaks above, rather it means the line feed character (<code>0x000a</code>) specifically.
     </dd>
     
     <dt><em>Dirname</em></dt>
