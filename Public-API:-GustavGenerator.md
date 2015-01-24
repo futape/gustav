@@ -51,5 +51,5 @@ If a [destination file](Destintion-files) should be [created](Generating-destina
     </dd>
     
     <dt><code>$print_content</code></dt>
-    <dd>If set to <code>true</code>, no <a href="Destintion-files">destination file</a> is <a href="Generating-destination-files#creating-the-destination-file">created</a>. Instead the <a href="Generating-destination-files#generating-the-destination-content">destination content</a> is printed out directly. Gets passed to <code>GustavGenerator::gen()</code>.</dd>
+    <dd>If set to <code>true</code>, no <a href="Destintion-files">destination file</a> is <a href="Generating-destination-files#creating-the-destination-file">created</a>. Instead the <a href="Generating-destination-files#generating-the-destination-content">destination content</a> is printed out directly. Gets passed to <a href="#void-gen-stringstring-path--bool-print_content--false--stringnull-redirect_url--null--"><code>GustavGenerator::gen()</code></a>.</dd>
 </dl>
