@@ -142,7 +142,7 @@ Placeholders have the form `"{{" constant "}}"` or `"{{$" variable "}}"`. `const
 Note that the part between the pairs of double braces isn't trimmed. Therefore `{{PHP_EOL}}` isn't the same as `{{ PHP_EOL}}`.  
 If a constant or variable isn't defined, the sequence is kept as it has been defined.  
 A placeholder can be escaped using a backslash following the first curly brace. The backslash gets removed and the placeholder is kept as it has been defined. If multiple backslashes are contained, only the first one gets removed.  
-You may even use class constants in placeholders. When using a namespaced class or conastant you should always use the fully qualified name (`\My_NS\MY_CONST` for example) or a qualified name (`My_NS\MY_CONST` for example) which is treated relatively to the global namespace.  
+You may even use [class constants](http://php.net/manual/en/language.oop5.constants.php) in placeholders. When using a namespaced class or constant you should always use a [fully qualified name](http://php.net/manual/en/language.namespaces.rules.php) (`\My_NS\MY_CONST` for example) or a [qualified name](http://php.net/manual/en/language.namespaces.rules.php) (`My_NS\MY_CONST` for example) which is treated relatively to the [global namespace](http://php.net/manual/en/language.namespaces.global.php).  
 For more information see [GvBlock option templating](GvBlock-option-templating).
 
 <dl>
