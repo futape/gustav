@@ -1,5 +1,5 @@
 Some [options](GvBlock-options) are required to be present in a [GvBlock](GvBlock) and to have a [valid value](GvBlock-option-processing). If a required option isn't available, a Gustav-error is thrown.  
-The required options are listed below.
+The required options are listed [below](#required-options).
 
 
 
