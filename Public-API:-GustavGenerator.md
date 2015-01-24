@@ -1,55 +1,47 @@
-##Static functions
+##Instance functions
 
-###`void gen( string|string[] $path [, bool $print_content = false [, string|null $redirect_url = null ]] )`
+###`void __construct( string|string[] $path )`
 
-Generates a destination file containing the final destination content or simply prints out that content.  
-If the specified path doesn't point on a file, a Gustav-404-error is raised. Also a Gustav-error is raised when the `GustavDest` object for getting the destination information can't be created for that source file.  
-If the content gets printed, also a proper value for the `Content-Type` HTTP header field is added to the header.  
-If the content gets not printed, but rather a destination file is created, a redirection is done. If the destination file couldn't be created, a Gustav-error is raised, otherwise a success log-entry is made.
-     
+The class's constructor that is called when a new instance is created.  
+If no [`GustavSrc`](API#gustavsrc) object can be created for the passed path, a [`RuntimeException`](http://php.net/manual/en/class.runtimeexception.php) is thrown.  
+If everything worked properly, the newly created object is initialized.
+
 <dl>
     <dt><code>$path</code></dt>
-    <dd>
-        The path of the source file for which to generate the destination content, relative to the source directory.<br />
-        The source directory's path is prepended to this parameter's value. Gets passed to <code>GustavBase::path()</code>.
-    </dd>
-    
-    <dt><code>$print_content</code></dt>
-    <dd>If set to <code>true</code>, no destination file is created. Instead the destination content is printed out directly.</dd>
-    
-    <dt><code>$redirect_url</code></dt>
-    <dd>
-        This parameter takes effect only when <code>$print_content</code> is set to <code>false</code>.<br />
-        After creating the destination file, a redirection is done.<br />
-        If set to <code>null</code>, the client is redirected to the location of the created destination file. If this parameter's value is a string starting with <code>?</code>, the client is redirected to the same location, but this parameter's value is appended to the URL as a query string. If the value is a string not starting with <code>?</code>, the value is considered to be a properly encoded URL, either a <a href="https://tools.ietf.org/html/rfc3986#section-4.2">relative</a> or an <a href="https://tools.ietf.org/html/rfc3986#section-4.3">absolute</a> one, to redirect the client to.
-    </dd>
+    <dd>The path of the <a href="Source-files">source file</a> to create the <a href="Destination-files">destination file</a> for. Gets passed to <a href="Public-API%3a-GustavSrc#void-__construct-stringstring-path-"><code>GustavSrc::__construct()</code></a> which in turn calls <a href="Private-API%3a-GustavBase#string-path-stringstring-path_segment--stringstring-path_segment--stringstring---"><code>GustavBase::path()</code></a> on the path.</dd>
 </dl>
 
-###`void genByUrl( string $dest_url [, bool $search_recursive = false [, bool $print_content = false ]] )`
+###`string getPath()`
 
-Takes a (not-yet-existing) destination file's URL and creates it or prints out its destinaton content.  
-Searches either in the directory specified by the URL path (the destination directory's path (documnt-root-relative) is stripped away and the server-root-relative path of the source directory is prepended) only, or in the whole source directory including all of its subdirectories for a matching source file. *Matching source files* match the `dest` filter of `Gustav::query()`, set to the path of the URL.  
-If a source file, whose corresponding `GustavDest` object's `getPath()` method's return value matches the path of the requested destination file, is found, that file is used. Otherwise, the disabled files are filtered out of the matching source files and the most similar source file in the remaining matching soure files is chosen. The most similar source file is discovered as described below (important to less important).
+Returns the [*real path*](Generating-destination-files#generating-the-destination-path) of the [destination file](Destination-files) represented by this object.  
+*Real path* means that, unlike a [`_dest` GvBlock option](Gustav-core-options#_dest) (in some cases), the returned path is the [destination file](Destination-files)'s full path and not only the most necessary part of the path, for example the dirname if the destination file's filename would be `index.*`. Moreover, also unlike a [`_dest` option](Gustav-core-options#_dest), the returned path isn't relative to the document root, rather it's an absolute path, relative to the server root.
 
-1.  The position of the first converter in the array that has been specified using the `preferred_convs` configuration option that is also used in the source file. If none of the prefered converters is used in the soure file or if no `GustavSrc` object can be created for the source file, the source file is moved to the end of the list.  
-    The lower the position, the higher the ranking.
-2.  The timestamp of the last modification of the source file's content. The timestamp is retrieved by calling `filemtime()`. If that function fails, the source file is moved to the end of the list.  
-    The newer the timestamp, the higher the ranking.
+###`string getContent()`
 
-If multiple source files whose corresponding `GustavDest` object's `getPath()` method returns the same path as the requested path were found, the same steps are done to determine the source file to use.  
-If no similar source files can be found or if the source file, chosen due to its corresponding `GustavDest` object's `path` property's value, is disabled, a Gustav-404-error is raised.  
-If a destination file should be created, the client is redirected to the new file after creating it. The query string of the original request (if any) is passed through to that request.
+Returns the [destination content](Generating-destination-files#generating-the-destination-content).
 
-<dl>
-    <dt><code>$dest_url</code></dt>
-    <dd>The URL of a (not-yet-existing) destination file to create or to print out its destination content.</dd>
-    
-    <dt><code>$search_recursive</code></dt>
-    <dd>
-        If set to <code>true</code>, the whole source directory including all of its subdirectories is searched for a matching source file. Otherwise, only the directory retrieved from the URL path is searched.<br />
-        Searching in all directories may be a bit slow and memory-intensive but is more flexible since the destination file doesn't have to be located in the destination directory's subdirectory corresponsing to the source directory's subdirectory the source file is located in.
-    </dd>
-    
-    <dt><code>$print_content</code></dt>
-    <dd>If set to <code>true</code>, no destination file is created. Instead the destination content is printed out directly. Gets passed to <code>GustavGenerator::gen()</code>.</dd>
-</dl>
+###`GustavSrc getSrc()`
+
+Returns the [`GustavSrc`](API#gustavsrc) object for the used [source file](Source-files).  
+
+###`string getPhp()`
+
+Get a PHP destination file's content.
+
+Returns the PHP code for including [`GustavGenerator.php`](API#gustavgenerator), generating the final [destination content](Generating-destination-files#generating-the-destination-content) dynamically, printing it and setting the `Content-Type` HTTP header field.  
+The returned value may be written to a PHP destination file.
+
+Returns the PHP destination file's PHP code.
+
+###`bool createFile()`
+
+[Creates](Generating-destination-files#creating-the-destination-file) the [destination file](Destination-files).
+
+Moreover this function creates the directories to place the built file in if they don't exist.  
+If the [source file](Source-files) is [disabled](Disabled-source-files), no [destination file](Destination-files) is created and `false` is returned.
+
+The content of a PHP destination file, created from a [source file](Source-files) whose [`_dyn` GvBlock option](Gustav-core-options#_dyn) is set, contains the hardcoded absolute path of the [`GustavGenerator.php` file](API#gustavgenerator) that [creates](Generating-destination-files#creating-the-destination-file) the [destination file](Destination-files).  
+If that file has been moved to another directory and the [destination file](Destination-files) is requested, an error will occur.  
+All other paths within the [destination file](Destination-files)'s content are only partly hardcoded. For example the final path of the used [source file](Source-files) is calculated when the [destination file](Destination-files) is requested. This gives you the opportunity to change the [`src_dir` configuration option](Gustav-configuration#string-src_dir) after the [destination file](Destination-files) has been created without getting any errors due to an unexisting [source file](Source-files). This works fine unless you move the used [source file](Source-files) into another directory since the path of the [source file](Source-files), relative to the source directory, is hardcoded into the [destination file](Destination-files).
+     
+Returns whether the [destination file](Destination-files) has been created successfully.
