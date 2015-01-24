@@ -1,4 +1,4 @@
-Properties of a GvBlock are called *GvBlock options* or just *options* for short.  
+Properties of a [GvBlock](GvBlock) are called *GvBlock options* or just *options* for short.  
 Options' names are treated case-sensitively.
 
 Some options have a special meaning in Gustav and are processed differently than others. Those options are called [*Gustav core options*](Gustav-core-options). Gustav core options always start with a `_`. Therefore you should make sure that your own, custom options never begin with a `_`, too.
