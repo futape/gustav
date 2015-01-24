@@ -1,21 +1,19 @@
 A GvBlock definition is very strict.  
-Generally when talking about a *linebreak* in the context of a GvBlock definition, the linebreak can be `\n`, `\r` or `\r\n`.
+It consists of three parts.
 
-A GvBlock consists of three parts.
++   [The opening sequence](#the-opening-sequence),
++   [the GvBlock body](#the-gvblock-body) and
++   [the closing sequence](#the-closing-sequence).
 
-+   The opening sequence,
-+   the GvBlock body and
-+   the closing sequence.
-
-The opening sequence, as well as the closing sequence must take up a whole line. Each of the two has a few exceptions of this rule.  
-Between the opening and the closing sequence the GvBlock body is located.
+The [opening sequence](#the-opening-sequence), as well as the [closing sequence](#the-closing-sequence) must take up a whole line. Each of the two has a few exceptions of this rule.  
+Between the opening and the closing sequence the [GvBlock body](#the-gvblock-body) is located.
 
 
 
 ##The opening sequence
 
-The opening sequence must be located at the beginning of the source file. The only thing that may precede it is `<?php` or `<?` followed by a linebreak and `/*`. This may be necessary for PHP source files since the GvBlock definition should be ignored when executing the file as a PHP script.  
-The opening sequence looks as shown below.
+The opening sequence must be located at the beginning of a [source file](Source-files)'s content. The only thing that may precede it is `<?php` or `<?` followed by a linebreak and `/*`. This may be necessary for [PHP source files](PHP-source-files) since the GvBlock definition should be ignored when executing the file as a PHP script.  
+The opening sequence looks like shown below.
 
     -----BEGIN GV BLOCK-----
 
@@ -25,19 +23,19 @@ The only thing that is allowed to precede it on the same line is the opening mul
 
 ##The closing sequence
 
-The closing sequence looks very similar to the opening sequence.
+The closing sequence looks very similar to the [opening sequence](#the-opening-sequence).
 
     -----END GV BLOCK-----
 
-Like the opening sequence it takes up a whole line and, if not the last content of the file, is ended by a newline character. The only thing that may precede the end of the line is a closing multiline comment (`*/`).
+Like the opening sequence it takes up a whole line and, if not the last content of the file, is ended by a linebreak. The only thing that may precede the end of the line is a closing multiline comment (`*/`).
 
 
 
 ##The GvBlock body
 
-The body of a GvBlock contains the meta and processor information of the source file. One line defines a single property. Empty lines or lines containing whitespaces only are ignored.  
-A property's name is separated from the property's value by a `:`. Whitespaces before and after the name and the value are removed. If a line contains multiple `:`s, only the first one has a special meaning. Properties without a value (i.e. lines without a `:`) are allowed, too. Such properties are called *boolean options*. For information on how those properties are processed, see below. The lines are separated by a linebreaks.  
-The most properties' values are taken literally, but there are some exceptions. For more information have a look at *GvBlock option processing* and *GvBlock templating*.  
+The body of a GvBlock contains the meta and processor information of the [source file](Source-files). One line defines a single property aka. [*option*](GvBlock-options). Empty lines or lines containing whitespaces only are ignored.  
+A property's name is separated from the property's value by a `:`. Whitespaces before and after the name and the value are removed. If a line contains multiple `:`s, only the first one has a special meaning. Properties without a value (i.e. lines without a `:`) are allowed, too. Such properties are called *boolean options*. The lines are separated by linebreaks.  
+The most properties' values are taken literally, but there are some exceptions. For more information have a look at [*GvBlock option processing*](GvBlock-option-processing) and [*GvBlock templating*](GvBlock-option-templating).  
 Properties with invalid names are ignored. Those are:
 
 +   `!`
