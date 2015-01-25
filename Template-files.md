@@ -13,21 +13,21 @@ When authoring template files, a few rules have to be taken care of.
 +   Such a file must not return anything.
 +   The filename (without file-extension) must not be empty.
 +   Template files should never stop the script execution by calling [`exit`](http://php.net/manual/en/function.exit.php) for example.
-+   Information about the request like [`$_GET`](http://php.net/manual/en/reserved.variables.get.php), [`$_COOKIE`](http://php.net/manual/en/reserved.variables.cookies.php) or [`$_SERVER`](http://php.net/manual/en/reserved.variables.server.php)'s `HTTP_*` items should only be used if the source file using the template is a dynamic one (i.e. the [`_dyn` GvBlock option](Gustav-core-options#_dyn) is set).
-+   Template files should never define any functions, classes, constants or anything else.
++   Information about the request like [`$_GET`](http://php.net/manual/en/reserved.variables.get.php), [`$_COOKIE`](http://php.net/manual/en/reserved.variables.cookies.php) or [`$_SERVER`](http://php.net/manual/en/reserved.variables.server.php)'s `HTTP_*` items should only be used if the destination file using the template is a dynamic one (i.e. the [`_dyn` GvBlock option](Gustav-core-options#_dyn) is set).
++   When defining functions, classes, constants or anything else, keep in mind that the file may be called for multiple times.
 +   The printed content should be encoded in UTF-8.
-+   The output buffer used to read the printed content must not be deactivated. Also any new output buffer that is created must be deactivated again.
++   The [output buffer](http://php.net/manual/en/ref.outcontrol.php) used to read the printed content must not be deactivated. Also any new output buffer that is created must be deactivated again.
 
 As described above, a template file takes a content and combines it with its own content. The resulting content is printed.
 
-Within template files the global namespace is entered. Other namespaces can be imported by using `use`.  
+Within template files the [global namespace](http://php.net/manual/en/language.namespaces.global.php) is entered. Other namespaces can be [imported](http://php.net/manual/en/language.namespaces.importing.php) by using `use`.  
 Usually [`GustavBase`](API#gustavbase) and [`Gustav`](API#gustav), as well as the corresponding [Hooks classes](API#hooks-classes) are already included. Nevertheless, to be sure you may want to include them manually using [`include_once`](http://php.net/manual/en/function.include-once.php) or [`require_once`](http://php.net/manual/en/function.require-once.php).
 
 
 
 ##`$gv`
 
-The `$gv` variable is available in a template file and contains the passed content, as well as other useful information. All strings in the array should be encoded in UTF-8, but that may vary. For example, the [source file](Source-file), as well as the [converter files](User-defined-converters) that created the passed content are user-defined files and are not forced to follow Gustav's requirements to use a character encoding of UTF-8.  
+The `$gv` variable is available in a template file and contains the passed content, as well as other useful information. All strings in the array should be encoded in UTF-8, but that may vary. For example, the [source file](Source-files) and the [converter files](User-defined-converters) that created the passed content, as well as the template files already called are user-defined files and are not forced to follow Gustav's requirements to use a character encoding of UTF-8.  
 An example for an array contained in `$gv` is shown below.
 
     array(
@@ -49,7 +49,7 @@ Contains the [`GustavDest`](API#gustavdest) object generating the final [destina
 
 ###`src`
 
-The [`GustavSrc`](API#gustavsrc) object representing the source file of the [destination file](Destination-files) to be created. Contains, besides others, the [GvBlock](GvBlock). This object is also available via [`$gv["dest"]->getSrc()`](Public-API%3a-GustavDest#gustavsrc-getsrc).
+The [`GustavSrc`](API#gustavsrc) object representing the [source file](Source-files) of the [destination file](Destination-files) to be created. Contains, besides others, the [GvBlock](GvBlock). This object is also available via [`$gv["dest"]->getSrc()`](Public-API%3a-GustavDest#gustavsrc-getsrc).
 
 ###`content`
 
