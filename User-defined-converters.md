@@ -21,7 +21,7 @@ Converter files must match a few conditions described below.
 A converter file takes the raw, unconverted source content or the output of the previous converter which is available via a variable named `$gv` and prints the converted content. The passed content should always be UTF-8-encoded, but that may vary, even though Gustav requires source files and converter files to be encoded in UTF-8, since these are user-defined files.  
 Moreover, as described above, it returns the name of a converter that should be applied to the output. If the output is valid HTML (i.e. no converter should be applied), one of the [hardcoded HTML converter](Converting-source-content#the-html-converter-htmlhtm)'s names can be used as the return value.
 
-Within converter files the [global namespace](http://php.net/manual/en/language.namespaces.global.php) is entered. Other namespaces can be [imported](http://php.net/manual/en/language.namespaces.importing.php) by using `use`.  
+Within converter files the [global namespace](http://php.net/manual/en/language.namespaces.global.php) is entered. Other namespaces can be [imported](http://php.net/manual/en/language.namespaces.importing.php) using `use`.  
 Usually [`GustavBase`](API#gustavbase) and [`Gustav`](API#gustav), as well as the corresponding [Hooks classes](API#hooks-classes) are already included. Nevertheless, to be sure you may want to include them manually using [`include_once`](http://php.net/manual/en/function.include-once.php) or [`require_once`](http://php.net/manual/en/function.require-once.php).
 
 
