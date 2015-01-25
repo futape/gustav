@@ -3,7 +3,7 @@ Options' names are treated case-sensitively.
 
 Some options have a special meaning in Gustav and are processed differently than others. Those options are called [*Gustav core options*](Gustav-core-options). Gustav core options always start with a `_`. Therefore you should make sure that your own, custom options never begin with a `_`, too.
 
-If an option doesn't has any value, it will contain the value `true`. Otherwise its value is treated as a literal string which means that the sequence `\n`, for example, isn't a line feed character as it would be in a double-quoted string in PHP, rather it would be a string of two characters, a backslash (`\`) and the lowercased letter `n`. Not all options' values are taken literally. Which options are not is show in [*GvBlock option processing*](GvBlock-option-processing).
+If an option doesn't has any value, it will contain the value `true`. Otherwise its value is treated as a literal string which means that the sequence `\n`, for example, isn't a linefeed character as it would be in a double-quoted string in PHP, rather it would be a string of two characters, a backslash (`\`) and the lowercased letter `n`. Not all options' values are taken literally. Which options are not is show in [*GvBlock option processing*](GvBlock-option-processing).
 
 
 
