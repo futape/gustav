@@ -222,6 +222,10 @@ The name of the [configuration option](Gustav-configuration#bool-generator_searc
 
 The name of the [configuration option](Gustav-configuration#string-replace_directory_separator--) specifying a character to replace with the directory separator ([`DIRECTORY_SEPARATOR`](http://php.net/manual/en/dir.constants.php#constant.directory-separator)). If an empty string, nothing is replaced.
 
+###`int ORDER_NONE`
+
+Don't order matching source files. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+
 ###`int ORDER_MATCH`
 
 Orders matching source files by their match scores (descending). See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
@@ -237,10 +241,6 @@ Orders matching source files by their dates of publication (descending). See [`G
 ###`int ORDER_PUB_ASC`
 
 Orders matching source files by their dates of publication (ascending). See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
-
-###`int ORDER_NONE`
-
-Don't order matching source files. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
 
 ###`int ORDER_RAND`
 
