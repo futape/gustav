@@ -28,45 +28,51 @@ The following Gustav classes exist.
 This class provides useful functions for interacting with the Gustav system.  
 It's an abstract class and can therefore not be instantiated. All members are defined as `static`.  
 The class is defined in `Gustav.php`.  
-All Gustav classes, except for [`GustavBase`](#gustavbase), inherit from this class. This class extends [`GustavBase`](#gustavbase). When including `Gustav.php`, besides `GustavHooks.php`, also [`GustavBase.php`](#gustavbase), as well as [`GustavSrc.php`](#gustavsrc) and [`GustavDest.php`](#gustavdest) are included.
+All Gustav classes, except for [`GustavBase`](#gustavbase), inherit from this class. This class extends [`GustavBase`](#gustavbase). When including `Gustav.php`, besides `GustavHooks.php`, also [`GustavBase.php`](#gustavbase) and [`GustavMatch.php`](#gustavmatch), as well as [`GustavSrc.php`](#gustavsrc) and [`GustavDest.php`](#gustavdest) are included.
 
 ###`GustavSrc`
 
 A `GustavSrc` object represents a source file. It provides useful functions and information on that file.  
 The class is defined in `GustavSrc.php`.  
-This class extends [`Gustav`](#gustav). When including `GustavSrc.php`, besides `GustavSrcHooks.php`, also [`Gustav.php`](#gustav), as well as [`GustavContent.php`](#gustavcontent) and [`GustavBlock.php`](#gustavblock) are included.  
+This class extends [`Gustav`](#gustav). When including `GustavSrc.php`, besides `GustavSrcHooks.php`, also [`Gustav.php`](#gustav), as well as [`GustavContent.php`](#gustavcontent) and [`GustavBlock.php`](#gustavblock) are included.
 
 ###`GustavDest`
 
 A `GustavDest` object represents a destination file. It provides useful functions and information on that file.  
 The class is defined in `GustavDest.php`.  
-This class extends [`Gustav`](#gustav). When including `GustavDest.php`, besides `GustavDestHooks.php`, also [`Gustav.php`](#gustav) and [`GustavSrc.php`](#gustavsrc) are included.  
+This class extends [`Gustav`](#gustav). When including `GustavDest.php`, besides `GustavDestHooks.php`, also [`Gustav.php`](#gustav) and [`GustavSrc.php`](#gustavsrc) are included.
 
 ###`GustavContent`
 
 A `GustavContent` object represents a source file's content aka. [*source content*](Source-content).  
 The class is defined in `GustavContent.php`.  
-This class extends [`Gustav`](#gustav). When including `GustavContent.php`, besides `GustavContentHooks.php`, also [`Gustav.php`](#gustav) and [`GustavBlock.php`](#gustavblock) are included.  
+This class extends [`Gustav`](#gustav). When including `GustavContent.php`, besides `GustavContentHooks.php`, also [`Gustav.php`](#gustav) and [`GustavBlock.php`](#gustavblock) are included.
 
 ###`GustavBlock`
 
 A `GustavBlock` object represents a source file's GvBlock.  
 The class is defined in `GustavBlock.php`.  
-This class extends [`Gustav`](#gustav). When including `GustavBlock.php`, besides `GustavBlockHooks.php`, also [`GustavDestHooks.php`](#gustavdesthooks) and [`GustavContentHooks.php`](#gustavcontenthooks) are included.  
+This class extends [`Gustav`](#gustav). When including `GustavBlock.php`, besides `GustavBlockHooks.php`, also [`GustavDestHooks.php`](#gustavdesthooks) and [`GustavContentHooks.php`](#gustavcontenthooks) are included.
 
 ###`GustavGenerator`
 
 This class provides useful functions for genrating destination files or destination contents. For example, this class is used by `generate.php` and PHP destination files.  
 It's an abstract class and can therefore not be instantiated. All members are defined as `static`.  
 The class is defined in `GustavGenerator.php`.  
-This class extends [`Gustav`](#gustav). When including `GustavGenerator.php`, besides `GustavGeneratorHooks.php`, also [`GustavSrc.php`](#gustavsrc) and [`GustavDest.php`](#gustavdest) are included.  
+This class extends [`Gustav`](#gustav). When including `GustavGenerator.php`, besides `GustavGeneratorHooks.php`, also [`GustavSrc.php`](#gustavsrc) and [`GustavDest.php`](#gustavdest) are included.
+
+###`GustavMatch`
+
+A `GustavMatch` object provides useful function for comparing a source file with a searchterm or keywords.  
+The class is defined in `GustavMatch.php`.  
+This class extends [`Gustav`](#gustav). When including `GustavMatch.php`, besides `GustavMatchHooks.php`, also [`GustavSrc.php`](#gustavsrc) is included.
 
 ###`GustavBase`
 
 This class provides functions and other members that aren't directly related to Gustav.  
 It's an abstract class and can therefore not be instantiated. All members are defined as `static`.  
 The class is defined in `GustavBase.php`.  
-Since `Gustav` inherits from this class and all other classes extend `Gustav`, all of this class's non-`private` members are available in all other Gustav classes. When including `GustavBase.php`, also `GustavBaseHooks.php` is included.  
+Since `Gustav` inherits from this class and all other classes extend `Gustav`, all of this class's non-`private` members are available in all other Gustav classes. When including `GustavBase.php`, also `GustavBaseHooks.php` is included.
 
 ###Hooks classes
 
