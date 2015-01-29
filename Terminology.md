@@ -166,7 +166,7 @@
     <dd>The root directory of the server. For example, on Unix-based systems the path `/` points on that directory.</dd>
     
     <dt><em>Document root</em></dt>
-    <dd>The root directory of the host. See <a href="http://httpd.apache.org/docs/2.4/mod/core.html#documentroot"><code>DocumentRoot</code></em> in the Apache documentation.</dd>
+    <dd>The root directory of the host. See <a href="http://httpd.apache.org/docs/2.4/mod/core.html#documentroot"><code>DocumentRoot</code></a> in the Apache documentation.</dd>
     
     <dt><em>Return value</em></dt>
     <dd>The value returned by a function. Used interchangeably with <em>return<strong>ed</strong> value</em>.</dd>
