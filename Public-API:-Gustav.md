@@ -28,11 +28,11 @@ Then calls [`Gustav::setup()`](#bool-setup).
 
 Returns whether emptying the destination directory and setting up Gustav was successful.
 
-###`string[][] query( [ string|string[] $src_directory = "" [, bool $recursive = true [, array|null $filters = null [, int $filters_operator = Gustav::FILTER_AND [, int $order_by = Gustav::ORDER_PUB [, int $min_match_score = 0 [, bool $include_disabled = false ]]]]]]] )`
+###`string[] query( [ string|string[] $src_directory = "" [, bool $recursive = true [, array|null $filters = null [, int $filters_operator = Gustav::FILTER_AND [, int $order_by = Gustav::ORDER_PUB [, int $min_match_score = 0 [, bool $include_disabled = false ]]]]]]] )`
 
 Get matching [source files](Source-files).
 
-Creates and returns an array containing the matching source files' paths as keys and the matching items of `$filter`'s `match` item as values.  
+Creates and returns an array of matching source files' paths.  
 By default [disabled source files](Disabled-source-files) are ignored and are not included in the returned array.
 
 <dl>
@@ -65,9 +65,9 @@ By default [disabled source files](Disabled-source-files) are ignored and are no
         <dl>
             <dt><code>string[][] match</code></dt>
             <dd>
-                Calls <a href="Public-API%3a-GustavSrc#int-getmatchscore-string-member-string-search_items--mixed-matches--"><code>GustavSrc::getMatchScore()</code></a> for each of this array's items passing the item's key to <code>getMatchScore()</code>'s first parameter and its value to its second parameter. Each <code>match</code> filter is considered to be a single, standalone filter. If an empty array is passed to one of this array's items, that item is ignored.<br />
+                Creates a <a href="API#gustavmatch"><code>GustavMatch</code></a> object for the source file using this filter's value as value for that class's <a href="#">constructor</a>'s second parameter and this filter's <code>flags</code> item (if specified) as its third parameter's value. Each <code>match</code> filter is considered to be a single, standalone filter. If an empty array is passed to one of this array's items or if the item's key is invalid, that item is ignored.<br />
                 If the calculated match score for an item is greater than 0, the source file is considered to match that item of the filter.<br />
-                Using an unsupported <code>match</code> filter (i.e. an unsupported key) won't match any source files. Supported keys are <code>file</code> (<a href="Public-API%3a-GustavBase#string-key_file"><code>GustavBase::KEY_FILE</code></a>), <code>title</code> (<a href="Public-API%3a-GustavBase#string-key_title"><code>GustavBase::KEY_TITLE</code></a>) and <code>tags</code> (<a href="Public-API%3a-GustavBase#string-key_tags"><code>GustavBase::KEY_TAGS</code></a>).
+                Supported keys are <code>file</code> (<a href="Public-API%3a-GustavBase#string-key_file"><code>GustavBase::KEY_FILE</code></a>), <code>title</code> (<a href="Public-API%3a-GustavBase#string-key_title"><code>GustavBase::KEY_TITLE</code></a>) and <code>tags</code> (<a href="Public-API%3a-GustavBase#string-key_tags"><code>GustavBase::KEY_TAGS</code></a>).
             </dd>
 
             <dt><code>string[][]|(string|bool)[] prop</code></dt>
@@ -128,8 +128,7 @@ By default [disabled source files](Disabled-source-files) are ignored and are no
     <dd>If set to <code>true</code>, <a href="Disabled-source-files">disabled source files</a> are no longer ignored.</dd>
 </dl>
 
-Returns an associative array whose keys are the matching source files' paths and whose values are associative arrays whose keys are the supported keys of the `match` filter and whose values are arrays containing the corresponding matching items. If no `match` filter exists, an empty array is used as value instead.  
-For more information on the returned array's values see [`GustavSrc::getMatchScore()`](Public-API%3a-GustavSrc#int-getmatchscore-string-member-string-search_items--mixed-matches--)'s third parameter.
+Returns an array containing the matching source files' paths.
 
 ###`int[] getTags()`
 
@@ -242,6 +241,10 @@ Orders matching source files by their dates of publication (ascending). See [`Gu
 ###`int ORDER_NONE`
 
 Don't order matching source files. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+
+###`int ORDER_RAND`
+
+Orders matching source files randomly. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
 
 ###`int FILTER_OR`
 
