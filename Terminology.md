@@ -119,6 +119,60 @@
 
 
 
-    <dt><em>Template file</em></dt>
+    <dt><em>Template file</em>, <em>Template</em></dt>
     <dd>See <a href="Template-files"><em>Template files</em></a>.</dd>
+    
+    <dt><em>Gustav-error</em>, <em>Gustav-specific error</em></dt>
+    <dd>An error thrown by Gustav, not a PHP error. The error message is written to the log file. See <a href="Private-API%3a-Gustav#void-error--stringnull-log_message--null--stringint-error_type--gustaverror_500--"><code>Gustav::error()</code></a>.</dd>
+    
+    <dt><em>generate.php</em></dt>
+    <dd>The file used tot create non-existing destination files. See <a href="Automatic-generation-of-destination-files"><em>Automatic generation of destination files</em></a>.</dd>
+    
+    <dt><em>Trim</em></dt>
+    <dd>Remove whitespace characters from the beginning and the end of a string. See <a href="http://php.net/manual/en/function.trim.php"><code>trim()</code></a>.</dd>
+    
+    <dt><em>Directory separator</em></dt>
+    <dd>The character used in an OS-specific path to separate a directory name from another. For example this would be <code>\\</code> for Windows and <code>/</code> for Unix-based systems.</dd>
+    
+    <dt><em>OS</em></dt>
+    <dd>An abbreviation for <em>Operating System</em>.</dd>
+    
+    <dt><em>Variable</em></dt>
+    <dd><em>Variable</em> is context-dependant. For example, in context of a GvBlock templating, it means a <em>templating variable</em> available in a templating placeholder, while in context of PHP it means a <a href="http://php.net/manual/en/language.variables.php">PHP variable</a>.</dd>
+    
+    <dt><em>Templating placeholder</em>, <em>Template placeholder</em></dt>
+    <dd>A term in a templating string that will be replaced with the placeholder's corresponding value. See <a href="GvBlock-option-templating"><em>GvBlock option templating</em></a> and <a href="Private-API%3A-GustavBase#string-templ-string-template--array-vars--array--bool-resolve_constants--true--bool-unescape_placeholders--true--"><code>GustavBase::templ()</code></a>.</dd>
+    
+    <dt><em>__base</em></dt>
+    <dd>A special source file used for the system default value for <a href="Gustav-core-options#_ext"><code>_ext</code></a>. See <a href="GvBlock-option-default-values#_ext_default"><em>GvBlock option default values</em></a>.</dd>
+    
+    <dt><em>System default values</em></dt>
+    <dd>See <a href="GvBlock-option-default-values#system-default-values"><em>GvBlock option default values</em></a>.</dd>
+    
+    <dt><em>Whitespaces</em>, <em>Whitespace characters</em></dt>
+    <dd>
+        The following characters are considered to be whitespaces.
+        
+        <ul>
+            <li>Space character (<code>0x20</code>)</li>
+            <li>Horizontal tab character (<code>\t</code>, <code>0x09</code>)</li>
+            <li>Linefeed character (<code>\n</code>, <code>0x0a</code>)</li>
+            <li>Carriage return character (<code>\r</code>, <code>0x0d</code>)</li>
+            <li>Formfeed character (<code>\f</code>, <code>0x0c</code>)</li>
+        </ul>
+    </dd>
+    
+    <dt><em>Server root</em></dt>
+    <dd>The root directory of the server. For example, on Unix-based systems the path `/` points on that directory.</dd>
+    
+    <dt><em>Document root</em></dt>
+    <dd>The root directory of the host. See <a href="http://httpd.apache.org/docs/2.4/mod/core.html#documentroot"><code>DocumentRoot</code></em> in the Apache documentation.</dd>
+    
+    <dt><em>Return value</em></dt>
+    <dd>The value returned by a function. Used interchangeably with <em>return<strong>ed</strong> value</em>.</dd>
+    
+    <dt><em>! options</em></dt>
+    <dd>These are options used to prevent a GvBlock from inheriting an option from another GvBlock. See <a href="Extending-a-GvBlock#-options"><em>Extending a GvBlock</em></a>.</dd>
+    
+    
 </dl>
