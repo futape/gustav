@@ -1,6 +1,6 @@
 ##Static functions
 
-###`public void init()`
+###`public void initGustav()`
 
 Initializes some of the Gustav class's static properties.  
 For example, this function reads the configuration file and decodes it as JSON and saves the decoded array to a class-variable. Moreover it validates the configurations and resets invalid options to their default values. If no default value is available for an invalid option, a fatal Gustav-error may be raised. Otherwise a warning log entry is done for every invalid option.  
@@ -18,7 +18,7 @@ An array containing the configuration options and their values.
 
 ###`private bool $isInit`
 
-Whether [`Gustav::init()`](#public-void-init) has already been executed.
+Whether [`Gustav::initGustav()`](#public-void-initgustav) has already been executed.
 
 
 
