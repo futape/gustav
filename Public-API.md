@@ -6,5 +6,6 @@ The public API is spread across the following Gustav classes.
 +   [`GustavDest`](Public-API%3a-GustavDest)
 +   [`GustavContent`](Public-API%3a-GustavContent)
 +   [`GustavBlock`](Public-API%3a-GustavBlock)
++   [`GustavMatch`](Public-API%3a-GustavMatch)
 +   [`GustavGenerator`](Public-API%3a-GustavGenerator)
 +   [`GustavBase`](Public-API%3a-GustavBase)
