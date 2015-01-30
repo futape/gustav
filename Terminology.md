@@ -163,7 +163,7 @@
     </dd>
     
     <dt><em>Server root</em></dt>
-    <dd>The root directory of the server. For example, on Unix-based systems the path `/` points on that directory.</dd>
+    <dd>The root directory of the server. For example, on Unix-based systems the path `/` points on that directory. See <a href="http://httpd.apache.org/docs/2.4/mod/core.html#serverroot"><code>ServerRoot</code></a> for a analogously named configuration options in Apache.</dd>
     
     <dt><em>Document root</em></dt>
     <dd>The root directory of the host. See <a href="http://httpd.apache.org/docs/2.4/mod/core.html#documentroot"><code>DocumentRoot</code></a> in the Apache documentation.</dd>
