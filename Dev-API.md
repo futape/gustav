@@ -7,6 +7,7 @@ The Dev API is spread across the following Gustav classes.
 +   [`GustavDest`](Dev-API%3A-GustavDest)
 +   [`GustavContent`](Dev-API%3A-GustavContent)
 +   [`GustavBlock`](Dev-API%3A-GustavBlock)
++   [`GustavMatch`](Dev-API%3A-GustavMatch)
 +   [`GustavGenerator`](Dev-API%3A-GustavGenerator)
 +   [`GustavBase`](Dev-API%3A-GustavBase)
 +   [`Hooks classes`](Dev-API%3A-Hooks-classes)
