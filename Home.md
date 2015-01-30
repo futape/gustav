@@ -29,4 +29,5 @@
 +   [Gustav configuration](Gustav-configuration)
 +   [API](API)
 +   [Log files](Log-files)
++   [Miscellaneous](Miscellaneous)
 +   [Terminology](Terminology)
