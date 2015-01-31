@@ -48,6 +48,7 @@ By default [disabled source files](Disabled-source-files) are ignored and are no
         
 <pre><code>array(
     "match"=&gt;array(
+        "flags"=>0,
         "file"=&gt;array(),
         "title"=&gt;array(),
         "tags"=&gt;array()
@@ -65,7 +66,7 @@ By default [disabled source files](Disabled-source-files) are ignored and are no
         <dl>
             <dt><code>string[][] match</code></dt>
             <dd>
-                Creates a <a href="API#gustavmatch"><code>GustavMatch</code></a> object for the source file using this filter's value as value for that class's <a href="#">constructor</a>'s second parameter and this filter's <code>flags</code> item (if specified) as its third parameter's value. Each <code>match</code> filter is considered to be a single, standalone filter. If an empty array is passed to one of this array's items or if the item's key is invalid, that item is ignored.<br />
+                Creates a <a href="API#gustavmatch"><code>GustavMatch</code></a> object for the source file using this filter's value as value for that class's <a href="#">constructor</a>'s second parameter and this filter's <code>flags</code> item (if specified) as its third parameter's value. Each <code>match</code> filter is considered to be a single, standalone filter. If an empty array is passed to one of this array's items or if the item's key is invalid, that item is ignored. If the <a href="API#gustavmatch"><code>GustavMatch</code></a> object cannot be created, the entire filter is ignored.<br />
                 If the calculated match score for an item is greater than 0, the source file is considered to match that item of the filter.<br />
                 Supported keys are <code>file</code> (<a href="Public-API%3a-GustavBase#string-key_file"><code>GustavBase::KEY_FILE</code></a>), <code>title</code> (<a href="Public-API%3a-GustavBase#string-key_title"><code>GustavBase::KEY_TITLE</code></a>) and <code>tags</code> (<a href="Public-API%3a-GustavBase#string-key_tags"><code>GustavBase::KEY_TAGS</code></a>).
             </dd>
