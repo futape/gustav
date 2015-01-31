@@ -59,7 +59,7 @@ Unlike the parser used by PHP for shorthand byte values in the `php.ini` file, G
 
 ####`bool exit_on_error = true`
 
-By default, Gustav calls [`exit`](http://php.net/manual/en/function.exit.php) if a Gustav-error is thrown. If this option is set to `false`, it doesn't. Disabling this behavior is not recommended since the code often assumes that when throwing a Gustav-error the script execution is stopped. If the script is executed on, many (non-Gustav-)errors may be thrown. Regardless of this option's value, Gustav-fatal-errors always stop the script execution. If not a boolean, the value is casted as one.
+By default, Gustav calls [`exit`](http://php.net/manual/en/function.exit.php) if a Gustav-error is thrown. If this option is set to `false`, it doesn't. Disabling this behavior is not recommended since the code often assumes that when throwing a Gustav-error the script execution is stopped. If the script is executed on, many (non-Gustav-)errors may be thrown and log messages may be logged for multiple times. Regardless of this option's value, Gustav-fatal-errors always stop the script execution. If not a boolean, the value is casted as one.
 
 ####`bool check_status = true`
 
