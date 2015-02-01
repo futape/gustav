@@ -21,7 +21,8 @@ Returns the parsed GvBlock.
 
 ###`(string|true)[] extendBlock( (string|true)[] $gvblock, string|string[] $path )`
 
-[Extends a GvBlock](Extending-a-GvBlock).  
+[Extends a GvBlock](Extending-a-GvBlock).
+
 [Options](Gustav-core-options) whose names start with `_ext_` and the [`_ext` option](Gustav-core-options#_ext) itself as well as options starting with `!` aren't passed down to the extending GvBlock. Extending GvBlocks over multiple levels is supported.  
 An option of the extending GvBlock starting with `!` removes the equally named (without the leading `!`) option from the GvBlock to extend. An extending GvBlock's option overwrites the appropiate option of the extended GvBlock, regardless of whether its value is valid or not.  
 The value of an option of the extended GvBlock can be included in the corresponding option's value of the extending GvBlock by using [templating](GvBlock-option-templating). The extended GvBlock's value is available via the [`$ext` variable](GvBlock-option-templating#ext).  
@@ -62,7 +63,7 @@ This is the third function called in the process of building a GvBlock, followin
 
 Returns the passed GvBlock, with all (available) templating placeholders resolved.
 
-###`array finalizeBlock( (string|true)[] $gvblock, string|string[] $path )`
+###`array finalizeBlock( (string|true)[] $gvblock, string|string[] $path [, $check_required_options = true ] )`
 
 [Finalizes a GvBlock](Finalizing-a-GvBlock).
 
@@ -88,6 +89,9 @@ This is the fourth and last function called in the process of building a GvBlock
     
     <dt><code>$path</code></dt>
     <dd>The path of the [source file](Source-files) the GvBlock was extracted from. Gets passed to <a href="Private-API%3a-GustavBase#string-path-stringstring-path_segment--stringstring-path_segment--stringstring---"><code>GustavBase::path()</code></a>.</dd>
+    
+    <dt><code>$check_required_options</code></dt>
+    <dd>If set to `true`, a Gustav-error is raised if a required option isn't set or if its value isn't valid. Otherwise, no Gustav-errors are thrown.</dd>
 </dl>
 
 Returns the finalized GvBlock.
