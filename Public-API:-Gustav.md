@@ -158,7 +158,7 @@ Returns an array containing the categories' relative URL (root-relative) as keys
     )
 
 <dl>
-    <dt></code>bool root</code></dt>
+    <dt><code>bool root</code></dt>
     <dd><code>true</code> for the destination directory's root, ortherwise <code>false</code>.</dd>
 
     <dt><code>int count</code></dt>
