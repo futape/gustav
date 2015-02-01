@@ -28,7 +28,7 @@ Then calls [`Gustav::setup()`](#bool-setup).
 
 Returns whether emptying the destination directory and setting up Gustav was successful.
 
-###`string[] query( [ string|string[] $src_directory = "" [, bool $recursive = true [, array|null $filters = null [, int $filters_operator = Gustav::FILTER_AND [, int $order_by = Gustav::ORDER_PUB [, int $min_match_score = 0 [, bool $include_disabled = false ]]]]]]] )`
+###`string[] query( [ string|string[] $src_directory = "" [, bool $recursive = true [, array|null $filters = null [, int $filters_operator = Gustav::FILTER_AND [, int $order_by = Gustav::ORDER_PUB [, int $min_match_score = 0 [, bool $include_disabled = false [, $include_hidden_directory = false ]]]]]]]] )`
 
 Get matching [source files](Source-files).
 
@@ -127,6 +127,9 @@ By default [disabled source files](Disabled-source-files) are ignored and are no
 
     <dt><code>$include_disabled</code></dt>
     <dd>If set to <code>true</code>, <a href="Disabled-source-files">disabled source files</a> are no longer ignored.</dd>
+    
+    <dt><code>$include_hidden_directory</code></dt>
+    <dd>If set to <code>true</code>, source files located in a <code>__hidden</code> directory or in one of its subdirectories are no longer ignored.</dd>
 </dl>
 
 Returns an array containing the matching source files' paths.
