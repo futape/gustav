@@ -1,11 +1,13 @@
-+   [General terminology](#)
-+   [Abbreviations and ambiguous terms](#)
-+   [Gustav-related directories and files](#)
-+   [Source files](#)
-+   [GvBlock](#)
-+   [Destination files](#)
-+   [Converters](#)
-+   [Miscellaneous Gustav-related terms](#)
+##Contents
+
++   [General terminology](#general-terminology)
++   [Abbreviations and ambiguous terms](#abbreviations-and-ambiguous-terms)
++   [Gustav-related directories and files](#gustav-related-directories-and-files)
++   [Source files](#source-files)
++   [Destination files](#destination-files)
++   [GvBlock](#gvblock)
++   [Converters](#converters)
++   [Miscellaneous Gustav-related terms](#miscellaneous-gustav-related-terms)
 
 
 
@@ -101,16 +103,16 @@
     <dd>See <a href="Gustav-configuration#confjson"><em>Gustav configuration</em></a>.</dd>
     
     <dt><em>generate.php</em></dt>
-    <dd>The file used to create non-existing destination files. See <a href="Automatic-generation-of-destination-files"><em>Automatic generation of destination files</em></a>. For related terms see <a href="#"><em>Destination files</em></a>.</dd>
+    <dd>The file used to create non-existing destination files. See <a href="Automatic-generation-of-destination-files"><em>Automatic generation of destination files</em></a>. For related terms see <a href="#destination-files"><em>Destination files</em></a>.</dd>
     
     <dt><em>__base file</em></dt>
-    <dd>A special source file used for the system default value for <a href="Gustav-core-options#_ext"><code>_ext</code></a>. See <a href="GvBlock-option-default-values#_ext_default"><em>GvBlock option default values</em></a>. For related terms see <a href="#"><em>Source files</em></a> and <a href="#"><em>GvBlock</em></a>.</dd>
+    <dd>A special source file used for the system default value for <a href="Gustav-core-options#_ext"><code>_ext</code></a>. See <a href="GvBlock-option-default-values#_ext_default"><em>GvBlock option default values</em></a>. For related terms see <a href="#source-files"><em>Source files</em></a> and <a href="#gvblock"><em>GvBlock</em></a>.</dd>
     
     <dt><em>__hidden directory</em></dt>
-    <dd>A special directory located in the source directory containing source files that shouldn't be included in the results of <a href="#"><code>Gustav::query()<code></a>. See that function for more information. For related terms see <a href="#"><em>Source files</em></a>.</dd>
+    <dd>A special directory located in the source directory containing source files that shouldn't be included in the results of <a href="Public-API%3a-Gustav#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--"><code>Gustav::query()<code></a>. See that function for more information. For related terms see <a href="source-files"><em>Source files</em></a>.</dd>
     
     <dt><em>Converter file</em></dt>
-    <dd>This and related terms are described under <a href="#"><em>Converters</em></a>.</dd>
+    <dd>This and related terms are described under <a href="#converters"><em>Converters</em></a>.</dd>
     
     <dt><em>Extension directory</em></dt>
     <dd>See <a href="Extending-Gustav"><em>Extending Gustav</em></a>.</dd>
@@ -125,16 +127,16 @@
     <dd>See <a href="Template-files"><em>Template files</em></a>.</dd>
     
     <dt><em>Destination directory</em></dt>
-    <dd>See <a href="Gustav-configuration#string-dest_dir"><em>Gustav configuration</em></a>. For related terms see <a href="#"><em>Destination files</em></a>.</dd>
+    <dd>See <a href="Gustav-configuration#string-dest_dir"><em>Gustav configuration</em></a>. For related terms see <a href="#destination-files"><em>Destination files</em></a>.</dd>
     
     <dt><em>Destination file</em></dt>
-    <dd>This and related terms are described under <a href="#"><em>Destination files</em></a>.</dd>
+    <dd>This and related terms are described under <a href="#destination-files"><em>Destination files</em></a>.</dd>
     
     <dt><em>Source directory</em></dt>
-    <dd>See <a href="Gustav-configuration#string-src_dir"><em>Gustav configuration</em></a>. For related terms see <a href="#"><em>Source files</em></a>.</dd>
+    <dd>See <a href="Gustav-configuration#string-src_dir"><em>Gustav configuration</em></a>. For related terms see <a href="#source-files"><em>Source files</em></a>.</dd>
     
     <dt><em>Source file</em></dt>
-    <dd>This and related terms are described under <a href="#"><em>Source files</em></a>.</dd>
+    <dd>This and related terms are described under <a href="#source-files"><em>Source files</em></a>.</dd>
 </dl>
 
 
