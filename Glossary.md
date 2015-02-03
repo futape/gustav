@@ -70,13 +70,16 @@
 
 <dl>
     <dt><em>Option</em></dt>
-    <dd><em>Option</em> is context-dependant. For example, in context of a GvBlock, it means a <em>GvBlock option</em>, while in context of <code>conf.json</code> it means a <em>configuration option</em>. The meaning in other contexts is not defined.</dd>
+    <dd><em>Option</em> is context-dependant. For example, in context of a GvBlock, it means a <em>GvBlock option</em>, while in context of the <code>conf.json</code> file it means a <em>configuration option</em>. The meaning in other contexts is not defined.</dd>
     
     <dt><em>Variable</em></dt>
     <dd><em>Variable</em> is context-dependant. For example, in context of GvBlock templating, it means a <em>templating variable</em> available in a templating placeholder, while in context of PHP it means a <a href="http://php.net/manual/en/language.variables.php">PHP variable</a>. The meaning in other contexts is not defined.</dd>
     
     <dt><em>Score</em></dt>
     <dd><em>Score</em> is context-dependant. For example, in context of <a href="API#gustavmatch"><code>GustavMatch</code></a>, it means the <em>match score</em> calculated for a source file. The meaning in other contexts is not defined.</dd>
+    
+    <dt><em>Template</em></dt>
+    <dd><em>Template</em> is context-dependant. For example, in context of a GvBlock, it means a template string containing <em>templating placeholders</em>, while otherwise (mostly in context of destination files) meaning a <em>template file</em>. Any other meaning is specified explicitly.</dd>
     
     <dt><em>API</em></dt>
     <dd>Gustav's PHP Application Programming Interface. See <a href="API"><em>API</em></a>.</dd>
@@ -179,7 +182,7 @@
     <dt><em>System default values</em></dt>
     <dd>See <a href="GvBlock-option-default-values#system-default-values"><em>GvBlock option default values</em></a>.</dd>
     
-    <dt><em>Template variables</em>, <em>Templating variables</em></dt>
+    <dt><em>Templating variables</em>, <em>Template variables</em></dt>
     <dd>See <a href="GvBlock-option-templating"><em>GvBlock option templating</em></a> and <a href="Private-API%3A-GustavBase#string-templ-string-template--array-vars--array--bool-resolve_constants--true--bool-unescape_placeholders--true--"><code>GustavBase::templ()</code></a>.</dd>
     
     <dt><em>Templating placeholder</em>, <em>Template placeholder</em></dt>
