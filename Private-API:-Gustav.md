@@ -91,7 +91,7 @@ Get an absolute URL for a given path.
     <dd>The path to use as the URL path. May also be an empty string which would result in an URL path of <code>/</code>. Gets passed to <a href="Private-API%3a-GustavBase#string-path-stringstring-path_segment--stringstring-path_segment--stringstring---"><code>GustavBase::path()</code></a> and is converted to a properly urlencoded path, directory separators replaced by <code>/</code>.</dd>
     
     <dt><code>$is_url</code></dt>
-    <dd>If set to <code>true</code>, the passed <em>path</em> is considered to be a [relative URL](https://tools.ietf.org/html/rfc3986#section-4.2) (root-relative, starting with <code>/</code>). If done so, <code>$path_includes_doc_root</code> is ignored entirely and the path isn't converted in any way.</dd>
+    <dd>If set to <code>true</code>, the passed <em>path</em> is considered to be a <a href="https://tools.ietf.org/html/rfc3986#section-4.2">relative URL</a> (root-relative, starting with <code>/</code>). If done so, <code>$path_includes_doc_root</code> is ignored entirely and the path isn't converted in any way.</dd>
     
     <dt><code>$path_includes_doc_root</code></dt>
     <dd>If set to <code>false</code>, the document root is prepended to the passed path. It's removed again before converting it to an URL path. This parameter is ignored if <code>$is_url</code> is set to <code>true</code>.</dd>
