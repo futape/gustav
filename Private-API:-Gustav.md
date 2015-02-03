@@ -25,7 +25,7 @@ Exits the script as a consequence of an error.
 
 Exits the script with a HTTP status code and a possible error log entry in the Gustav [log-file](Log-files).  
 If the [`exit_on_error` configuration option](Gustav-configuration#bool-exit_on_error--true) is set to `false`, the execution of the script isn't stopped unless `$error_type` is set to [`Gustav::ERROR_FATAL`](#int-error_fatal). In that case, also a log entry is forced (if a log message is specified), regardless of the setting of the [`enable_log` configuration option](Gustav-configuration#bool-enable_log--true).  
-If [`Gustav::ERROR_404`](#string-error_404) is used as value for `$error_type`, a redirect to the page specified by the [`404_error_doc` configuration option](Gustav-configuration#string-404_error_doc--) is done using a `303 See Other` HTTP status code.
+If [`Gustav::ERROR_404`](#string-error_404) is used as value for `$error_type`, a HTML `Content-Type` HTTP response header field is set, the content for the resource specified by the [`404_error_doc` configuration option](Gustav-configuration#string-404_error_doc--) is printed and the script execution is stopped, regardless of the [`exit_on_error` configuration option](Gustav-configuration#bool-exit_on_error--true).
 
 <dl>
     <dt><code>$log_message</code></dt>
@@ -82,7 +82,7 @@ Get all hardcoded converters or only those whose names match a specified convert
 
 Returns all names of all converters matching the specified converter name, if any, or all available names for all available hardcoded converters if no converter name has been specified.
 
-###`string getHttpUrl( string|string[] $path [, bool $path_includes_doc_root = true ] )`
+###`string getHttpUrl( string|string[] $path [, bool $is_url = false [, bool $path_includes_doc_root = true ]] )`
 
 Get an absolute URL for a given path.
 
@@ -90,8 +90,11 @@ Get an absolute URL for a given path.
     <dt><code>$path</code></dt>
     <dd>The path to use as the URL path. May also be an empty string which would result in an URL path of <code>/</code>. Gets passed to <a href="Private-API%3a-GustavBase#string-path-stringstring-path_segment--stringstring-path_segment--stringstring---"><code>GustavBase::path()</code></a> and is converted to a properly urlencoded path, directory separators replaced by <code>/</code>.</dd>
     
+    <dt><code>$is_url</code></dt>
+    <dd>If set to <code>true</code>, the passed <em>path</em> is considered to be a [relative URL](https://tools.ietf.org/html/rfc3986#section-4.2) (root-relative, starting with <code>/</code>). If done so, <code>$path_includes_doc_root</code> is ignored entirely and the path isn't converted in any way.</dd>
+    
     <dt><code>$path_includes_doc_root</code></dt>
-    <dd>If set to <code>false</code>, the document root is prepended to the passed path. It's removed again before converting it to an URL path.</dd>
+    <dd>If set to <code>false</code>, the document root is prepended to the passed path. It's removed again before converting it to an URL path. This parameter is ignored if <code>$is_url</code> is set to <code>true</code>.</dd>
 </dl>
 
 Returns the built URL.
