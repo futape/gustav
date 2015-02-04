@@ -53,4 +53,5 @@
         +   [Hooks classes](Dev-API%3A-Hooks-classes)
 +   [Log files](Log-files)
 +   [Miscellaneous](Miscellaneous)
-+   [Terminology](Terminology)
++   [System requirements](System-requirements)
++   [Glossary](Glossary)
