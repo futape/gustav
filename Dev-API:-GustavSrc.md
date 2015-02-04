@@ -3,7 +3,7 @@
 ###`private void initIsDis()`
 
 Checks whether the source file is disabled and initializes the object's [`$isDis` property](#private-bool-isdis).  
-For disabled source files no destination file can be created. Moreover they don't appear in the results of [`Gustav::query()`](Public-API%3a-Gustav#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).  
+For disabled source files no destination file can be created. Moreover they don't appear in the results of [`Gustav::query()`](Public-API%3a-Gustav#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).  
 Source files can be disabled by prepending a `_` to their filenames.
 
 ###`private void initDesc()`
@@ -68,7 +68,7 @@ A [`GustavBlock`](API#gustavblock) object representing the source file's GvBlock
 ###`private bool $isDis`
 
 Whether the source file is disabled.  
-For disabled source files no destination file can be created. Moreover they don't appear in the results of [`Gustav::query()`](Public-API%3a-Gustav#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--) (by default).  
+For disabled source files no destination file can be created. Moreover they don't appear in the results of [`Gustav::query()`](Public-API%3a-Gustav#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--) (by default).  
 Source files can be disabled by prepending a `_` to their filenames.
     
 ###`private string $desc`
