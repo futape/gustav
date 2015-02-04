@@ -7,14 +7,13 @@
 ##A selection of Gustav's features
 
 +   [Fast installation and setup](Getting-started)
-+   Low system requirements (PHP 5.3)
-+   Lightweight
++   [Low system requirements](System-requirements)
 +   [Automatic generation](Automatic-generation-of-destination-files)
 +   [Customizable](Gustav-configuration)
 +   [Massive API](API)
 +   [Extendable](Extending-Gustav)
 +   [Easy to learn](Getting-started)
-+   Well documented
++   [Well documented](https://github.com/futape/gustav/wiki)
 
 
 
@@ -30,4 +29,5 @@
 +   [API](API)
 +   [Log files](Log-files)
 +   [Miscellaneous](Miscellaneous)
-+   [Terminology](Terminology)
++   [System requirements](System-requirements)
++   [Glossary](Glossary)
