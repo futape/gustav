@@ -29,14 +29,17 @@
     <dt><em>Filename</em></dt>
     <dd>The filename of a path. If how the file-extension is handled is not explicitly defined, this is just a synonym for <em>Basename</em>. See also <a href="http://php.net/manual/en/function.pathinfo.php"><code>pathinfo()</code></a>'s <code>PATHINFO_FILENAME</code>.</dd>
     
+    <dt><em>Directory separator</em></dt>
+    <dd>The character used in an OS-specific path to separate a directory name from another. For example this would be <code>\\</code> for Windows and <code>/</code> for Unix-based systems.</dd>
+    
+    <dt><em>Path segments</em></dt>
+    <dd>The single parts of a path separated by directory separators. Empty path segments are not possible.</dd>
+    
     <dt><em>Document root</em></dt>
     <dd>The root directory of the host. See <a href="http://httpd.apache.org/docs/2.4/mod/core.html#documentroot"><code>DocumentRoot</code></a> in the Apache documentation.</dd>
     
     <dt><em>Server root</em></dt>
     <dd>The root directory of the server. For example, on Unix-based systems the path `/` points on that directory. See <a href="http://httpd.apache.org/docs/2.4/mod/core.html#serverroot"><code>ServerRoot</code></a> for a analogously named configuration options in Apache.</dd>
-    
-    <dt><em>Directory separator</em></dt>
-    <dd>The character used in an OS-specific path to separate a directory name from another. For example this would be <code>\\</code> for Windows and <code>/</code> for Unix-based systems.</dd>
     
     <dt><em>Linebreak</em>, <em>Newline</em>, <em>Newline character</em></dt>
     <dd>
