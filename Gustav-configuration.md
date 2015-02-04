@@ -40,7 +40,7 @@ The directory the [template files](Template-files) are located in. The value des
 
 ####`string 404_error_doc = "/"`
 
-The document the user is redirected to when a Gustav-404-error is thrown. The redirection happens using a 303 status code. The value is passed directly to the [`Location` HTTP header field](https://tools.ietf.org/html/rfc7231#section-7.1.2). The value for that haeder field can be either an [absolute URL](https://tools.ietf.org/html/rfc3986#section-4.3) (i.e. a fully qualified URL including a scheme) or a [relative one](https://tools.ietf.org/html/rfc3986#section-4.2). If not a string, the value is casted as one.
+A [relative URL](https://tools.ietf.org/html/rfc3986#section-4.2) (root-relative, starting with `/`) referencing a local HTML document whose content is printed when a Gustav-404-error is thrown. If not a string, the value is casted as one.
 
 ####`string site_url = <requested site>`
 
@@ -97,3 +97,9 @@ Defines the preferred converters used for choosing a [source file](Source-files)
 ####`string replace_directory_separator = ""`
 
 Defines the character to replace with the OS's directory separator when [processing the GvBlock options](GvBlock-option-processing). This is done for paths defined by the [`_ext`](Gustav-core-options#_ext) and [`_dest`](Gustav-core-options#_dest) options. A non-string value is casted as a string. If set to an empty string, nothing is replaced. The specified string is truncated to one character.
+
+####`bool use_fallback_resource = false`
+
+If set tu `true`, Apache's [`FallbackResource` configuration option](http://httpd.apache.org/docs/2.4/mod/mod_dir.html#fallbackresource) is used instead of [`ErrorDocument`](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument), [`RewriteRule`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewriterule) and [`RewriteConds`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewritecond) when creating the destination directory's `.htaccess` file using [`Gustav::setup()`](Public-API%3a-Gustav#bool-setup).  
+Use that directive carefully since [it tends to be a bit buggy](https://bugs.launchpad.net/ubuntu/+source/apache2/+bug/1168030) and keep in mind that it is available in Apache 2.2.16+ only.  
+If not a boolean, the value is casted as one.
