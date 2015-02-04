@@ -36,7 +36,7 @@ This is the second function called in the process of building a GvBlock, followi
     <dd>The extending GvBlock. May very likely be an array returned by <a href="#stringtrue-parseblock-string-content-"><code>Gustav::parseBlock()</code></a>.</dd>
     
     <dt><code>$path</code></dt>
-    <dd>The path of the [source file](Source-files) the GvBlock has been extracted from. Gets passed to <a href="#array-finalizeblock-stringtrue-gvblock-stringstring-path-"><code>GustavBlock::finalizeBlock()</code></a> which in turn calls <a href="Private-API%3a-GustavBase#string-path-stringstring-path_segment--stringstring-path_segment--stringstring---"><code>GustavBase::path()</code></a> on the path.</dd>
+    <dd>The path of the [source file](Source-files) the GvBlock has been extracted from. Gets passed to <a href="#array-finalizeblock-stringtrue-gvblock-stringstring-path--check_required_options--true--"><code>GustavBlock::finalizeBlock()</code></a> which in turn calls <a href="Private-API%3a-GustavBase#string-path-stringstring-path_segment--stringstring-path_segment--stringstring---"><code>GustavBase::path()</code></a> on the path.</dd>
 </dl>
 
 Returns the extending GvBlock with all of the extended GvBlock's options inherited, if not prevented, and [`{{$ext}}` templating placeholders](GvBlock-option-templating#ext) resolved.
@@ -91,7 +91,7 @@ This is the fourth and last function called in the process of building a GvBlock
     <dd>The path of the [source file](Source-files) the GvBlock was extracted from. Gets passed to <a href="Private-API%3a-GustavBase#string-path-stringstring-path_segment--stringstring-path_segment--stringstring---"><code>GustavBase::path()</code></a>.</dd>
     
     <dt><code>$check_required_options</code></dt>
-    <dd>If set to `true`, a Gustav-error is raised if a required option isn't set or if its value isn't valid. Otherwise, no Gustav-errors are thrown.</dd>
+    <dd>If set to <code>true</code>, a Gustav-error is raised if a required option isn't set or if its value isn't valid. Otherwise, no Gustav-errors are thrown.</dd>
 </dl>
 
 Returns the finalized GvBlock.
