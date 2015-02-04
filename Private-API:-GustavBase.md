@@ -332,15 +332,18 @@ Replaces directory separators in the passed path with `/` (essential for windows
 
 Returns an URL path built from the passed path.
 
-###`string url2path( string $url_path )`
+###`string url2path( string $url_path [, bool $prepend_doc_root = true ] )`
 
 Converts an URL path into an OS-specific path.
 
-Replaces all occurences of `/` within the passed path with a directory separator (essential for windows users) and calls [`rawurldecode()`](http://php.net/manual/en/function.rawurldecode.php) on the path. Moreover the document root is prepended to the path. The returned path always has a leading directory separator.
+Replaces all occurences of `/` within the passed path with a directory separator (essential for windows users) and calls [`rawurldecode()`](http://php.net/manual/en/function.rawurldecode.php) on the path. The returned path always has a leading directory separator.
 
 <dl>
     <dt><code>$url_path</code></dt>
     <dd>The URL path to convert to an OS-specific one.</dd>
+    
+    <dt><code>$prepend_doc_root</code></dt>
+    <dd>If set to <code>true</code>, the path of the document root is prepended.</dd>
 </dl>
 
 Returns an OS-specific path built from the passed URL path.
