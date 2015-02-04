@@ -100,6 +100,6 @@ Defines the character to replace with the OS's directory separator when [process
 
 ####`bool use_fallback_resource = false`
 
-If set to `true`, Apache's [`FallbackResource` configuration option](http://httpd.apache.org/docs/2.4/mod/mod_dir.html#fallbackresource) is used instead of [`ErrorDocument`](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument), [`RewriteRule`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewriterule) and [`RewriteConds`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewritecond) when creating the destination directory's `.htaccess` file using [`Gustav::setup()`](Public-API%3a-Gustav#bool-setup).  
+If set to `true`, Apache's [`FallbackResource` directive](http://httpd.apache.org/docs/2.4/mod/mod_dir.html#fallbackresource) is used instead of [`ErrorDocument`](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument) and [`mod_rewrite`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html) when creating the destination directory's `.htaccess` file using [`Gustav::setup()`](Public-API%3a-Gustav#bool-setup).  
 Use that directive carefully since [it tends to be a bit buggy](https://bugs.launchpad.net/ubuntu/+source/apache2/+bug/1168030) and keep in mind that it is available in Apache 2.2.16+ only.  
 If not a boolean, the value is casted as one.
