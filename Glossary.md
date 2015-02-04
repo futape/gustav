@@ -30,7 +30,7 @@
     <dd>The filename of a path. If how the file-extension is handled is not explicitly defined, this is just a synonym for <em>Basename</em>. See also <a href="http://php.net/manual/en/function.pathinfo.php"><code>pathinfo()</code></a>'s <code>PATHINFO_FILENAME</code>.</dd>
     
     <dt><em>Directory separator</em></dt>
-    <dd>The character used in an OS-specific path to separate a directory name from another. For example this would be <code>\\</code> for Windows and <code>/</code> for Unix-based systems.</dd>
+    <dd>The character used in an OS-specific path to separate a directory name from another. For example this would be <code>\</code> for Windows and <code>/</code> for Unix-based systems.</dd>
     
     <dt><em>Path segments</em></dt>
     <dd>The single parts of a path separated by directory separators. Empty path segments are not possible.</dd>
