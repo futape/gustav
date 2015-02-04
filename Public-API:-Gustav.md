@@ -15,7 +15,8 @@ Returns the configuration option's value or `null` if it doesn't exist.
 
 Sets up Gustav.
 
-Creates the directories specified by the configuration options [`src_dir`](Gustav-configuration#string-src_dir), [`dest_dir`](Gustav-configuration#string-dest_dir) and [`templs_dir`](Gustav-configuration#string-templs_dir) if they don't exist and prepares or creates the destination directory's `.htaccess` file to [handle the creation](Automatic-generation-of-destination-files) of non-existing destination files on request (set `ErrorDocument 404` to `generate.php`) and to show the right files when a directory is requested (`DirectoryIndex`). The directives are appended to the end of the `.htaccess` file.
+Creates the directories specified by the configuration options [`src_dir`](Gustav-configuration#string-src_dir), [`dest_dir`](Gustav-configuration#string-dest_dir) and [`templs_dir`](Gustav-configuration#string-templs_dir) if they don't exist and prepares or creates the destination directory's `.htaccess` file to [handle the creation](Automatic-generation-of-destination-files) of non-existing destination files on request (set [`ErrorDocument 404`](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument) to `generate.php` and setting a few [`mod_rewrite`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)-specific directives) and to show the right files when a directory is requested ([`DirectoryIndex`](http://httpd.apache.org/docs/2.4/mod/mod_dir.html#directoryindex), as well as [`DirectorySlash`](http://httpd.apache.org/docs/2.4/mod/mod_dir.html#directoryslash)). The directives are appended to the end of the `.htaccess` file.  
+If the [`use_fallback_resource` configuration options](Gustav-configuration#bool-use_fallback_resource--false) is set tu `true`, Apache's [`FallbackResource` directive](http://httpd.apache.org/docs/2.4/mod/mod_dir.html#fallbackresource) is used instead of `ErrorDocument`, `mod_rewrite`.
 
 Returns whether all operations were successful.
 
@@ -33,7 +34,7 @@ Returns whether emptying the destination directory and setting up Gustav was suc
 Get matching [source files](Source-files).
 
 Creates and returns an array of matching source files' paths.  
-By default [disabled source files](Disabled-source-files) are ignored and are not included in the returned array.
+By default [disabled source files](Disabled-source-files) and source files located in a directory called `__hidden` or in one of its subdirectories are ignored and are not included in the returned array.
 
 <dl>
     <dt><code>$src_directory</code></dt>
@@ -66,8 +67,7 @@ By default [disabled source files](Disabled-source-files) are ignored and are no
         <dl>
             <dt><code>string[][] match</code></dt>
             <dd>
-                Creates a <a href="API#gustavmatch"><code>GustavMatch</code></a> object for the source file using this filter's value as value for that class's <a href="#">constructor</a>'s second parameter and this filter's <code>flags</code> item (if specified) as its third parameter's value. Each <code>match</code> filter is considered to be a single, standalone filter. If an empty array is passed to one of this array's items or if the item's key is invalid, that item is ignored. If the <a href="API#gustavmatch"><code>GustavMatch</code></a> object cannot be created, the entire filter is ignored.<br />
-                If the calculated match score for an item is greater than 0, the source file is considered to match that item of the filter.<br />
+                Creates a <a href="API#gustavmatch"><code>GustavMatch</code></a> object for the source file using this filter's value as value for that class's <a href="#">constructor</a>'s second parameter and this filter's <code>flags</code> item (if specified) as its third parameter's value. A source file is considered to match this filter if it matches at least one of the filter's items (i.e. the match score is greater than 0). If an empty array is passed to one of this array's items or if the item's key is invalid, that item is ignored. If the passed array doesn't contain any valid items or if no <a href="API#gustavmatch"><code>GustavMatch</code></a> object can be created, the entire filter is ignored.<br />
                 Supported keys are <code>file</code> (<a href="Public-API%3a-GustavBase#string-key_file"><code>GustavBase::KEY_FILE</code></a>), <code>title</code> (<a href="Public-API%3a-GustavBase#string-key_title"><code>GustavBase::KEY_TITLE</code></a>) and <code>tags</code> (<a href="Public-API%3a-GustavBase#string-key_tags"><code>GustavBase::KEY_TAGS</code></a>).
             </dd>
 
@@ -139,7 +139,7 @@ Returns an array containing the matching source files' paths.
 Get all available [tags](Gustav-core-options#_tags).
 
 Tags that differ only in their letters' cases are merged and the version with the most occurrences in all [source files](Source-files)' tags is used.  
-The returned array contains only tags used by at least one source file matching the default filter of [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+The returned array contains only tags used by at least one source file matching the default filter of [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
 
 Returns an associative array containing the tags' names as keys and their numbers of occurrences as values. The tags are ordered by their numbers of occurrences.
 
@@ -147,7 +147,7 @@ Returns an associative array containing the tags' names as keys and their number
 
 Get all available [categories](Public-API%3a-GustavSrc#string-getcategory).
 
-The returned array contains only the categories containing (directly or within their subcategories/-directories) at least one [source file](Source-files) matching the default filter of [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+The returned array contains only the categories containing (directly or within their subcategories/-directories) at least one [source file](Source-files) matching the default filter of [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
 
 Returns an array containing the categories' relative URL (root-relative) as keys and arrays containing information on the category as well as its subcategories as values. The categories are ordered by their names. An array returned by this function looks like the following.
 
@@ -165,7 +165,7 @@ Returns an array containing the categories' relative URL (root-relative) as keys
     <dd><code>true</code> for the destination directory's root, ortherwise <code>false</code>.</dd>
 
     <dt><code>int count</code></dt>
-    <dd>The number of source files that are direct children of this directory and that are matching the default filter of <a href="#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--"><code>Gustav::query()</code></a>.</dd>
+    <dd>The number of source files that are direct children of this directory and that are matching the default filter of <a href="#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--"><code>Gustav::query()</code></a>.</dd>
 
     <dt><code>string name</code></dt>
     <dd>The name of the category (i.e. its filename).</dd>
@@ -226,34 +226,38 @@ The name of the [configuration option](Gustav-configuration#bool-generator_searc
 
 The name of the [configuration option](Gustav-configuration#string-replace_directory_separator--) specifying a character to replace with the directory separator ([`DIRECTORY_SEPARATOR`](http://php.net/manual/en/dir.constants.php#constant.directory-separator)). If an empty string, nothing is replaced.
 
+###`string CONF_FALLBACK_RESOURCE`
+
+The name of the configuration option, specifying whether to use Apache's [`FallbackResource` configuration option](http://httpd.apache.org/docs/2.4/mod/mod_dir.html#fallbackresource). If disabled, a combination of [`RewriteRule`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewriterule), [`RewriteCond`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewritecond) and [`ErrorDocument`](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument) directives is used instead.
+
 ###`int ORDER_NONE`
 
-Don't order matching source files. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+Don't order matching source files. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
 
 ###`int ORDER_MATCH`
 
-Orders matching source files by their match scores (descending). See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+Orders matching source files by their match scores (descending). See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
 
 ###`int ORDER_MATCH_ASC`
 
-Orders matching source files by their match scores (ascending). See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+Orders matching source files by their match scores (ascending). See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
 
 ###`int ORDER_PUB`
 
-Orders matching source files by their dates of publication (descending). See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+Orders matching source files by their dates of publication (descending). See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
 
 ###`int ORDER_PUB_ASC`
 
-Orders matching source files by their dates of publication (ascending). See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+Orders matching source files by their dates of publication (ascending). See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
 
 ###`int ORDER_RAND`
 
-Orders matching source files randomly. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+Orders matching source files randomly. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
 
 ###`int FILTER_OR`
 
-Filters source files using the OR operator. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+Filters source files using the OR operator. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
 
 ###`int FILTER_AND`
 
-Filters source files using the AND operator. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+Filters source files using the AND operator. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
