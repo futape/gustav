@@ -28,7 +28,7 @@ Defines the [source file](Source-files) to extend. The source file will [inherit
 
 ###`_pub`
 
-Defines the unix timestamp of the publication date and time of the document. For example, this option is used by [`Gustav::query()`](Public-API%3a-Gustav#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--).
+Defines the unix timestamp of the publication date and time of the document. For example, this option is used by [`Gustav::query()`](Public-API%3a-Gustav#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
 
 ###`_title`
 
@@ -55,7 +55,7 @@ If set, the [destination file](Destination-files) for the source file will be a 
 
 ###`_hidden`
 
-If set, the [source file](Source-files) doesn't appear in results of [`Gustav::query()`](Public-API%3a-Gustav#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--) when using the default filter.  
+If set, the [source file](Source-files) doesn't appear in results of [`Gustav::query()`](Public-API%3a-Gustav#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--) when using the default filter.  
 Also it won't be taken into account in [`Gustav::getTags()`](Public-API%3a-Gustav#int-gettags) and [`Gustav::getCategories()`](Public-API%3a-Gustav#array-getcategories).
 
 
