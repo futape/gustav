@@ -12,18 +12,26 @@ Available properties are the source file's filename ([`GustavBase::KEY_FILE`](Pu
 When comparing the **filename**, this function compares the search items case-sensitively to the source file's [`_dest` GvBlock option](Gustav-core-options#_dest)'s last path segment.  
 If the path's basename (with file-extension) is found in the search items, the items is considered to match. If the `_dest` options's value doesn't end with a directory separator, a search item just needs to match the path's filename (without file-extension) to be considered matching. For a matching source file, the score is increased by 1.
 
-When comparing the source file's **title**, the items are searched in the title case-insensitively by default, or case-sensitively if the [`GustavMatch::CASE_SENSITIVE`](Public-API%3a-GustavMatch#int-case_sensitive) flag is set. Moreover the search items are wrapped into word-boundaries. For more information on *word-boundaries* see [`GustavMatch::SPEC_LOW`](Public-API%3a-GustavMatch#int-spec_low) and [`GustavMatch::SPEC_HIGH`](Public-API%3a-GustavMatch#int-spec_high).  
+When comparing the source file's **title**, the items are searched in the title case-insensitively ([`_title` GvBlock option](Gustav-core-options#_title)) by default, or case-sensitively if the [`GustavMatch::CASE_SENSITIVE`](Public-API%3a-GustavMatch#int-case_sensitive) flag is set. Moreover the search items are wrapped into word-boundaries. For more information on *word-boundaries* see [`GustavMatch::SPEC_LOW`](Public-API%3a-GustavMatch#int-spec_low) and [`GustavMatch::SPEC_HIGH`](Public-API%3a-GustavMatch#int-spec_high).  
 If the source file doesn't have a title, the score isn't increased. Otherwise the score is increased by 1 for each item for each occurrence within the title.
-When searching for literal items in the title, this function acts a bit differently: Additionally to the number of occurrences of the entire literal, for each of the literal's unique (case-insensitively) single items the product of the number of occurrences of the whole literal within the title and the number of occurrences of the single item within the literal is added to the score. These items are also added to the [`$matches` array](#private-string-matches). The single items are extracted by passing the literal to [`GustavBase::getSearchTermItems()`](Private-API%3a-GustavBase#string-getsearchtermitems-string-search_term_part-).
+When searching for literal items in the title, this function acts a bit differently: Additionally to the number of occurrences of the entire literal, for each of the literal's unique (case-insensitively) single items the product of the number of occurrences of the whole literal within the title and the number of occurrences of the single item within the literal is added to the score. These items are also added to the [`$matches` array](#private-string-matches). The single items are extracted by passing the literal to [`GustavBase::getSearchTermItems()`](Private-API%3a-GustavBase#string-getsearchtermitems-string-search_term_part-).  
+If the [`GustavMatch::SPEC_HIGH`](#int-spec_high) flag isn't set, a sequence of spaces in a search item or a literal matches one or more whitespaces of any kind in the title.
 
-When comparing the source file's **tags**, the score is increased by 1 for each item found in the source file's tags (case-insensitively).
+When comparing the source file's **tags**, the score is increased by 1 for each item found in the source file's tags ([`_tags` GvBlock option](Gustav-core-options#_tags)) (case-insensitively).
 
 When getting the score for the tags, the items are made unique case-insensitively before comparing them with the source file's properties. The same applies to a source file's title, with the only exception that the items are made unique ***case-sensitively*** when the [`GustavMatch::CASE_SENSITIVE`](Public-API%3a-GustavMatch#int-case_sensitive) flag is set.
 
 [`$matches`](#private-string-matches) Will contain only the supported items ([`GustavBase::KEY_FILE`](Public-API%3s-GustavBase#string-key_file), [`GustavBase::KEY_TITLE`](Public-API%3s-GustavBase#string-key_title), [`GustavBase::KEY_TAGS`](Public-API%3s-GustavBase#string-key_tags)), any other items are ignored.
 
-[`$highlight`](#private-array-highlight) will contain all supported items (see above) whose corresponding source-file-property is set using the source file's propert
-ies as values. The values are HTML encoded (if an array, the array's string values are encoded) and matching parts are highlighted using `<mark>`. When highlighting titles, the same word-boundaries and treatment of the character case as for *matching* the title is used.
+[`$highlight`](#private-array-highlight) will contain all supported items (see above) whose corresponding source-file-property is set using the source file's properties as values. The values are HTML encoded (if an array, the array's string values are encoded) and matching parts are highlighted using `<mark>`. When highlighting titles, the same word-boundaries and treatment of the character case as for *matching* the title is used. The array will look like the one below.
+
+    array(
+        "tags"=>array("fish &amp; chips", "<mark>1 and 2</mark>"), //GustavBase::KEY_TAGS
+        "file"=>"/blog/category/<mark>hello-world</mark>", //GustavBase::KEY_FILE
+        "title"=>"Hello <mark>World</mark>" //GustavBase::KEY_TITLE
+    )
+
+The `title` item is only available if the corresponding GvBlock option is set. That item is retrieved from the [`_title` GvBlock option](Gustav-core-options#_title). The `tags` item corresponds to the [`_tags` GvBlock option](Gustav-core-options#_tags), while the [`_dest` GvBlock option](Gustav-core-options#_dest) is used as the value of the `file` item. However, directory separators within that option's value are replaced by `/`s and trailing ones are removed.
 
 ###`public mixed __call( string $function_name, array $arguments )`
 
