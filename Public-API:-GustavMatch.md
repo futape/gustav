@@ -12,11 +12,12 @@ Available properties are the source file's filename ([`GustavBase::KEY_FILE`](Pu
 When comparing the **filename**, this function compares the search items case-sensitively to the source file's [`_dest` GvBlock option](Gustav-core-options#_dest)'s last path segment.  
 If the path's basename (with file-extension) is found in the search items, the items is considered to match. If the `_dest` options's value doesn't end with a directory separator, a search item just needs to match the path's filename (without file-extension) to be considered matching. For a matching source file, the score is increased by 1.
 
-When comparing the source file's **title**, the items are searched in the title case-insensitively by default, or case-sensitively if the [`GustavMatch::CASE_SENSITIVE`](#int-case_sensitive) flag is set. Moreover the search items are wrapped into word-boundaries. For more information on *word-boundaries* see [`GustavMatch::SPEC_LOW`](#int-spec_low) and [`GustavMatch::SPEC_HIGH`](#int-spec_high).  
+When comparing the source file's **title**, the items are searched in the title ([`_title` GvBlock option](Gustav-core-options#_title)) case-insensitively by default, or case-sensitively if the [`GustavMatch::CASE_SENSITIVE`](#int-case_sensitive) flag is set. Moreover the search items are wrapped into word-boundaries. For more information on *word-boundaries* see [`GustavMatch::SPEC_LOW`](#int-spec_low) and [`GustavMatch::SPEC_HIGH`](#int-spec_high).  
 If the source file doesn't have a title, the score isn't increased. Otherwise the score is increased by 1 for each item for each occurrence within the title.  
-When searching for literal items in the title, this function acts a bit differently: Additionally to the number of occurrences of the entire literal, for each of the literal's unique (case-insensitively) single items the product of the number of occurrences of the whole literal within the title and the number of occurrences of the single item within the literal is added to the score.
+When searching for literal items in the title, this function acts a bit differently: Additionally to the number of occurrences of the entire literal, for each of the literal's unique (case-insensitively) single items the product of the number of occurrences of the whole literal within the title and the number of occurrences of the single item within the literal is added to the score.  
+If the [`GustavMatch::SPEC_HIGH`](#int-spec_high) flag isn't set, a sequence of spaces in a search item or a literal matches one or more whitespaces of any kind in the title.
 
-When comparing the source file's **tags**, the score is increased by 1 for each item found in the source file's tags (case-insensitively).
+When comparing the source file's **tags**, the score is increased by 1 for each item found in the source file's tags ([`_tags` GvBlock option](Gustav-core-options#_tags)) (case-insensitively).
 
 When getting the score for the tags, the items are made unique case-insensitively before comparing them with the source file's properties. The same applies to a source file's title, with the only exception that the items are made unique ***case-sensitively*** when the [`GustavMatch::CASE_SENSITIVE`](#int-case_sensitive) flag is set.
 
@@ -64,6 +65,7 @@ When including this constant's value in the mitmask passed to this class's [cons
 
 By default, [`GustavMatch::init()`](Dev-API%3a-GustavMatch#private-void-init) uses a custom word-boundary when matching a source file's title. The *custom word-boundary* consideres, besides the `\b` RegEx escape sequence, `_`s and digits having an adjacent non-digit character, as well as non-digits having an adjacent digit character to separate words.  
 When including this constant's value in the mitmask passed to this class's [constructor](Public-API%3a-GustavMatch#void-__construct-stringstring-path-string-search--int-flags--0--)'s third parameter, a word-boundary definition of `\b` is used instead which is a bit more strict than the default one.
+Moreover, the default behavior of matching one or more whitespaces of any kind for a sequence of spaces in a search item or a literal is disabled when using this flag. Instead the item must be found in the title exactly as defined.
 
 ###`int CASE_SENSITIVE`
 
