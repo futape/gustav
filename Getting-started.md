@@ -27,7 +27,7 @@ The next (and last) step can be done either automatically by simply calling [`Gu
         RewriteRule $ - [R=404,L]
     </IfModule>
 
-`<path of GvDir>` replaced with an absolute or relative URL ((root-)relative URLs are recommended since they don't trigger a redirection) of the directory the downloaded files have been copied to in [*Installing Gustav*](#installing-gustav). Alternatively to [`ErrorDocument`](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument), [`RewriteCond`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewritecond) and [`RewriteRule`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewriterule) you may want to use [`FallbackResource`](http://httpd.apache.org/docs/2.4/mod/mod_dir.html#fallbackresource) instead. For more information see [*Gustav configuration*](Gustav-configuration#bool-use_fallback_resource--false).  
+`<path of GvDir>` replaced with an absolute or relative URL ((root-)relative URLs are recommended since they don't trigger a redirection) of the directory the downloaded files have been copied to in [*Installing Gustav*](#installing-gustav). Alternatively to [`ErrorDocument`](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument) and the <code>&lt;IfModule <a href="http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html">mod_rewrite.c</a>&gt;</code> block you may want to use [`FallbackResource`](http://httpd.apache.org/docs/2.4/mod/mod_dir.html#fallbackresource) instead. For more information see [*Gustav configuration*](Gustav-configuration#bool-use_fallback_resource--false).  
 Now, everything should work properly. Learn how to use Gustav in the [next step](#using-gustav).
 
 
