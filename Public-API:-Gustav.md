@@ -228,7 +228,7 @@ The name of the [configuration option](Gustav-configuration#string-replace_direc
 
 ###`string CONF_FALLBACK_RESOURCE`
 
-The name of the configuration option, specifying whether to use Apache's [`FallbackResource` configuration option](http://httpd.apache.org/docs/2.4/mod/mod_dir.html#fallbackresource). If disabled, a combination of [`RewriteRule`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewriterule), [`RewriteCond`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewritecond) and [`ErrorDocument`](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument) directives is used instead.
+The name of the configuration option, specifying whether to use Apache's [`FallbackResource` configuration option](http://httpd.apache.org/docs/2.4/mod/mod_dir.html#fallbackresource). If disabled, a combination of [`mod_rewrite`](http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html) and [`ErrorDocument`](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument) is used instead.
 
 ###`int ORDER_NONE`
 
