@@ -15,7 +15,7 @@ If the path's basename (with file-extension) is found in the search items, the i
 When comparing the source file's **title**, the items are searched in the title ([`_title` GvBlock option](Gustav-core-options#_title)) case-insensitively by default, or case-sensitively if the [`GustavMatch::CASE_SENSITIVE`](#int-case_sensitive) flag is set. Moreover the search items are wrapped into word-boundaries. For more information on *word-boundaries* see [`GustavMatch::SPEC_LOW`](#int-spec_low) and [`GustavMatch::SPEC_HIGH`](#int-spec_high).  
 If the source file doesn't have a title, the score isn't increased. Otherwise the score is increased by 1 for each item for each occurrence within the title.  
 When searching for literal items in the title, this function acts a bit differently: Additionally to the number of occurrences of the entire literal, for each of the literal's unique (case-insensitively) single items the product of the number of occurrences of the whole literal within the title and the number of occurrences of the single item within the literal is added to the score.  
-If the [`GustavMatch::SPEC_HIGH`](#int-spec_high) flag isn't set, a sequence of spaces in a search item or a literal matches one or more whitespaces of any kind in the title.
+If the [`GustavMatch::LITERAL_SPACES`](#int-literal_spaces) flag isn't set, a sequence of spaces in a search item or a literal matches one or more whitespaces of any kind in the title.
 
 When comparing the source file's **tags**, the score is increased by 1 for each item found in the source file's tags ([`_tags` GvBlock option](Gustav-core-options#_tags)) (case-insensitively).
 
@@ -33,7 +33,7 @@ For more information see [`GustavMatch::init()`](Dev-API%3a-GustavMatch#private-
     <dd>An associative array containing the search items. The array's items should use one of the <a href="Public-API%3a-GustavBase#constants"><code>GustavBase::KEY_*</code> constants</a> as key and an array of strings containing the search items as value. The values may be an array returned by <a href="Public-API%3a-GustavBase#array-highlightmatches-array-plain-string-matches-"><code>GustavBase::processSearchTerm()</code></a> for example.</dd>
     
     <dt><code>$flags</code></dt>
-    <dd>A bitmask of the following values: <a href="#int-spec_low"><code>GustavMatch::SPEC_LOW</code></a>, <a href="#int-spec_high"><code>GustavMatch::SPEC_HIGH</code></a>, <a href="#int-case_sensitive"><code>GustavMatch::CASE_SENSITIVE</code></a>. See those constants for more information..</dd>
+    <dd>A bitmask of the following values: <a href="#int-spec_low"><code>GustavMatch::SPEC_LOW</code></a>, <a href="#int-spec_high"><code>GustavMatch::SPEC_HIGH</code></a>, <a href="#int-case_sensitive"><code>GustavMatch::CASE_SENSITIVE</code></a> and <a href="#int-literal_spaces"><code>GustavMatch::LITERAL_SPACES</code></a>. See those constants for more information.</dd>
 </dl>
 
 ###`GustavSrc getSrc()`
@@ -65,9 +65,13 @@ When including this constant's value in the mitmask passed to this class's [cons
 
 By default, [`GustavMatch::init()`](Dev-API%3a-GustavMatch#private-void-init) uses a custom word-boundary when matching a source file's title. The *custom word-boundary* consideres, besides the `\b` RegEx escape sequence, `_`s and digits having an adjacent non-digit character, as well as non-digits having an adjacent digit character to separate words.  
 When including this constant's value in the mitmask passed to this class's [constructor](Public-API%3a-GustavMatch#void-__construct-stringstring-path-string-search--int-flags--0--)'s third parameter, a word-boundary definition of `\b` is used instead which is a bit more strict than the default one.
-Moreover, the default behavior of matching one or more whitespaces of any kind for a sequence of spaces in a search item or a literal is disabled when using this flag. Instead the item must be found in the title exactly as defined.
 
 ###`int CASE_SENSITIVE`
 
 By default, [`GustavMatch::init()`](Dev-API%3a-GustavMatch#private-void-init) matches a source file's title case-insensitively.  
 When including this constant's value in the mitmask passed to this class's [constructor](Public-API%3a-GustavMatch#void-__construct-stringstring-path-string-search--int-flags--0--)'s third parameter, the title is matched case-sensitively instead.
+
+###`int LITERAL_SPACES`
+
+By default, [`GustavMatch::init()`](Dev-API%3a-GustavMatch#private-void-init) matches any number of any kind of whitespace for a space in a search item or a literal when matching a source file's title.
+When including this constant's value in the mitmask passed to this class's [constructor](Public-API%3a-GustavMatch#void-__construct-stringstring-path-string-search--int-flags--0--)'s third parameter, that behavior is disabled. Instead the item must be found in the title exactly as defined.
