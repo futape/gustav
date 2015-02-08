@@ -1,10 +1,8 @@
-<img src="http://gustav.futape.de/Gustav.png" alt="Gustav Logo" />
+#Gustav
 
-
+![Gustav Logo](http://gustav.futape.de/Gustav.png)
 
 *Gustav* is a powerful static-site gernerator written in PHP.
-
-...
 
 
 
@@ -35,3 +33,9 @@
 +   [Miscellaneous](Miscellaneous)
 +   [System requirements](System-requirements)
 +   [Glossary](Glossary)
+
+
+
+##Author
+
+Lucas Krause ([@futape](https://twitter.com/futape))
