@@ -22,4 +22,5 @@ For more information see [*GvBlock option processing*](GvBlock-option-processing
 
 Upon the [destination content](#generating-the-destination-content) the [destination file](Destination-files) is built and is located at the location the [destination path](#generating-the-destination-path) points on.  
 This is true as long as the destination file is a static destination file. If it is a PHP destination file, a PHP code generating the [destination content](#generating-the-destination-content) dynamically when requested using the [`GustavGenerator` class](API#gustavgenerator) is used instead as the destination file's content.  
-Generating destination files for [disabled source files](Disabled-source-files) is not possible.
+Generating destination files for [disabled source files](Disabled-source-files) is not possible.  
+For more information see [`GustavDest::createFile()`](Public-API%3a-GustavDest#bool-createfile).
