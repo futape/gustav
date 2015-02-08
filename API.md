@@ -52,20 +52,20 @@ This class extends [`Gustav`](#gustav). When including `GustavContent.php`, besi
 
 A `GustavBlock` object represents a source file's GvBlock.  
 The class is defined in `GustavBlock.php`.  
-This class extends [`Gustav`](#gustav). When including `GustavBlock.php`, besides `GustavBlockHooks.php`, also [`GustavDestHooks.php`](#gustavdesthooks) and [`GustavContentHooks.php`](#gustavcontenthooks) are included.
+This class extends [`Gustav`](#gustav). When including `GustavBlock.php`, besides `GustavBlockHooks.php`, also [`Gustav.php`](#gustav), [`GustavDest.php`](#gustavdest) and [`GustavContent.php`](#gustavcontent) are included.
 
 ###`GustavGenerator`
 
 This class provides useful functions for genrating destination files or destination contents. For example, this class is used by `generate.php` and PHP destination files.  
 It's an abstract class and can therefore not be instantiated. All members are defined as `static`.  
 The class is defined in `GustavGenerator.php`.  
-This class extends [`Gustav`](#gustav). When including `GustavGenerator.php`, besides `GustavGeneratorHooks.php`, also [`GustavSrc.php`](#gustavsrc) and [`GustavDest.php`](#gustavdest) are included.
+This class extends [`Gustav`](#gustav). When including `GustavGenerator.php`, besides `GustavGeneratorHooks.php`, also [`Gustav.php`](#gustav) and [`GustavSrc.php`](#gustavsrc), as well as [`GustavDest.php`](#gustavdest) are included.
 
 ###`GustavMatch`
 
 A `GustavMatch` object provides useful function for comparing a source file with a searchterm or keywords.  
 The class is defined in `GustavMatch.php`.  
-This class extends [`Gustav`](#gustav). When including `GustavMatch.php`, besides `GustavMatchHooks.php`, also [`GustavSrc.php`](#gustavsrc) is included.
+This class extends [`Gustav`](#gustav). When including `GustavMatch.php`, besides `GustavMatchHooks.php`, also [`Gustav.php`](#gustav) and [`GustavSrc.php`](#gustavsrc) are included.
 
 ###`GustavBase`
 
@@ -76,10 +76,11 @@ Since `Gustav` inherits from this class and all other classes extend `Gustav`, a
 
 ###Hooks classes
 
-Hooks classes are a subset of the Gustav classes. Like the Gustav classes' ones, their names begin with `Gustav`, too. *Hooks classes* are called that way because their names are made up of the Gustav classes' names being a name's beginning and `Hooks` ending a name.  
-For each Gustav class one Hooks class exists. When including a Gustav class, the corresponding Hooks class is included automatically.
+Hooks classes are a subset of the Gustav classes. Like the Gustav classes' ones, their names begin with `Gustav`, too. *Hooks classes* are called that way because their names are made up of the Gustav classes' names being the name's beginning and `Hooks` ending the name.  
+For each Gustav class one Hooks class exists. When including a Gustav class, the corresponding Hooks class is included automatically.  
+You should never include a Hooks class manually. Instead simply include the corresponding Gustav class.
 
 Hooks classes make all static functions of the corresponding Gustav class publically available. They are all defined as `abstract` and can therefore not be instantiated.  
-When calling a function via a Hooks class and passing a variable as reference to a parameter, it's important to pass it as `myfunc(&$myvar)` for example, while the corresponding Gustav class's function may accept `myfunc($myvar)`.
+When calling a function via a Hooks class and passing a variable as reference to a parameter, it's important to pass it as `myfunc(&$myvar)` for example, while the corresponding Gustav class's function would accept `myfunc($myvar)`.
 
 Hooks classes can be used to call functions documented in the [private API](Private-API).
