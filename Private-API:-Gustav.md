@@ -24,8 +24,8 @@ If the [`enable_log` configuration option](Gustav-configuration#bool-enable_log-
 Exits the script as a consequence of an error.
 
 Exits the script with a HTTP status code and a possible error log entry in the Gustav [log-file](Log-files).  
-If the [`exit_on_error` configuration option](Gustav-configuration#bool-exit_on_error--true) is set to `false`, the execution of the script isn't stopped unless `$error_type` is set to [`Gustav::ERROR_FATAL`](#int-error_fatal). In that case, also a log entry is forced (if a log message is specified), regardless of the setting of the [`enable_log` configuration option](Gustav-configuration#bool-enable_log--true).  
-If [`Gustav::ERROR_404`](#string-error_404) is used as value for `$error_type`, a HTML `Content-Type` HTTP response header field is set, the content for the resource specified by the [`404_error_doc` configuration option](Gustav-configuration#string-404_error_doc--) is printed and the script execution is stopped, regardless of the [`exit_on_error` configuration option](Gustav-configuration#bool-exit_on_error--true).
+If the [`exit_on_error` configuration option](Gustav-configuration#bool-exit_on_error--true) is set to `false`, the execution of the script isn't stopped unless `$error_type` is set to [`Gustav::ERROR_FATAL`](#int-error_fatal) or [`Gustav::ERROR_404`](#string-error_404). In case of `Gustav::ERROR_FATAL`, also a log entry is forced (if a log message is specified), regardless of the setting of the [`enable_log` configuration option](Gustav-configuration#bool-enable_log--true).  
+If [`Gustav::ERROR_404`](#string-error_404) is used as value for `$error_type`, a HTML `Content-Type` HTTP response header field is set, the content for the resource specified by the [`404_error_doc` configuration option](Gustav-configuration#string-404_error_doc--) is printed and the script execution is stopped, regardless of the [`exit_on_error` configuration option](Gustav-configuration#bool-exit_on_error--true). For more information on the `404_error_doc` document see [*Gustav configuration*](Gustav-configuration#string-404_error_doc--).
 
 <dl>
     <dt><code>$log_message</code></dt>
