@@ -46,7 +46,7 @@ If not a string, the value is casted as one.
 ####`string 404_error_doc = "/"`
 
 A relative URL (root-relative) referencing a local HTML document whose content is printed when a Gustav-404-error is thrown.  
-If the URL points on a PHP file, that file is executed as a PHP script and the printed content is used. The file may even set its own HTTP headers like the response's `Content-Type`. Therefore that script may also print non-HTML content. Within the script superglobals like [`$_SERVER`](http://php.net/manual/en/reserved.variables.server.php) containing, beside other, information aobut the *original* request can be accessed.  
+If the URL points on a PHP file (i.e. the referenced file's file-extension equals `php`), that file is executed as a PHP script and the printed content is used. The file may even set its own HTTP headers like the response's `Content-Type`. Therefore that script may also print non-HTML content. Within the script superglobals like [`$_SERVER`](http://php.net/manual/en/reserved.variables.server.php) containing, beside other, information aobut the *original* request can be accessed.  
 If not a string, the value is casted as one.
 
 ####`string site_url = <requested site>`
