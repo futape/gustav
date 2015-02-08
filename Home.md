@@ -1,4 +1,4 @@
-<img src="http://gustav.futape.de/Gustav.svg" alt="Gustav Logo" style="width:300px;" />
+<img src="http://scorebits.net/shared/logo.svg" alt="Gustav Logo" style="width:300px;" />
 
 
 
