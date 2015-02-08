@@ -4,6 +4,7 @@ Source files are located in the source directory or in one of its subdirectories
 They should always have a file-extension. The reason for that is described in [*GvBlock option default values*](GvBlock-option-default-values#_conv_default).
 
 A source file named `__base` has a special function that is described in [*GvBlock option default values*](GvBlock-option-default-values#_ext_default). Source files that should not act like that should never be named like that. Generally, filenames starting with `__` are reserved by Gustav and should not be used.  
+Like other source files, also a `__base` file's GvBlock must contain all [required options](Required-GvBlock-options). Since other source files may inherit from this file, it may be useful to specify the [`_conv`](Gustav-core-options#_conv) option as `_conv_default`, sothat the extended source file's [system default value](GvBlock-option-default-values#_conv_default) for that options supersedes the inherited value.
 
 Internally Gustav uses UTF-8 and also creates output encoded in UTF-8. Due to that, source files should always be encoded in UTF-8, too.
 
