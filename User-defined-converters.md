@@ -13,7 +13,7 @@ Converter files must match a few conditions described below.
 +   Besides the dot separating the file-extension from the filename, no `.`s can be used in a converter file's name.
 +   Converter files must return the name of a converter to be applied to the converter's output.
 +   The filename (without file-extension) must not be one of the [hardcoded converters](Converting-source-content#hardcoded-converters)' names (case-insensitive).
-+   Converter files should never stop the script execution by calling [`exit`](http://php.net/manual/en/function.exit.php) for example.
++   Converter files should never stop the script execution by calling [`exit`](http://php.net/manual/en/function.exit.php) or by producing an error for example. However, if it does, the printed content is flushed.
 +   When defining functions, classes, constants or anything else, keep in mind that the file may be called for multiple times.
 +   The converted content that is printed, as well as the returned converter name should be encoded in UTF-8.
 +   The [output buffer](http://php.net/manual/en/ref.outcontrol.php) used to read the printed content must not be deactivated. Also any new output buffer that is created must be deactivated again.
@@ -32,7 +32,7 @@ Gustav doesn't provide an option for defining aliases for user-defined converter
 One clever solution is to use [`GustavContent`](API#gustavcontent)'s [`convContent()` method](Private-API%3a-GustavContent#string-convcontent-string-content-string-converter--mixed-next_converter--) which is available publically via the `GustavContentHooks` class. To create an alias you have to create a new converter file named like the alias name that should be defined and containing something like the code below. The following code defines an alias for a user-defined converter named `markdown`.
 
     <?php
-    require_once implode(DIRECTORY_SEPARATOR, array(rtrim(__DIR__, DIRECTORY_SEPARATOR), "..", "..", "GustavContentHooks.php"));
+    require_once implode(DIRECTORY_SEPARATOR, array(rtrim(__DIR__, DIRECTORY_SEPARATOR), "..", "..", "GustavContent.php"));
 
     use futape\gustav\GustavHooks;
 
