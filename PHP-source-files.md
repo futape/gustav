@@ -5,7 +5,7 @@ How to define a [GvBlock](GvBlock) in PHP source files is described in [*GvBlock
 
 A few rules have to be followed. They are listet below.
 
-+   PHP source files should never stop the script execution by calling [`exit`](http://php.net/manual/en/function.exit.php) for example.
++   PHP source files should never stop the script execution by calling [`exit`](http://php.net/manual/en/function.exit.php) or by producing an error for example. However, if it does, the printed content is flushed.
 +   Information about the request like [`$_GET`](http://php.net/manual/en/reserved.variables.get.php), [`$_COOKIE`](http://php.net/manual/en/reserved.variables.cookies.php) or [`$_SERVER`](http://php.net/manual/en/reserved.variables.server.php)'s `HTTP_*` items should only be used if the [destination file](Destination-files) is a dynamic one (i.e. the [`_dyn` GvBlock option](Gustav-core-options) is set).
 +   When defining functions, classes, constants or anything else, keep in mind that the file may be called for multiple times.
 +   The [output buffer](http://php.net/manual/en/ref.outcontrol.php) used to read the printed content must not be deactivated. Also any new output buffer that is created must be deactivated again.
