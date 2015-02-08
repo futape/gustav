@@ -262,7 +262,8 @@ For more information see [preg_match()](http://php.net/manual/en/function.preg-m
 
 Makes an array to contain only one occurrence of a string.
 
-The strings are compared case-insensitively and only the first occurrence of a string is kept (in its original case).
+The strings are compared case-insensitively and only the first occurrence of a string is kept (in its original case).  
+The returned array's keys aren't preserved. The array is reindexed using numeric keys.
 
 <dl>
     <dt><code>$strings</code></dt>
@@ -423,6 +424,7 @@ Returns an associative array containing the superglobals.
 Validates variable names.
 
 Takes an associative array of variables and checks whether their names (the array's keys) are valid variable names. If they aren't, they are filtered out of the array.  
+[Superglobals](http://php.net/manual/en/language.variables.superglobals.php)' names are considered to be invalid.  
 For more information on variables and how valid variable names look like see the [PHP documentation](http://php.net/manual/en/language.variables.basics.php) on variables.
 
 <dl>
@@ -445,8 +447,8 @@ Reads a file's content.
     
     <dt><code>$execution_arguments</code></dt>
     <dd>
-        Setting this parameter to a value different than <code>null</code> means that the file is executed before getting it's content. This is done by using <a href="http://php.net/manual/en/function.include.php"><code>include</code></a> (instead of <a href="http://php.net/manual/en/function.file-get-contents.php"><code>file_get_contents()</code></a>) and does therfore work only with PHP files, otherwise no execution will happen.<br />
-        If an array is passed to this parameter, each of the array's values whose key is a <a href="http://php.net/manual/en/language.variables.basics.php">valid variablename</a> is made available as a variable named like the key and can be used inside of the included file.<br />
+        Setting this parameter to a value different than <code>null</code> means that the file is executed before getting it's content. This is done by using <a href="http://php.net/manual/en/function.include.php"><code>include</code></a> (instead of <a href="http://php.net/manual/en/function.file-get-contents.php"><code>file_get_contents()</code></a>) and does therfore work only with PHP files, otherwise no execution will happen and the file's content is used as defined.<br />
+        If an array is passed to this parameter, each of the array's values whose key is a <a href="Private-API%3a-GustavBase#array-validatevars-array-variables-">valid variablename</a> is made available as a variable named like the key and can be used inside of the included file. Also <a href="http://php.net/manual/en/language.variables.superglobals.php">superglobals</a> are available in the included file.<br />
         An <code>include<code>d file should not return any value.<br />
         If <code>$is_url</code> is set to <code>true</code>, this parameter is ignored completely.
     </dd>
