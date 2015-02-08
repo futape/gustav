@@ -55,6 +55,7 @@ Finally the tags in the list are [made unique](Private-API%3a-GustavBase#string-
 
 If the [`replace_directory_separator` configuration option](Gustav-configuration#string-replace_directory_separator--) is set to a non-empty string, the character specified by that option is replaced with the OS's directory separator.  
 The path of the destination directory followed by the dirname of the used source file's path, relative to the source directory, is prepended to the string if it doesn't start with a directory separator.  
+The destination directory can be left using `..` path segments or using an absolute (document-root-relative) path. However, the destination location should always be underneath the document root.  
 If the path doesn't end with a directory separator, the file-extension of its filename is replaced with an appropiate file-extension for the [destination file](Destination-files), `php` if the [`_dyn` option](Gustav-core-options#_dyn) is set, otherwise `html`.  
 If a value of an empty string is specified, the path described above is prepended and its last path segment is used as filename. The resulting path won't have a trailing directory separator.  
 A value of `./`, `/` being the OS's directory separator, or `index` can be used to create a `index.*` file in the directory the path described above is pointing on. Using <code>{{<a href="GvBlock-option-templating#dest_dir">$dest_dir</a>}}</code> as value will create a `index.*` file in the destination directory's root.  
@@ -68,7 +69,8 @@ If the [`replace_directory_separator` configuration option](Gustav-configuration
 The string must not be empty.  
 The specified path is treated relatively to the source directory. Therefore that directory's path is prepended to the path.  
 Finally the path must point on a file.  
-The final string always starts with a directory separator. Although it's not recommended, the source directory can be left using `..` path segments.
+The final string always starts with a directory separator.  
+Although it's not recommended, the source directory can be left using `..` path segments. Please note that this is an experimental feature.
 
 
 
