@@ -38,7 +38,8 @@ Returns the PHP destination file's PHP code.
 [Creates](Generating-destination-files#creating-the-destination-file) the [destination file](Destination-files).
 
 Moreover this function creates the directories to place the built file in if they don't exist.  
-If the [source file](Source-files) is [disabled](Disabled-source-files), no [destination file](Destination-files) is created and `false` is returned.
+If the [source file](Source-files) is [disabled](Disabled-source-files), no [destination file](Destination-files) is created and `false` is returned.  
+If a destination file `index.php` or `index.html` is created, other `index.php` and `index.html` files located in the same directory are removed.
 
 The content of a PHP destination file, created from a [source file](Source-files) whose [`_dyn` GvBlock option](Gustav-core-options#_dyn) is set, contains the hardcoded absolute path of the [`GustavGenerator.php` file](API#gustavgenerator) that [creates](Generating-destination-files#creating-the-destination-file) the [destination file](Destination-files).  
 If that file has been moved to another directory and the [destination file](Destination-files) is requested, an error will occur.  
