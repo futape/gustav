@@ -12,7 +12,7 @@ When authoring template files, a few rules have to be taken care of.
 +   A template file's filename must have a file-extension of `php` (lowercased, not important for windows systems).
 +   Such a file must not return anything.
 +   The filename (without file-extension) must not be empty.
-+   Template files should never stop the script execution by calling [`exit`](http://php.net/manual/en/function.exit.php) for example.
++   Template files should never stop the script execution by calling [`exit`](http://php.net/manual/en/function.exit.php) or by producing an error for example. However, if it does, the printed content is flushed.
 +   Information about the request like [`$_GET`](http://php.net/manual/en/reserved.variables.get.php), [`$_COOKIE`](http://php.net/manual/en/reserved.variables.cookies.php) or [`$_SERVER`](http://php.net/manual/en/reserved.variables.server.php)'s `HTTP_*` items should only be used if the destination file using the template is a dynamic one (i.e. the [`_dyn` GvBlock option](Gustav-core-options#_dyn) is set).
 +   When defining functions, classes, constants or anything else, keep in mind that the file may be called for multiple times.
 +   The printed content should be encoded in UTF-8.
