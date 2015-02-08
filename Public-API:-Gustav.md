@@ -34,7 +34,7 @@ Returns whether emptying the destination directory and setting up Gustav was suc
 Get matching [source files](Source-files).
 
 Creates and returns an array of matching source files' paths.  
-By default [disabled source files](Disabled-source-files) and source files located in a directory called `__hidden` or in one of its subdirectories are ignored and are not included in the returned array.
+By default [disabled source files](Disabled-source-files), as well as source files for which no [`GustavSrc`](API#gustavsrc) object can be created, and source files located in a directory called `__hidden` or in one of its subdirectories are ignored and are not included in the returned array.
 
 <dl>
     <dt><code>$src_directory</code></dt>
@@ -93,6 +93,7 @@ By default [disabled source files](Disabled-source-files) and source files locat
                 In addition to the <code>prop</code> version, this filter also takes the result of <a href="Public-API%3a-GustavDest#string-getpath"><code>GustavDest::getPath()</code></a> for the source file into account.<br />
                 A source file matches this filter if its GvBlock's <a href="Gustav-core-options#_dest"><code>_dest</code> option</a>'s value matches the filter value or if that option's value ends with a directory separator and the filter value matches that value with the trailing directory separator stripped away.<br />
                 Source files, whose corresponding <a href="API#gustavdest"><code>GustavDest</code></a> object's <a href="Public-API%3a-GustavDest#string-getpath"><code>getPath()</code></a> method's return value matches the filter value are considered to be successfully matched, too.<br />
+                If the source file's <code>_dest</code> option doesn't match and if no <code>GustavDest</code> object can be created for that file, the source file doesn't match this filer.<br />
                 This filter expects a string value containing a full path, including the filename, or just the dirname of a <a href="Generating-destination-files#generating-the-destination-path">destination file's path</a> (assuming that its filename is <code>index.*</code>). The path has to be relative to the document root. It is passed to <a href="Private-API%3a-GustavBase#string-path-stringstring-path_segment--stringstring-path_segment--stringstring---"><code>GustavBase::path()</code></a>.
             </dd>
 
@@ -192,7 +193,7 @@ The name of the [configuration option](Gustav-configuration#string-templs_dir) s
 
 ###`string CONF_404_DOC`
 
-The name of the [configuration option](Gustav-configuration#string-404_error_doc--) specifying the URL (relative or absolute) of the error document for Gustav-404-errors.
+The name of the [configuration option](Gustav-configuration#string-404_error_doc--) specifying the URL of the error document used for Gustav-404-errors.
 
 ###`string CONF_PREFERRED_CONVS`
 
