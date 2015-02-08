@@ -14,11 +14,20 @@
 ##General terminology
 
 <dl>
-    <dt><em>Relative URL</em></dt>
-    <dd>A relative URL is described in <a href="https://tools.ietf.org/html/rfc3986#section-4.2">RFC 3986</a>. I recommend to use only root-relative URLs, not directory-relative or protocol-relative ones.</dd>
-    
     <dt><em>Absolute URL</em></dt>
     <dd>An absolute URL is described in <a href="https://tools.ietf.org/html/rfc3986#section-4.3">RFC 3986</a>.</dd>
+    
+    <dt><em>Relative URL</em></dt>
+    <dd>A relative URL aka. <em>relative reference</em> is described in <a href="https://tools.ietf.org/html/rfc3986#section-4.2">RFC 3986</a>. I recommend to use only root-relative URLs (<em>absolute-path reference</em>), not directory-relative (<em>relative-path reference</em>) or protocol-relative (<em>network-path reference</em>) ones.</dd>
+    
+    <dt><em>Protocol-relative URL</em></dt>
+    <dd>A relative URL described in <a href="https://tools.ietf.org/html/rfc3986#section-4.2">RFC 3986</a> as <em>network-path reference</em>.</dd>
+    
+    <dt><em>Root-relative URL</em></dt>
+    <dd>A relative URL described in <a href="https://tools.ietf.org/html/rfc3986#section-4.2">RFC 3986</a> as <em>absolute-path reference</em>.</dd>
+    
+    <dt><em>Directory-relative URL</em></dt>
+    <dd>A relative URL described in <a href="https://tools.ietf.org/html/rfc3986#section-4.2">RFC 3986</a> as <em>relative-path reference</em>.</dd>
     
     <dt><em>Dirname</em></dt>
     <dd>The part of a path describing the directory. See <a href="http://php.net/manual/en/function.dirname.php"><code>dirname()</code></a> for more information.</dd>
