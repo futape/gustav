@@ -1,5 +1,10 @@
 ##Instance functions
 
+###`private void initSearch()`
+
+Initializes the array containing the search items ([`$search`](#private-string-search)).  
+Empty string values are filtered out.
+
 ###`private void initRegex()`
 
 Initializes the word-boundary ([`$reWordBoundary`](#private-string-rewordboundary)) and modifier ([`$reMod`](#private-string-remod)) used in regular expressions based on the passed flags.
@@ -10,7 +15,9 @@ Finds the intersections of the source file's properties and the search items and
 Available properties are the source file's filename ([`GustavBase::KEY_FILE`](Public-API%3s-GustavBase#string-key_file)), title (if defined, [`GustavBase::KEY_TITLE`](Public-API%3s-GustavBase#string-key_title)) and tags ([`GustavBase::KEY_TAGS`](Public-API%3s-GustavBase#string-key_tags)).
 
 When comparing the **filename**, this function compares the search items case-sensitively to the source file's [`_dest` GvBlock option](Gustav-core-options#_dest)'s last path segment.  
-If the path's basename (with file-extension) is found in the search items, the items is considered to match. If the `_dest` options's value doesn't end with a directory separator, a search item just needs to match the path's filename (without file-extension) to be considered matching. For a matching source file, the score is increased by 1.
+If the path's basename (with file-extension) is found in the search items, the items is considered to match. If the `_dest` options's value doesn't end with a directory separator, a search item just needs to match the path's filename (without file-extension) to be considered matching.  
+If the `_dest` option's value equals a directory separator, an item `/` matches that source file.  
+For a matching source file, the score is increased by 1.
 
 When comparing the source file's **title**, the items are searched in the title case-insensitively ([`_title` GvBlock option](Gustav-core-options#_title)) by default, or case-sensitively if the [`GustavMatch::CASE_SENSITIVE`](Public-API%3a-GustavMatch#int-case_sensitive) flag is set. Moreover the search items are wrapped into word-boundaries and spaces within the items may not be take literally. For more information see [`GustavMatch::SPEC_LOW`](Public-API%3a-GustavMatch#int-spec_low) and [`GustavMatch::SPEC_HIGH`](Public-API%3a-GustavMatch#int-spec_high).  
 If the source file doesn't have a title, the score isn't increased. Otherwise the score is increased by 1 for each item for each occurrence within the title.
@@ -19,9 +26,9 @@ If the [`GustavMatch::LITERAL_SPACES`](#int-literal_spaces) flag isn't set, a se
 
 When comparing the source file's **tags**, the score is increased by 1 for each item found in the source file's tags ([`_tags` GvBlock option](Gustav-core-options#_tags)) (case-insensitively).
 
-When getting the score for the tags, the items are made unique case-insensitively before comparing them with the source file's properties. The same applies to a source file's title, with the only exception that the items are made unique ***case-sensitively*** when the [`GustavMatch::CASE_SENSITIVE`](Public-API%3a-GustavMatch#int-case_sensitive) flag is set.
+When getting the score for the tags or the title, the items are made unique case-insensitively (i.e. they are lowercased) before comparing them with the source file's properties. If the [`GustavMatch::CASE_SENSITIVE`](Public-API%3a-GustavMatch#int-case_sensitive) flag is set, the items are not lowercased before making them unique when the title is matched.
 
-[`$matches`](#private-string-matches) Will contain only the supported items ([`GustavBase::KEY_FILE`](Public-API%3s-GustavBase#string-key_file), [`GustavBase::KEY_TITLE`](Public-API%3s-GustavBase#string-key_title), [`GustavBase::KEY_TAGS`](Public-API%3s-GustavBase#string-key_tags)), any other items are ignored.
+[`$matches`](#private-string-matches) Will contain only the supported items ([`GustavBase::KEY_FILE`](Public-API%3s-GustavBase#string-key_file), [`GustavBase::KEY_TITLE`](Public-API%3s-GustavBase#string-key_title), [`GustavBase::KEY_TAGS`](Public-API%3s-GustavBase#string-key_tags)), any other items are ignored. If the search items have been lowercased (see above), this array's corresponding item's string values will be, too.
 
 [`$highlight`](#private-array-highlight) will contain all supported items (see above) whose corresponding source-file-property is set using the source file's properties as values. The values are HTML encoded (if an array, the array's string values are encoded) and matching parts are highlighted using `<mark>`. When highlighting titles, the same word-boundaries and treatment of the character case as for *matching* the title is used. The array will look like the one below.
 
