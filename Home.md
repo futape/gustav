@@ -1,4 +1,4 @@
-<img src="http://scorebits.net/shared/logo.svg" alt="Gustav Logo" style="width:300px;" />
+<img src="http://scorebits.net/shared/logo.svg" alt="Gustav Logo" width="300" />
 
 
 
