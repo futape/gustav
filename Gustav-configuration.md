@@ -32,15 +32,22 @@ The directory the [destination files](Destination-files) are located in, if not 
 
 ####`string src_dir`
 
-The directory the [source files](Source-files) are located in. The value describes the path of that directory. If the path doesn't start with a directory separator, one is prepended. The path is considered to be relative to the document root. The path, with the document root prepended, must point on a directory. The document root can be left by using `..` path segments. The source directory should not be located underneath the [destination directory](#string-dest_dir) and should also not be the same one. If not a string, the value is casted as one.
+The directory the [source files](Source-files) are located in. The value describes the path of that directory. If the path doesn't start with a directory separator, one is prepended. The path is considered to be relative to the document root. The path, with the document root prepended, must point on a directory.  
+The document root can be left by using `..` path segments. However, this is an experimental feature in isn't recommended in any way.  
+The source directory should not be located underneath the [destination directory](#string-dest_dir) and should also not be the same one.  
+If not a string, the value is casted as one.
 
 ####`string templs_dir`
 
-The directory the [template files](Template-files) are located in. The value describes the path of that directory. If the path doesn't start with a directory separator, one is prepended. The path is considered to be relative to the document root. The path, with the document root prepended, must point on a directory. The document root can be left by using `..` path segments. If not a string, the value is casted as one.
+The directory the [template files](Template-files) are located in. The value describes the path of that directory. If the path doesn't start with a directory separator, one is prepended. The path is considered to be relative to the document root. The path, with the document root prepended, must point on a directory.  
+The document root can be left by using `..` path segments.  
+If not a string, the value is casted as one.
 
 ####`string 404_error_doc = "/"`
 
-A [relative URL](https://tools.ietf.org/html/rfc3986#section-4.2) (root-relative, starting with `/`) referencing a local HTML document whose content is printed when a Gustav-404-error is thrown. If not a string, the value is casted as one.
+A relative URL (root-relative) referencing a local HTML document whose content is printed when a Gustav-404-error is thrown.  
+If the URL points on a PHP file, that file is executed as a PHP script and the printed content is used. The file may even set its own HTTP headers like the response's `Content-Type`. Therefore that script may also print non-HTML content. Within the script superglobals like [`$_SERVER`](http://php.net/manual/en/reserved.variables.server.php) containing, beside other, information aobut the *original* request can be accessed.  
+If not a string, the value is casted as one.
 
 ####`string site_url = <requested site>`
 
@@ -72,6 +79,7 @@ Defines whether Gustav should check whether everything is properly set up when i
 +   Does the PHP file handling the [auto-generation of destination files](Automatic-generation-of-destination-files) exist? If not, a log-entry is created.
 +   If the [`exit_on_error` configuration option](#bool-exit_on_error--true) is disabled, a log-entry is created.
 +   Is PHP's [`open_basedir` configuration option](http://php.net/manual/en/ini.core.php#ini.open-basedir) set to a null value (i.e. all files can be read)? If not, a log-entry is created.
++   Is PHP's [`allow_url_fopen` configuration option](http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen) enabled? If not, a log-entry is created.
 
 Regardless of this option's value, the following checks are always executed.
 
@@ -90,7 +98,7 @@ If set to `true`, Gustav searches for matching [source files](Source-files) in t
 
 ####`string[] preferred_convs = []`
 
-Defines the preferred converters used for choosing a [source file](Source-files) to use when [auto-generating a destination file](Automatic-generation-of-destination-files). If not an array, a new array with the specified value as its only item is created and used as value. The array should contain string values. If an items isn't a string, it is casted as one. The string describes a converter name. If the string matches one of a [hardcoded converter](Converting-source-content#hardcoded-converters)'s names (case-insensitively), the string is replaced with an array containing all of that converter's names. Otherwise, it is left as defined, even if no converter with the specified name exists.
+Defines the preferred converters used for choosing a [source file](Source-files) to use when [auto-generating a destination file](Automatic-generation-of-destination-files). If not an array, a new array with the specified value as its only item is created and used as value. The array should contain string values. These strings are trimmed. If an item isn't a string, it is casted as one. The string describes a converter name. If the string matches one of a [hardcoded converter](Converting-source-content#hardcoded-converters)'s names (case-insensitively), the string is replaced with an array containing all of that converter's names. Otherwise, it is left as defined, even if no converter with the specified name exists.
 
 ###Miscellaneous options
 
