@@ -10,7 +10,9 @@ Finds the intersections of the source file's properties and the search items and
 Available properties are the source file's filename ([`GustavBase::KEY_FILE`](Public-API%3s-GustavBase#string-key_file), title (if defined, [`GustavBase::KEY_TITLE`](Public-API%3s-GustavBase#string-key_title)) and tags ([`GustavBase::KEY_TAGS`](Public-API%3s-GustavBase#string-key_tags)), any other item is ignored.
 
 When comparing the **filename**, this function compares the search items case-sensitively to the source file's [`_dest` GvBlock option](Gustav-core-options#_dest)'s last path segment.  
-If the path's basename (with file-extension) is found in the search items, the items is considered to match. If the `_dest` options's value doesn't end with a directory separator, a search item just needs to match the path's filename (without file-extension) to be considered matching. For a matching source file, the score is increased by 1.
+If the path's basename (with file-extension) is found in the search items, the item is considered to match. If the `_dest` options's value doesn't end with a directory separator, a search item just needs to match the path's filename (without file-extension) to be considered matching.  
+If the `_dest` option's value equals a directory separator, an item `/` matches that source file.  
+For a matching source file, the score is increased by 1.
 
 When comparing the source file's **title**, the items are searched in the title ([`_title` GvBlock option](Gustav-core-options#_title)) case-insensitively by default, or case-sensitively if the [`GustavMatch::CASE_SENSITIVE`](#int-case_sensitive) flag is set. Moreover the search items are wrapped into word-boundaries. For more information on *word-boundaries* see [`GustavMatch::SPEC_LOW`](#int-spec_low) and [`GustavMatch::SPEC_HIGH`](#int-spec_high).  
 If the source file doesn't have a title, the score isn't increased. Otherwise the score is increased by 1 for each item for each occurrence within the title.  
@@ -19,7 +21,7 @@ If the [`GustavMatch::LITERAL_SPACES`](#int-literal_spaces) flag isn't set, a se
 
 When comparing the source file's **tags**, the score is increased by 1 for each item found in the source file's tags ([`_tags` GvBlock option](Gustav-core-options#_tags)) (case-insensitively).
 
-When getting the score for the tags, the items are made unique case-insensitively before comparing them with the source file's properties. The same applies to a source file's title, with the only exception that the items are made unique ***case-sensitively*** when the [`GustavMatch::CASE_SENSITIVE`](#int-case_sensitive) flag is set.
+When getting the score for the tags or the title, the items are made unique case-insensitively (i.e. they are lowercased) before comparing them with the source file's properties. If the [`GustavMatch::CASE_SENSITIVE`](Public-API%3a-GustavMatch#int-case_sensitive) flag is set, the items are not lowercased before making them unique when the title is matched. If lowercased, the items of the array returned by [`GustavMatch::getMatches()`](#string-getmatches) corresponding to these properties will contain lowercased items, too.
 
 Besides discovering the matching items and calculating the match score, this function also highlights the matching items in all supported properties of the source file. The source file's properties are used as values. The values are HTML encoded (if an array, the array's string values are encoded) and matching parts are highlighted using `<mark>`. When highlighting titles, the same word-boundaries and treatment of the character case as for *matching* the title is used.
 
@@ -30,7 +32,7 @@ For more information see [`GustavMatch::init()`](Dev-API%3a-GustavMatch#private-
     <dd>The path of the <a href="Source-files">source file</a> whose properties should be matched against the search items. Gets passed to <a href="Public-API%3a-GustavSrc#void-__construct-stringstring-path-"><code>GustavSrc::__construct()</code></a> which in turn calls <a href="Private-API%3a-GustavBase#string-path-stringstring-path_segment--stringstring-path_segment--stringstring---"><code>GustavBase::path()</code></a>.</dd>
     
     <dt><code>$search</code></dt>
-    <dd>An associative array containing the search items. The array's items should use one of the <a href="Public-API%3a-GustavBase#constants"><code>GustavBase::KEY_*</code> constants</a> as key and an array of strings containing the search items as value. The values may be an array returned by <a href="Public-API%3a-GustavBase#array-highlightmatches-array-plain-string-matches-"><code>GustavBase::processSearchTerm()</code></a> for example.</dd>
+    <dd>An associative array containing the search items. The array's items should use one of the <a href="Public-API%3a-GustavBase#constants"><code>GustavBase::KEY_*</code> constants</a> as key and an array of strings containing the search items as value. Empty items of the passed array's values are removed. The values may be an array returned by <a href="Public-API%3a-GustavBase#string-processsearchterm-string-search_term-"><code>GustavBase::processSearchTerm()</code></a> for example.</dd>
     
     <dt><code>$flags</code></dt>
     <dd>A bitmask of the following values: <a href="#int-spec_low"><code>GustavMatch::SPEC_LOW</code></a>, <a href="#int-spec_high"><code>GustavMatch::SPEC_HIGH</code></a>, <a href="#int-case_sensitive"><code>GustavMatch::CASE_SENSITIVE</code></a> and <a href="#int-literal_spaces"><code>GustavMatch::LITERAL_SPACES</code></a>. See those constants for more information.</dd>
