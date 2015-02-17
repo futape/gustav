@@ -884,6 +884,34 @@ abstract class Gustav extends GustavBase {
     
     
     
+    #search-constants#
+    
+    #Gustav::SEARCH_TAGS#
+    /**
+     * Search for search term items in source files' tags.
+     *
+     * @type int
+     */
+    const SEARCH_TAGS=1;
+    
+    #Gustav::SEARCH_TAGS#
+    /**
+     * Search for search term items in source files' titles.
+     *
+     * @type int
+     */
+    const SEARCH_TITLE=2;
+    
+    #Gustav::SEARCH_TAGS#
+    /**
+     * Search for search term items in destination files' filenames.
+     *
+     * @type int
+     */
+    const SEARCH_FILE=4;
+    
+    
+    
     #gustav-functions#
     
     #Gustav::setup()#
@@ -1257,6 +1285,73 @@ abstract class Gustav extends GustavBase {
         }
         
         return $arr_files;
+    }
+    
+    #Gustav::search()#
+    /**
+     * Search for source files matching a search term.
+     *
+     * The matching source files are ordered by their match scores. Disabled source files and such located in a `__hidden` directory are ignored.
+     * Besides the `match` filter, the default filter for `Gustav::query()` is used.
+     *
+     * @param string   $search_term      The search term to search for in the source files' properties.
+     * @param string   $directory        OPTIONAL | Default: ""
+     *                                   The path of the directory to search in for matching source files. The path is treated relatively to the source directory
+     *                                   and is passed to `Gustav::query()` which in turn calls `GustavBase::path()` on the path.
+     * @param bool     $search_recursive OPTIONAL | Default: true
+     *                                   Specifies whether to include all subdirectories of the specified directory when searching for source files.
+     * @param int|null $search_members   OPTIONAL | Default: null
+     *                                   Defines the source-file-properties to match the search term items against.
+     *                                   The value for this parameter should be a bitmask of `Gustav::SEARCH_*` constants.
+     *                                   If set to `null`, a value of `Gustav::SEARCH_TAGS|Gustav::SEARCH_TITLE|Gustav::SEARCH_FILE` is used instead.
+     * @param int      $match_flags      OPTIONAL | Default: 0
+     *                                   The flags passed to the `GustavMatch` constructor.
+     * @param int      $min_score        OPTIONAL | Default: 0
+     *                                   Defines a percentage value, relative to the highest match score of all matching source files.
+     *                                   Source files whose match score is lower than the specified minimum percentage are removed from the resulting array.
+     *
+     * @return GustavMatch[] Returns an array of `GustavMatch` object for the matching source files.
+     */
+    public static function search($str_term, $str_dir="", $q_recursive=true, $int_search=null, $int_matchFlags=0, $int_minScore=0){
+        $int_search=is_null($int_search) ? self::SEARCH_TAGS|self::SEARCH_TITLE|self::SEARCH_FILE : $int_search;
+        
+        $arr_term=GustavMatch::processSearchTerm($str_term);
+        $arr_match=array();
+        
+        if($int_search&self::SEARCH_TITLE){
+            $arr_match[self::KEY_TITLE]=$arr_term;
+        }
+        if($int_search&self::SEARCH_TAGS){
+            $arr_match[self::KEY_TAGS]=$arr_term;
+        }
+        if($int_search&self::SEARCH_FILE){
+            $arr_match[self::KEY_FILE]=$arr_term;
+        }
+        
+        $arr_matches=array();
+        
+        foreach(self::query($str_dir, $q_recursive, array(
+            "match"=>array_merge(
+                array(
+                    "flags"=>$int_matchFlags
+                },
+                $arr_match
+            ),
+            "prop"=>array(
+                "_hidden"=>false
+            ),
+            "older_than"=>time()
+        ), self::FILTER_AND, self::ORDER_MATCH, $int_minScore){
+            try {
+                $match_a=new GustavMatch($val, $arr_match, $int_matchFlags);
+            } catch(Exception $e){
+                continue;
+            }
+            
+            array_push($arr_matches, $match_a);
+        }
+        
+        return $arr_matches;
     }
     
     #Gustav::getTags()#

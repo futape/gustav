@@ -65,6 +65,94 @@ class GustavMatch extends Gustav {
     
     
     
+    #match-functions#
+    
+    #GustavMatch::getSearchTermItems()#
+    /**
+     * Splits a search term's part into single items.
+     *
+     * Splits a string at whitespace characters.
+     * Empty items are removed and each item does only exist a single time within the returned array (case-sensitive).
+     * This function's purpose is not to split a search term entered by an user into parts but to split such parts into single items.
+     *
+     * @param string $search_term_part The search term's part.
+     *
+     * @return string[] The single search term items.
+     */
+    protected static function getSearchTermItems($str_items){
+        /** /
+        return array_unique(explode(" ", preg_replace('/ {2,}/', " ", trim(preg_replace('/\W/u', " ", $str_items)))));
+        /*/
+        $str_items=preg_replace('/\s+/', " ", trim($str_items));
+        
+        return $str_items=="" ? array() : array_unique(explode(" ", $str_items));
+        /**/
+    }
+    
+    #GustavMatch::processSearchTerm()#
+    /**
+     * Splits a search term into parts.
+     *
+     * Parts are separated by whitespace characters.
+     * A part which should be treated as a literal or which consists of multiple words can be marked up by wrapping it into double quotes. All characters within such a literal part are taken literally. If you want to mark up a literal double quote, you have to type two double quotes. For example: `one two "three "" four" five` or `""""`.
+     * Empty literals are possible.
+     * Empty non-literal parts are removed.
+     * If no literal has been found in the search term, the entire search term is added to the resulting array as a literal. It gets trimmed and sequences of whitespaces are replaced with 1 simple space.
+     * Each part does only exist a single time within the returned array (case-sensitive), regardless of whetehr it's a literal part or not.
+     * Usecases of this function's returned value may be as value for the second parameter of GustavSrc::getMatchScore() or as value for one of Gustav::query()'s "match" filter's items. Moreover, you can split a part into single items (mostly relevant for literal parts) by passing the part to GustavBase::getSearchTermItems().
+     *
+     * @param string $search_term The search term.
+     *
+     * @return string[] The search term's parts.
+     */
+    public static function processSearchTerm($str_term){
+        $arr_a=explode('"', $str_term);
+        $str_items="";
+        $arr_literals=array();
+        $str_literal="";
+        
+        /**
+         * Just to push the last literal to $arr_literals.
+         * Required if the literal is the last part of the search term.
+         * If not, an empty string is appended to $str_literal
+         * which should be an empty string at this point and gets never
+         * pushed to $arr_literals.
+         * Othewise the empty string is appended to $str_items which is
+         * removed later by calling GustavBase::getSearchTermItems() on
+         * $str_items.
+         */
+        array_push($arr_a, "");
+        
+        foreach($arr_a as $i=>$val){
+            if($i%2!=0){
+                $str_literal.=$val;
+            }else if($val=="" && $i>0 && $i<count($arr_a)-2){ //last item = `count($arr_a)-1`; last *real* item: `count($arr_a)-2`, since an empty string is pushed to the array above
+                $str_literal.='"';
+            }else{
+                $str_items.=" ".$val;
+                
+                if($i>0){
+                    array_push($arr_literals, $str_literal);
+                    
+                    $str_literal="";
+                }
+            }
+        }
+        
+        if(count($arr_literals)==0){
+            array_push($arr_literals, preg_replace('/\s+/', " ", trim($str_term))); //Can't use `implode(" ", self::getSearchTermItems($str_term))` since that function calls array_unique() on the array.
+        }
+        
+        $arr_literals=array_filter($arr_literals, function($val){
+            return $val!="";
+        });
+        $arr_items=self::getSearchTermItems($str_items);
+        
+        return array_unique(array_merge($arr_items, $arr_literals));
+    }
+    
+    
+    
     #properties#
     
     #GustavMatch::$src#
