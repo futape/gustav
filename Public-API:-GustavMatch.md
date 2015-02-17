@@ -1,3 +1,26 @@
+##Static functions
+
+###`string[] processSearchTerm( string $search_term )`
+
+Splits a search term into parts.
+
+Parts are separated by whitespace characters.  
+A part which should be treated as a literal or which consists of multiple words can be marked up by wrapping it into double quotes. All characters within such a literal part are taken literally.  
+If you want to mark up a literal double quote, you have to type two double quotes. For example, `one two "three "" four" five` which would result in `array("one", "two", 'three " four', "five")` and `""""` which would result in `array('"')`.  
+Empty items, literals and simple items, are removed.  
+If no literal has been found in the search term, the entire search term is added to the resulting array as a literal. It gets trimmed and sequences of whitespaces are replaced with one simple space.  
+Each part does only exist a single time in the returned array (case-sensitively), regardless of whetehr it's a literal part or not.  
+Usecases of this function's returned value may be as value for an item of the array passed to the second parameter of the [`GustavMatch` constructor](Public-API%3a-GustavMatch#void-__construct-stringstring-path-string-search--int-flags--0--) or as value for one of [`Gustav::query()`](Public-API%3a-Gustav#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--)'s `match` filter's items. Moreover, you can split a part into single items (mostly relevant for literal parts) by passing the part to [`GustavMatch::getSearchTermItems()`](Private-API%3a-GustavMatch#string-getsearchtermitems-string-search_term_part-).
+
+<dl>
+    <dt><code>$search_term</code></dt>
+    <dd>The search term.</dd>
+</dl>
+
+Returns the search term's parts.
+
+
+
 ##Instance functions
 
 ###`void __construct( string|string[] $path, string[][] $search [, int $flags = 0 ] )`
@@ -32,7 +55,7 @@ For more information see [`GustavMatch::init()`](Dev-API%3a-GustavMatch#private-
     <dd>The path of the <a href="Source-files">source file</a> whose properties should be matched against the search items. Gets passed to <a href="Public-API%3a-GustavSrc#void-__construct-stringstring-path-"><code>GustavSrc::__construct()</code></a> which in turn calls <a href="Private-API%3a-GustavBase#string-path-stringstring-path_segment--stringstring-path_segment--stringstring---"><code>GustavBase::path()</code></a>.</dd>
     
     <dt><code>$search</code></dt>
-    <dd>An associative array containing the search items. The array's items should use one of the <a href="Public-API%3a-GustavBase#constants"><code>GustavBase::KEY_*</code> constants</a> as key and an array of strings containing the search items as value. Empty items of the passed array's values are removed. The values may be an array returned by <a href="Public-API%3a-GustavBase#string-processsearchterm-string-search_term-"><code>GustavBase::processSearchTerm()</code></a> for example.</dd>
+    <dd>An associative array containing the search items. The array's items should use one of the <a href="Public-API%3a-GustavBase#constants"><code>GustavBase::KEY_*</code> constants</a> as key and an array of strings containing the search items as value. Empty items of the passed array's values are removed. The values may be an array returned by <a href="Public-API%3a-GustavMatch#string-processsearchterm-string-search_term-"><code>GustavMatch::processSearchTerm()</code></a> for example.</dd>
     
     <dt><code>$flags</code></dt>
     <dd>A bitmask of the following values: <a href="#int-spec_low"><code>GustavMatch::SPEC_LOW</code></a>, <a href="#int-spec_high"><code>GustavMatch::SPEC_HIGH</code></a>, <a href="#int-case_sensitive"><code>GustavMatch::CASE_SENSITIVE</code></a> and <a href="#int-literal_spaces"><code>GustavMatch::LITERAL_SPACES</code></a>. See those constants for more information.</dd>
