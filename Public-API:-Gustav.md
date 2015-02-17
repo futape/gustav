@@ -135,6 +135,37 @@ By default [disabled source files](Disabled-source-files), as well as source fil
 
 Returns an array containing the matching source files' paths.
 
+###`GustavMatch[] search( string $search_term [, string $directory = "" [, bool $search_recursive = true [, int|null $search_members = null [, int $match_flags = 0 [, int $min_score = 0 ]]]]] )`
+
+Search for [source files](Source-files) matching a search term.
+
+The matching source files are ordered by their match scores. [Disabled source files](Disabled-source-files) and such located in a `__hidden` directory are ignored. Besides the `match` filter, the default filter for [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--) is used.
+
+<dl>
+    <dt><code>$search_term</code></dt>
+    <dd>The search term to search for in the source files' properties.</dd>
+    
+    <dt><code>$directory</code></dt>
+    <dd>The path of the directory to search in for matching source files. The path is treated relatively to the source directory and is passed to <a href="#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--"><code>Gustav::query()</code></a> which in turn calls <a href="Private-API%3a-GustavBase#string-path-stringstring-path_segment--stringstring-path_segment--stringstring---"><code>GustavBase::path()</code></a> on the path.</dd>
+    
+    <dt><code>$search_recursive</code></dt>
+    <dd>Specifies whether to include all subdirectories of the specified directory when searching for source files.</dd>
+    
+    <dt><code>$search_members</code></dt>
+    <dd>
+        Defines the source-file-properties to match the search term items against. The value for this parameter should be a bitmask of [`Gustav::SEARCH_*`](#constants) constants.<br />
+        If set to <code>null</code>, a value of <code><a href="#">Gustav::SEARCH_TAGS</a>|<a href="#">Gustav::SEARCH_TITLE</a>|<a href="#">Gustav::SEARCH_FILE</a></code> is used instead.
+    </dd>
+    
+    <dt><code>$match_flags</code></dt>
+    <dd>The flags passed to the <a href="Public-API%3a-GustavMatch#void-__construct-stringstring-path-string-search--int-flags--0--"><code>GustavMatch</code> constructor</a>.</dd>
+    
+    <dt><code>$min_score</code></dt>
+    <dd>Defines a percentage value, relative to the highest match score of all matching source files. Source files whose match score is lower than the specified minimum percentage are removed from the resulting array.</dd>
+</dl>
+
+Returns an array of [`GustavMatch`](API#gustavmatch) object for the matching source files.
+
 ###`int[] getTags()`
 
 Get all available [tags](Gustav-core-options#_tags).
@@ -262,3 +293,15 @@ Filters source files using the OR operator. See [`Gustav::query()`](#string-quer
 ###`int FILTER_AND`
 
 Filters source files using the AND operator. See [`Gustav::query()`](#string-query--stringstring-src_directory----bool-recursive--true--arraynull-filters--null--int-filters_operator--gustavfilter_and--int-order_by--gustavorder_pub--int-min_match_score--0--bool-include_disabled--false--include_hidden_directory--false--).
+
+###`int SEARCH_TAGS`
+
+Search for search term items in source files' tags. See [`Gustav::search()`](#).
+
+###`int SEARCH_TITLE`
+
+Search for search term items in source files' titles. See [`Gustav::search()`](#).
+
+###`int SEARCH_FILE`
+
+Search for search term items in destination files' filenames. See [`Gustav::search()`](#).
