@@ -40,6 +40,7 @@
         +   [GustavDest](Private-API%3a-GustavDest)
         +   [GustavContent](Private-API%3a-GustavContent)
         +   [GustavBlock](Private-API%3a-GustavBlock)
+        +   [GustavMatch](Private-API%3a-GustavMatch)
         +   [GustavBase](Private-API%3a-GustavBase)
     +   [Dev API](Dev-API)
         +   [Gustav](Dev-API%3A-Gustav)

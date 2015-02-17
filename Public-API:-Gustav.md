@@ -67,7 +67,7 @@ By default [disabled source files](Disabled-source-files), as well as source fil
         <dl>
             <dt><code>string[][] match</code></dt>
             <dd>
-                Creates a <a href="API#gustavmatch"><code>GustavMatch</code></a> object for the source file using this filter's value as value for that class's <a href="#">constructor</a>'s second parameter and this filter's <code>flags</code> item (if specified) as its third parameter's value. A source file is considered to match this filter if it matches at least one of the filter's items (i.e. the match score is greater than 0). If an empty array is passed to one of this array's items or if the item's key is invalid, that item is ignored. If the passed array doesn't contain any valid items or if no <a href="API#gustavmatch"><code>GustavMatch</code></a> object can be created, the entire filter is ignored.<br />
+                Creates a <a href="API#gustavmatch"><code>GustavMatch</code></a> object for the source file using this filter's value as value for that class's <a href="Public-API%3a-GustavMatch#void-__construct-stringstring-path-string-search--int-flags--0--">constructor</a>'s second parameter and this filter's <code>flags</code> item (if specified) as its third parameter's value. A source file is considered to match this filter if it matches at least one of the filter's items (i.e. the match score is greater than 0). If an empty array is passed to one of this array's items or if the item's key is invalid, that item is ignored. If the passed array doesn't contain any valid items or if no <a href="API#gustavmatch"><code>GustavMatch</code></a> object can be created, the entire filter is ignored.<br />
                 Supported keys are <code>file</code> (<a href="Public-API%3a-GustavBase#string-key_file"><code>GustavBase::KEY_FILE</code></a>), <code>title</code> (<a href="Public-API%3a-GustavBase#string-key_title"><code>GustavBase::KEY_TITLE</code></a>) and <code>tags</code> (<a href="Public-API%3a-GustavBase#string-key_tags"><code>GustavBase::KEY_TAGS</code></a>).
             </dd>
 
@@ -154,7 +154,7 @@ The matching source files are ordered by their match scores. [Disabled source fi
     <dt><code>$search_members</code></dt>
     <dd>
         Defines the source-file-properties to match the search term items against. The value for this parameter should be a bitmask of [`Gustav::SEARCH_*`](#constants) constants.<br />
-        If set to <code>null</code>, a value of <code><a href="#">Gustav::SEARCH_TAGS</a>|<a href="#">Gustav::SEARCH_TITLE</a>|<a href="#">Gustav::SEARCH_FILE</a></code> is used instead.
+        If set to <code>null</code>, a value of <code><a href="#int-search_tags">Gustav::SEARCH_TAGS</a>|<a href="#int-search_title">Gustav::SEARCH_TITLE</a>|<a href="#int-search_file">Gustav::SEARCH_FILE</a></code> is used instead.
     </dd>
     
     <dt><code>$match_flags</code></dt>
@@ -296,12 +296,12 @@ Filters source files using the AND operator. See [`Gustav::query()`](#string-que
 
 ###`int SEARCH_TAGS`
 
-Search for search term items in source files' tags. See [`Gustav::search()`](#).
+Search for search term items in source files' tags. See [`Gustav::search()`](#gustavmatch-search-string-search_term--string-directory----bool-search_recursive--true--intnull-search_members--null--int-match_flags--0--int-min_score--0--).
 
 ###`int SEARCH_TITLE`
 
-Search for search term items in source files' titles. See [`Gustav::search()`](#).
+Search for search term items in source files' titles. See [`Gustav::search()`](#gustavmatch-search-string-search_term--string-directory----bool-search_recursive--true--intnull-search_members--null--int-match_flags--0--int-min_score--0--).
 
 ###`int SEARCH_FILE`
 
-Search for search term items in destination files' filenames. See [`Gustav::search()`](#).
+Search for search term items in destination files' filenames. See [`Gustav::search()`](#gustavmatch-search-string-search_term--string-directory----bool-search_recursive--true--intnull-search_members--null--int-match_flags--0--int-min_score--0--).
