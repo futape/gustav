@@ -4,6 +4,11 @@
 
 *Gustav* is a powerful static-site gernerator written in PHP.
 
+It provides everything you need to run a blog or any other website - From a static-site generator offering a robust templating system and a great customizability to a massive PHP API providing functions for searching the published articles and pages, getting available tags and categories, and more, as well as hooks that can be used to extend Gustav's functionality.
+
+Moreover the project is well documented and provides lots of information on getting started and getting better with Gustav in the [GitHub Wiki](https://github.com/futape/gustav/wiki).  
+For those that just want to set up Gustav quickly, click [here](https://github.com/futape/gustav/wiki/Getting-started). Others may want to read the full [documentation](https://github.com/futape/gustav/wiki) to get more information.
+
 
 
 ##A selection of Gustav's features
@@ -19,23 +24,30 @@
 
 
 
-##Further reading
+##License
 
-+   [Getting started](https://github.com/futape/gustav/wiki/Getting-started)
-+   [Source files](https://github.com/futape/gustav/wiki/Source-files)
-+   [GvBlock](https://github.com/futape/gustav/wiki/GvBlock)
-+   [Destination files](https://github.com/futape/gustav/wiki/Destination-files)
-+   [Template files](https://github.com/futape/gustav/wiki/Template-files)
-+   [Extending Gustav](https://github.com/futape/gustav/wiki/Extending-Gustav)
-+   [Gustav configuration](https://github.com/futape/gustav/wiki/Gustav-configuration)
-+   [API](https://github.com/futape/gustav/wiki/API)
-+   [Log files](https://github.com/futape/gustav/wiki/Log-files)
-+   [Miscellaneous](https://github.com/futape/gustav/wiki/Miscellaneous)
-+   [System requirements](https://github.com/futape/gustav/wiki/System-requirements)
-+   [Glossary](https://github.com/futape/gustav/wiki/Glossary)
+Gustav is published under the permissive [*BSD New* Open-Source-License](http://opensource.org/licenses/BSD-3-Clause).
+
+
+
+##Support
+
+<a href="https://flattr.com/submit/auto?user_id=lucaskrause&url=https%3A%2F%2Fgithub.com%2Ffutape%2Fgustav" target="_blank"><img src="http://button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
+
+
+
+##Contributing
+
+For information on contributing to Gustav, see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 
 
 ##Author
 
-Lucas Krause ([@futape](https://twitter.com/futape))
+<table><tbody><tr><td>
+    <img src="http://www.gravatar.com/avatar/118bcae2fda8b302155ad47a2bfda556.png?s=100&amp;d=monsterid" />
+</td><td>
+    Lucas Krause (<a href="https://twitter.com/futape">@futape</a>)
+</td></tr></tbody></table>
+
+For a full liste of contributors, click [here](https://github.com/futape/gustav/graphs/contributors).
