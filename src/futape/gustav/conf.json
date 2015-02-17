@@ -1,0 +1,15 @@
+{
+    "dest_dir":"/dest",
+    "src_dir":"/src",
+    "templs_dir":"/templs",
+    "404_error_doc":"/404.html",
+    "preferred_convs":[],
+    "log_file_max_size":"1m",
+    "exit_on_error":true,
+    "check_status":true,
+    "site_url":"http://example.com",
+    "enable_log":true,
+    "generator_search_recursive":false,
+    "replace_directory_separator":"/",
+    "use_fallback_resource":false
+}
