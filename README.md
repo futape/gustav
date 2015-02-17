@@ -1,6 +1,6 @@
 #Gustav
 
-<img src="https://raw.githubusercontent.com/futape/gustav/develop/misc/Gustav.png" alt="Gustav Logo" width="200" />
+<img src="https://raw.githubusercontent.com/futape/gustav/master/misc/Gustav.png" alt="Gustav Logo" width="200" />
 
 *Gustav* is a powerful static-site gernerator written in PHP.
 
