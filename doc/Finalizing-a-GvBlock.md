@@ -1,0 +1,3 @@
+As stated in [*GvBlock option default values*](GvBlock-option-default-values), `_default` options for [Gustav core options](Gustav-core-options) are removed from the final [GvBlock](GvBlock). Also options whose names are [starting with `!`](Extending-a-GvBlock#-options) are removed.  
+Moreover [`_default` options](GvBlock-option-default-values)' names are normalized.  
+Options that have an invalid value are removed or replaced with the next [default value](GvBlock-option-default-values) for that option. If that value is invalid, too, and no more default values are available, the option is removed.
