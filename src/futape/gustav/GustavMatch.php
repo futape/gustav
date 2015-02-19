@@ -247,7 +247,7 @@ class GustavMatch extends Gustav {
             throw new RuntimeException("Couldn't process source file.");
         }
         
-        $this->initSearch(); //$search
+        $this->initSearch($arr_search); //$search
         $this->flags=$int_flags;
         $this->initRegex(); //$reWordBoundary and $reMod; relies on $flags
         $this->init(); //$matches, $score and $highlight; relies on $re*, $src, $search and $flags
@@ -260,7 +260,7 @@ class GustavMatch extends Gustav {
      *
      * @return void
      */
-    private function initSearch(){
+    private function initSearch($arr_search){
         $this->search=array_map(function($val){
             return array_filter($val, function($val){
                 return $val!="";

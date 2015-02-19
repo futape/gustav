@@ -521,7 +521,9 @@ abstract class Gustav extends GustavBase {
      * @return string Returns the built URL.
      */
     protected static function getHttpUrl($str_path, $q_url=false, $q_includesDocRoot=true){
-        if(!$q_url){
+        if($q_url){
+            $str_url=$str_path;
+        }else{
             $str_path=self::path($str_path);
             
             $str_url=self::path2url($str_path, $q_includesDocRoot);
@@ -1334,14 +1336,14 @@ abstract class Gustav extends GustavBase {
             "match"=>array_merge(
                 array(
                     "flags"=>$int_matchFlags
-                },
+                ),
                 $arr_match
             ),
             "prop"=>array(
                 "_hidden"=>false
             ),
             "older_than"=>time()
-        ), self::FILTER_AND, self::ORDER_MATCH, $int_minScore){
+        ), self::FILTER_AND, self::ORDER_MATCH, $int_minScore) as $val){
             try {
                 $match_a=new GustavMatch($val, $arr_match, $int_matchFlags);
             } catch(Exception $e){
