@@ -1156,7 +1156,7 @@ abstract class Gustav extends GustavBase {
                         
                         $str_filterHardConvs=implode(".", call_user_func_array("array_merge", array_map(array($str_hooks, "getHardConv"), $arr_filter["conv"])));
                         
-                        if(/*may be faster than the second condition*/count(array_intersect($arr_block["_conv"], $arr_filter["conv"]))>0 ||/**/ count(array_filter($arr_block["_conv"], function($val) use ($str_filterHardConvs, $str_hooks){
+                        if(count(array_intersect($arr_block["_conv"], $arr_filter["conv"]))>0 || count(array_filter($arr_block["_conv"], function($val) use ($str_filterHardConvs, $str_hooks){
                             return call_user_func(array($str_hooks, "convExists"), $val, $str_filterHardConvs);
                         }))>0){
                             $int_matchingFilters++;
