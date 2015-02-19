@@ -153,7 +153,7 @@ The matching source files are ordered by their match scores. [Disabled source fi
     
     <dt><code>$search_members</code></dt>
     <dd>
-        Defines the source-file-properties to match the search term items against. The value for this parameter should be a bitmask of [`Gustav::SEARCH_*`](#constants) constants.<br />
+        Defines the source-file-properties to match the search term items against. The value for this parameter should be a bitmask of <a href="#constants"><code>Gustav::SEARCH_*</code></a> constants.<br />
         If set to <code>null</code>, a value of <code><a href="#int-search_tags">Gustav::SEARCH_TAGS</a>|<a href="#int-search_title">Gustav::SEARCH_TITLE</a>|<a href="#int-search_file">Gustav::SEARCH_FILE</a></code> is used instead.
     </dd>
     
