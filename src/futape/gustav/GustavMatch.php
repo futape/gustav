@@ -39,7 +39,7 @@ class GustavMatch extends Gustav {
      * By default, `GustavMatch::initMatches()` uses a custom word-boundary when matching a source file's title.
      * The *custom word-boundary* consideres, besides the `\b` RegEx escape sequence, `_`s and digits having an adjacent non-digit character, as well as non-digits having an adjacent digit character to separate words.
      * When including this constant's value in the mitmask passed to this class's constructor's $flags parameter, a word-boundary definition of `\b` is used instead which is a bit more strict than the default one.
-     * Moreover, the default behavior of matching any number of any kind of whitespace for a space in a search item or a literal is disabled when using this flag. Instead the item must be found in the title exactly as defined.
+ item must be found in the title exactly as defined.
      *
      * @type int
      */
@@ -247,7 +247,7 @@ class GustavMatch extends Gustav {
             throw new RuntimeException("Couldn't process source file.");
         }
         
-        $this->initSearch(); //$search
+        $this->initSearch($arr_search); //$search
         $this->flags=$int_flags;
         $this->initRegex(); //$reWordBoundary and $reMod; relies on $flags
         $this->init(); //$matches, $score and $highlight; relies on $re*, $src, $search and $flags
@@ -260,7 +260,7 @@ class GustavMatch extends Gustav {
      *
      * @return void
      */
-    private function initSearch(){
+    private function initSearch($arr_search){
         $this->search=array_map(function($val){
             return array_filter($val, function($val){
                 return $val!="";

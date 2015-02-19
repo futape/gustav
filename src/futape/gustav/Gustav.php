@@ -521,7 +521,9 @@ abstract class Gustav extends GustavBase {
      * @return string Returns the built URL.
      */
     protected static function getHttpUrl($str_path, $q_url=false, $q_includesDocRoot=true){
-        if(!$q_url){
+        if($q_url){
+            $str_url=$str_path;
+        }else{
             $str_path=self::path($str_path);
             
             $str_url=self::path2url($str_path, $q_includesDocRoot);
@@ -1154,7 +1156,7 @@ abstract class Gustav extends GustavBase {
                         
                         $str_filterHardConvs=implode(".", call_user_func_array("array_merge", array_map(array($str_hooks, "getHardConv"), $arr_filter["conv"])));
                         
-                        if(/*may be faster than the second condition*/count(array_intersect($arr_block["_conv"], $arr_filter["conv"]))>0 ||/**/ count(array_filter($arr_block["_conv"], function($val) use ($str_filterHardConvs, $str_hooks){
+                        if(count(array_intersect($arr_block["_conv"], $arr_filter["conv"]))>0 || count(array_filter($arr_block["_conv"], function($val) use ($str_filterHardConvs, $str_hooks){
                             return call_user_func(array($str_hooks, "convExists"), $val, $str_filterHardConvs);
                         }))>0){
                             $int_matchingFilters++;
@@ -1334,14 +1336,14 @@ abstract class Gustav extends GustavBase {
             "match"=>array_merge(
                 array(
                     "flags"=>$int_matchFlags
-                },
+                ),
                 $arr_match
             ),
             "prop"=>array(
                 "_hidden"=>false
             ),
             "older_than"=>time()
-        ), self::FILTER_AND, self::ORDER_MATCH, $int_minScore){
+        ), self::FILTER_AND, self::ORDER_MATCH, $int_minScore) as $val){
             try {
                 $match_a=new GustavMatch($val, $arr_match, $int_matchFlags);
             } catch(Exception $e){
