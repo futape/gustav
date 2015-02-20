@@ -9,9 +9,11 @@ It provides everything you need to run a blog or any other website - From a stat
 Moreover the project is well documented and provides lots of information on getting started and getting better with Gustav in the [GitHub Wiki](https://github.com/futape/gustav/wiki).  
 For those that just want to set up Gustav quickly, click [here](https://github.com/futape/gustav/wiki/Getting-started). Others may want to read the full [documentation](https://github.com/futape/gustav/wiki) to get more information.
 
+A demo of Gustav running in a production environment is avaiable on <http://gustav.futape.de>. The source code for that website is also [available on GitHub](https://github.com/futape/gustav.futape.de). Feel free to fork the repository and play around with the example code.
 
 
-##A selection of Gustav's features
+
+##Features
 
 +   [Fast installation and setup](https://github.com/futape/gustav/wiki/Getting-started)
 +   [Low system requirements](https://github.com/futape/gustav/wiki/System-requirements)
@@ -21,6 +23,17 @@ For those that just want to set up Gustav quickly, click [here](https://github.c
 +   [Extendable](https://github.com/futape/gustav/wiki/Extending-Gustav)
 +   [Easy to learn](https://github.com/futape/gustav/wiki/Getting-started)
 +   [Well documented](https://github.com/futape/gustav/wiki)
+
+
+
+##A word about the `master` branch
+
+This repository has two main branches, the `develop` branch and the `master` branch.  
+Branch management is done using [Vincent Driessen](http://nvie.com/posts/a-successful-git-branching-model/)'s branching model, meaning that all bleeding-edge features are available on the `develop` branch, while the `master` branch contains the stable releases only. Commits on the `master` branch introducing changes to the public API are tagged with a version number.
+
+Versioning is done using [semantic versioning](http://semver.org/). This means that a version identifier consists of three parts, the first one being the *major* version number, the second one the *minor* version number and the third one speciying the *patch* number, separated by dots. Whenever a API-incompatible change is introduced, the major version is number increased. If the change is backwards-compatible to the public API, the minor version number is increased. A hotfix to the source increases the patch number.
+
+A list of releases can be seen [here](https://github.com/futape/gustav/releases). Please note, that releases with a major version number of 0 belong to the initial development phase and are not considered to be absolutely stable. However, every release since version 1.0.0 is considered to be stable.
 
 
 
@@ -50,4 +63,4 @@ For information on contributing to Gustav, see [`CONTRIBUTING.md`](CONTRIBUTING.
     Lucas Krause (<a href="https://twitter.com/futape">@futape</a>)
 </td></tr></tbody></table>
 
-For a full liste of contributors, click [here](https://github.com/futape/gustav/graphs/contributors).
+For a full list of contributors, click [here](https://github.com/futape/gustav/graphs/contributors).
