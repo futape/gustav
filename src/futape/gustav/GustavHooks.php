@@ -1,5 +1,5 @@
 <?php
-/*! Gustav 0.2.0 | Copyright (c) 2015 Lucas Krause | BSD New License | http://gustav.futape.de */
+/*! Gustav 1.0.0 | Copyright (c) 2015 Lucas Krause | New BSD License | http://gustav.futape.de */
 
 namespace futape\gustav;
 
