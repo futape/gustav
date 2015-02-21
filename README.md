@@ -9,7 +9,7 @@ It provides everything you need to run a blog or any other website - From a stat
 Moreover the project is well documented and provides lots of information on getting started and getting better with Gustav in the [GitHub Wiki](https://github.com/futape/gustav/wiki).  
 For those that just want to set up Gustav quickly, click [here](https://github.com/futape/gustav/wiki/Getting-started). Others may want to read the full [documentation](https://github.com/futape/gustav/wiki) to get more information.
 
-A demo of Gustav running in a production environment is avaiable on <http://gustav.futape.de>. The source code for that website is also [available on GitHub](https://github.com/futape/gustav.futape.de). Feel free to fork the repository and play around with the example code.
+A demo of Gustav running in a production environment is avaiable on <http://demo.gustav.futape.de>. The source code for that website is also [available on GitHub](https://github.com/futape/demo.gustav.futape.de). Feel free to fork the repository and play around with the example code.
 
 
 
@@ -39,7 +39,11 @@ A list of releases can be seen [here](https://github.com/futape/gustav/releases)
 
 ##License
 
-Gustav is published under the permissive [*BSD New* Open-Source-License](http://opensource.org/licenses/BSD-3-Clause).
+The Gustav source is published under the permissive [*New* BSD Open-Source-License](http://opensource.org/licenses/BSD-3-Clause).  
+A [copy of that license](https://github.com/futape/gustav/blob/master/src/futape/gustav/LICENSE) is located under `src/futape/gustav`.
+
+Any other content like the Gustav logo or the documentation is, if not otherwise stated, published under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).  
+<a href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" border="0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
 
 
 

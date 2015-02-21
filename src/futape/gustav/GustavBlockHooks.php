@@ -1,4 +1,6 @@
 <?php
+/*! Gustav 0.2.0 | Copyright (c) 2015 Lucas Krause | BSD New License | http://gustav.futape.de */
+
 namespace futape\gustav;
 
 require_once implode(DIRECTORY_SEPARATOR, array(rtrim(__DIR__, DIRECTORY_SEPARATOR), "GustavBlock.php"));

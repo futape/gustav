@@ -1,4 +1,6 @@
 <?php
+/*! Gustav 0.2.0 | Copyright (c) 2015 Lucas Krause | BSD New License | http://gustav.futape.de */
+
 namespace futape\gustav;
 
 //use BadMethodCallException; //used by __callStatic()
