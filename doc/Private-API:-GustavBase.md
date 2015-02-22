@@ -201,42 +201,42 @@ Returns the passed text or HTML code converted to an inline plain text.
 This function is just an alias for the corresponsing multibyte string function.  
 When calling this function without specifying a value for the last parmeter, the character encoding definition, that parameter is set to the character encoding used by Gustav ([`GustavBase::ENC`](#string-enc)).  
 This has the same effect as setting the MB character encoding globally using [`mb_internal_encoding()`](http://php.net/manual/en/function.mb-internal-encoding.php). The difference is that by doing it this way the user can still define his own global MB character encoding without interrupting Gustav.  
-For more information see [mb_strtoupper()](http://php.net/manual/en/function.mb-strtoupper.php).
+For more information see [`mb_strtoupper()`](http://php.net/manual/en/function.mb-strtoupper.php).
 
 ###`mb_strtolower()`
 
 This function is just an alias for the corresponsing multibyte string function.  
 When calling this function without specifying a value for the last parmeter, the character encoding definition, that parameter is set to the character encoding used by Gustav ([`GustavBase::ENC`](#string-enc)).  
 This has the same effect as setting the MB character encoding globally using [`mb_internal_encoding()`](http://php.net/manual/en/function.mb-internal-encoding.php). The difference is that by doing it this way the user can still define his own global MB character encoding without interrupting Gustav.  
-For more information see [mb_strtolower()](http://php.net/manual/en/function.mb-strtolower.php).
+For more information see [`mb_strtolower()`](http://php.net/manual/en/function.mb-strtolower.php).
 
 ###`mb_strlen()`
 
 This function is just an alias for the corresponsing multibyte string function.  
 When calling this function without specifying a value for the last parmeter, the character encoding definition, that parameter is set to the character encoding used by Gustav ([`GustavBase::ENC`](#string-enc)).  
 This has the same effect as setting the MB character encoding globally using [`mb_internal_encoding()`](http://php.net/manual/en/function.mb-internal-encoding.php). The difference is that by doing it this way the user can still define his own global MB character encoding without interrupting Gustav.  
-For more information see [mb_strlen()](http://php.net/manual/en/function.mb-strlen.php).
+For more information see [`mb_strlen()`](http://php.net/manual/en/function.mb-strlen.php).
 
 ###`mb_strpos()`
 
 This function is just an alias for the corresponsing multibyte string function.  
 When calling this function without specifying a value for the last parmeter, the character encoding definition, that parameter is set to the character encoding used by Gustav ([`GustavBase::ENC`](#string-enc)).  
 This has the same effect as setting the MB character encoding globally using [`mb_internal_encoding()`](http://php.net/manual/en/function.mb-internal-encoding.php). The difference is that by doing it this way the user can still define his own global MB character encoding without interrupting Gustav.  
-For more information see [mb_strpos()](http://php.net/manual/en/function.mb-strpos.php).
+For more information see [`mb_strpos()`](http://php.net/manual/en/function.mb-strpos.php).
 
 ###`mb_substr()`
 
 This function is just an alias for the corresponsing multibyte string function.  
 When calling this function without specifying a value for the last parmeter, the character encoding definition, that parameter is set to the character encoding used by Gustav ([`GustavBase::ENC`](#string-enc)).  
 This has the same effect as setting the MB character encoding globally using [`mb_internal_encoding()`](http://php.net/manual/en/function.mb-internal-encoding.php). The difference is that by doing it this way the user can still define his own global MB character encoding without interrupting Gustav.  
-For more information see [mb_substr()](http://php.net/manual/en/function.mb-substr.php).
+For more information see [`mb_substr()`](http://php.net/manual/en/function.mb-substr.php).
 
 ###`mb_substr_count()`
 
 This function is just an alias for the corresponsing multibyte string function.  
 When calling this function without specifying a value for the last parmeter, the character encoding definition, that parameter is set to the character encoding used by Gustav ([`GustavBase::ENC`](#string-enc)).  
 This has the same effect as setting the MB character encoding globally using [`mb_internal_encoding()`](http://php.net/manual/en/function.mb-internal-encoding.php). The difference is that by doing it this way the user can still define his own global MB character encoding without interrupting Gustav.  
-For more information see [mb_substr_count()](http://php.net/manual/en/function.mb-substr-count.php).
+For more information see [`mb_substr_count()`](http://php.net/manual/en/function.mb-substr-count.php).
 
 ###`preg_match_all()`
 
@@ -247,7 +247,7 @@ The differences between that function and this function are the following.
 +   The native PCRE function doesn't support [capturing of offsets](http://php.net/manual/en/pcre.constants.php#constant.preg-offset-capture) in multibyte strings properly. It captures the number of bytes preceding the match, rather than the number of characters. This function fixes that problem.
 +   The parameter accepting a variable to contain the matches is not required.
 
-For more information see [preg_match_all()](http://php.net/manual/en/function.preg-match-all.php).
+For more information see [`preg_match_all()`](http://php.net/manual/en/function.preg-match-all.php).
 
 ###`preg_match()`
 
@@ -256,7 +256,7 @@ The differences between that function and this function are the following.
 
 +   The native PCRE function doesn't support [capturing of offsets](http://php.net/manual/en/pcre.constants.php#constant.preg-offset-capture) in multibyte strings properly. It captures the number of bytes preceding the match, rather than the number of characters. This function fixes that problem.
 
-For more information see [preg_match()](http://php.net/manual/en/function.preg-match.php).
+For more information see [`preg_match()`](http://php.net/manual/en/function.preg-match.php).
 
 ###`string[] arrayUnique( string[] $strings [, bool $lowercase_strings = false ] )`
 
