@@ -388,13 +388,13 @@ In any other case this function returns `false`.
 
 Returns whether the option's values matches the specified one or `null` if the option doesn't exist.
 
-###`void header( string $header [, int|null $status_code = null ] )`
+###`void header( string|null $header [, string|null $status_code = null ] )`
 
 Checks whether the header [has already been sent](http://php.net/manual/en/function.headers-sent.php) back to the client and, if not, adds the specified HTTP header field to the header. Already defined header fields are overwritten.
 
 <dl>
     <dt><code>$header</code></dt>
-    <dd>The header field and value to be appended to the HTTP response header.</dd>
+    <dd>The header field and value to be added to the HTTP response header if not <code>null</code>.</dd>
     
     <dt><code>$status_code</code></dt>
     <dd>If not <code>null</code>, the status code of the response is set to this parameter's value.</dd>
