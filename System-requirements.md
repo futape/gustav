@@ -4,7 +4,7 @@ Gustav is written in [PHP](http://php.net) and designed for running on an [Apach
 
 ##PHP requirements
 
-Since Gustav relies, among other, on [OOP 5](http://php.net/manual/en/language.oop5.php), [namespaces](http://php.net/manual/en/language.namespaces.php) and [anonymous functions](http://php.net/manual/en/functions.anonymous.php), Gustav requires **PHP 5.3**.  
+Since Gustav relies, among other, on [OOP 5](http://php.net/manual/en/language.oop5.php), [namespaces](http://php.net/manual/en/language.namespaces.php) and [anonymous functions](http://php.net/manual/en/functions.anonymous.php), Gustav requires **PHP 5.3+**.  
 Moreover, you should make sure that PHP's [`open_basedir` configuration option](http://php.net/manual/en/ini.core.php#ini.open-basedir) doesn't exclude important directories like the templates directory, the source directory or the GvDir. Also the [`allow_url_fopen` PHP configuration option](http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen) should be enabled.
 
 
