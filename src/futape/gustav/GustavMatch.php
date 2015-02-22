@@ -260,6 +260,9 @@ class GustavMatch extends Gustav {
      * Initializes the array containing the search items (`$search`).
      * Empty items are filtered out.
      *
+     * @param string[][] $search An associative array containing the search items.
+     *                           The array's items should use one of the `GustavBase::KEY_*` constants as key and an array of strings containing the search items as value.
+     *
      * @return void
      */
     private function initSearch($arr_search){
