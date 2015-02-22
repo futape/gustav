@@ -13,7 +13,7 @@ abstract class GustavGeneratorHooks extends GustavGenerator {
     
     #misc-functions#
     
-    #GustavHooks::__callStatic()#
+    #GustavGeneratorHooks::__callStatic()#
     /**
      * A "magic" overloading function that gets called when an class's non-reachable function is called.
      * This function is used to make all non-reachable static function of the GustavGenerator class publically

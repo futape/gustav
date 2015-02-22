@@ -13,7 +13,7 @@ abstract class GustavDestHooks extends GustavDest {
     
     #misc-functions#
     
-    #GustavHooks::__callStatic()#
+    #GustavDestHooks::__callStatic()#
     /**
      * A "magic" overloading function that gets called when an class's non-reachable function is called.
      * This function is used to make all non-reachable static function of the GustavDest class publically

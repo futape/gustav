@@ -13,7 +13,7 @@ abstract class GustavContentHooks extends GustavContent {
     
     #misc-functions#
     
-    #GustavHooks::__callStatic()#
+    #GustavContentHooks::__callStatic()#
     /**
      * A "magic" overloading function that gets called when an class's non-reachable function is called.
      * This function is used to make all non-reachable static function of the GustavContent class publically
@@ -37,6 +37,16 @@ abstract class GustavContentHooks extends GustavContent {
         }
         
         throw new BadMethodCallException("Method doesn't exist.");
+    }
+    
+    #GustavContentHooks::convContent()#
+    public static function convContent($a, $b, &$c=null){
+        $str_fn=__FUNCTION__;
+        $arr_args=func_get_args();
+        
+        $arr_args[2]=&$c;
+        
+        return call_user_func_array(array(get_parent_class(), $str_fn), $arr_args);
     }
     
     

@@ -13,7 +13,7 @@ abstract class GustavBaseHooks extends GustavBase {
     
     #misc-functions#
     
-    #GustavHooks::__callStatic()#
+    #GustavBaseHooks::__callStatic()#
     /**
      * A "magic" overloading function that gets called when an class's non-reachable function is called.
      * This function is used to make all non-reachable static function of the GustavBase class publically
@@ -37,6 +37,26 @@ abstract class GustavBaseHooks extends GustavBase {
         }
         
         throw new BadMethodCallException("Method doesn't exist.");
+    }
+    
+    #GustavBaseHooks::preg_match_all()#
+    public static function preg_match_all($c, $b, &$c=null){
+        $str_fn=__FUNCTION__;
+        $arr_args=func_get_args();
+        
+        $arr_args[2]=&$c;
+        
+        return call_user_func_array(array(get_parent_class(), $str_fn), $arr_args);
+    }
+    
+    #GustavBaseHooks::preg_match()#
+    public static function preg_match($a, $b, &$c=null){
+        $str_fn=__FUNCTION__;
+        $arr_args=func_get_args();
+        
+        $arr_args[2]=&$c;
+        
+        return call_user_func_array(array(get_parent_class(), $str_fn), $arr_args);
     }
     
     
