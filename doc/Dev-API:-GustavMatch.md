@@ -1,9 +1,19 @@
 ##Instance functions
 
-###`private void initSearch()`
+###`private void initSearch( string[][] $search )`
 
 Initializes the array containing the search items ([`$search`](#private-string-search)).  
 Empty string values are filtered out.
+
+<dl>
+    <dt><code>$search</code></dt>
+    <dd>
+        An associative array containing the search items.<br />
+        The array's items should use one of the <a href="Public-API%3a-GustavBase#constants"><code>GustavBase::KEY_*</code></a> constants as key and an array of strings containing the search items as value.
+    </dd>
+</dl>
+
+
 
 ###`private void initRegex()`
 
