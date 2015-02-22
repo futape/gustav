@@ -1,5 +1,5 @@
 <?php
-/*! Gustav 1.0.0 | Copyright (c) 2015 Lucas Krause | New BSD License | http://gustav.futape.de */
+/*! Gustav 1.1.0 | Copyright (c) 2015 Lucas Krause | New BSD License | http://gustav.futape.de */
 
 namespace futape\gustav;
 
@@ -463,7 +463,7 @@ class GustavBlock extends Gustav {
                         $val=array_shift($arr_conv);
                         
                         if($val!=""){
-                            GustavContentHooks::convContent("", $val, &$str_nextConv_b); //false: converter not found; null: hardcoded html converter; <string>: other hardcoded or user-defined converter
+                            GustavContentHooks::convContent("", $val, $str_nextConv_b); //false: converter not found; null: hardcoded html converter; <string>: other hardcoded or user-defined converter
                             
                             if($str_nextConv_b!==false){
                                 array_push($mix_a, $val);

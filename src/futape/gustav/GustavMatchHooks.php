@@ -1,5 +1,5 @@
 <?php
-/*! Gustav 1.0.0 | Copyright (c) 2015 Lucas Krause | New BSD License | http://gustav.futape.de */
+/*! Gustav 1.1.0 | Copyright (c) 2015 Lucas Krause | New BSD License | http://gustav.futape.de */
 
 namespace futape\gustav;
 
@@ -13,7 +13,7 @@ abstract class GustavMatchHooks extends GustavMatch {
     
     #misc-functions#
     
-    #GustavHooks::__callStatic()#
+    #GustavMatchHooks::__callStatic()#
     /**
      * A "magic" overloading function that gets called when an class's non-reachable function is called.
      * This function is used to make all non-reachable static function of the GustavMatch class publically

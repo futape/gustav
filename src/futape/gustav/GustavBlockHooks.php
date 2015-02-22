@@ -1,5 +1,5 @@
 <?php
-/*! Gustav 1.0.0 | Copyright (c) 2015 Lucas Krause | New BSD License | http://gustav.futape.de */
+/*! Gustav 1.1.0 | Copyright (c) 2015 Lucas Krause | New BSD License | http://gustav.futape.de */
 
 namespace futape\gustav;
 
@@ -13,7 +13,7 @@ abstract class GustavBlockHooks extends GustavBlock {
     
     #misc-functions#
     
-    #GustavHooks::__callStatic()#
+    #GustavBlockHooks::__callStatic()#
     /**
      * A "magic" overloading function that gets called when an class's non-reachable function is called.
      * This function is used to make all non-reachable static function of the GustavBlock class publically
@@ -37,6 +37,16 @@ abstract class GustavBlockHooks extends GustavBlock {
         }
         
         throw new BadMethodCallException("Method doesn't exist.");
+    }
+    
+    #GustavBlockHooks::parseBlock()#
+    public static function parseBlock(&$a){
+        $str_fn=__FUNCTION__;
+        $arr_args=func_get_args();
+        
+        $arr_args[0]=&$a;
+        
+        return call_user_func_array(array(get_parent_class(), $str_fn), $arr_args);
     }
     
     
