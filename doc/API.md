@@ -80,7 +80,4 @@ Hooks classes are a subset of the Gustav classes. Like the Gustav classes' ones,
 For each Gustav class one Hooks class exists. When including a Gustav class, the corresponding Hooks class is included automatically.  
 You should never include a Hooks class manually. Instead simply include the corresponding Gustav class.
 
-Hooks classes make all static functions of the corresponding Gustav class publically available. They are all defined as `abstract` and can therefore not be instantiated.  
-When calling a function via a Hooks class and passing a variable as reference to a parameter, it's important to pass it as `myfunc(&$myvar)` for example, while the corresponding Gustav class's function would accept `myfunc($myvar)`.
-
-Hooks classes can be used to call functions documented in the [private API](Private-API).
+Hooks classes make all static functions of the corresponding Gustav class that belong to the [private API](Private-API] publically available. They are all defined as `abstract` and can therefore not be instantiated.
