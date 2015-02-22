@@ -41,4 +41,23 @@ Moreover, [`mod_dir`](http://httpd.apache.org/docs/2.4/mod/mod_dir.html) must be
 
 ###Working
 
-+   Apache 2.2.22, PHP 5.3.29
+<table>
+    <thead>
+        <tr>
+            <th>Apache</th>
+            <th>PHP</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="3">2.2.22</td>
+            <td>5.3.29</td>
+        </tr>
+        <tr>
+            <td>5.4.38</td>
+        </tr>
+        <tr>
+            <td>5.5.22</td>
+        </tr>
+    </tbody>
+</table>
