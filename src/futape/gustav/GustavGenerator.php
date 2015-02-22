@@ -65,7 +65,7 @@ abstract class GustavGenerator extends Gustav {
         }
         
         if($q_echo){
-            self::header("Content-Type: text/html; charset=".self::ENC, true, 200);
+            self::header("Content-Type: text/html; charset=".self::ENC, "200 Ok");
             
             echo $dest_a->getContent();
             

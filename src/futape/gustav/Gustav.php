@@ -337,12 +337,12 @@ abstract class Gustav extends GustavBase {
         
         /** /
         if($str_status===self::ERROR_404){
-            self::header("Location: ".self::getConf(self::CONF_404_DOC), 303);
+            self::header("Location: ".self::getConf(self::CONF_404_DOC), "303 See Other");
         }else if(!$q_fatal){
-            self::header("Status: ".$str_status);
+            self::header(null, $str_status);
         }
         /*/
-        self::header("Status: ".$str_status);
+        self::header(null, $str_status);
         
         if($str_status===self::ERROR_404){
             self::header("Content-Type: text/html; charset=".self::ENC);
@@ -382,7 +382,7 @@ abstract class Gustav extends GustavBase {
             self::log($str_log, self::LOG_TYPE_SUCCESS);
         }
         
-        self::header("Location: ".$str_url, 303);
+        self::header("Location: ".$str_url, "303 See Other");
         exit;
     }
     

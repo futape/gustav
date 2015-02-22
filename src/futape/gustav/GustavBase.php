@@ -1284,21 +1284,22 @@ abstract class GustavBase {
      * adds the specified HTTP header field to the header.
      * Already defined header fields are overwritten.
      *
-     * @param string   $header      The header field and value to be appended to the HTTP response header.
-     * @param int|null $status_code OPTIONAL | Default: null
-     *                              If not null, the status code of the response is set to this parameter's value.
+     * @param string|null   $header      The header field and value to be added to the HTTP response header if not `null`.
+     * @param string|null   $status_code OPTIONAL | Default: null
+     *                                   If not `null`, the status code of the response is set to this parameter's value.
      *
      * @return void
      */
-    protected static function header($str_header, $int_status=null){
-        $arr_args=array($str_header, true);
-        
-        if(!is_null($int_status)){
-            array_push($arr_args, $int_status);
+    protected static function header($str_header, $str_status=null){
+        if(!is_null($str_header)){
+            if(!headers_sent()){
+                header($str_header, true);
+            }
         }
         
-        if(!headers_sent()){
-            call_user_func_array("header", $arr_args);
+        if(!is_null($str_status)){
+            self::header("Status: ".$str_status);
+            self::header($_SERVER["SERVER_PROTOCOL"]." ".$str_status);
         }
     }
     
