@@ -36,7 +36,7 @@ One clever solution is to use [`GustavContent`](API#gustavcontent)'s [`convConte
 
     use futape\gustav\GustavHooks;
 
-    echo GustavContentHooks::convContent($gv, "markdown", &$nextConv);
+    echo GustavContentHooks::convContent($gv, "markdown", $nextConv);
 
     return $nextConv;
     ?>
