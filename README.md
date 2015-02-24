@@ -13,6 +13,17 @@ A demo of Gustav running in a production environment is avaiable on <http://demo
 
 
 
+##Table of contents
+
+1.  [Features](#features)
+2.  [A word about the master branch](#a-word-about-the-master-branch)
+3.  [License](#license)
+4.  [Support](#support)
+5.  [Contributing](#contributing)
+6.  [Author](#author)
+
+
+
 ##Features
 
 +   [Fast installation and setup](https://github.com/futape/gustav/wiki/Getting-started)
@@ -49,7 +60,7 @@ Any other content like the Gustav logo or the documentation is, if not otherwise
 
 ##Support
 
-<a href="https://flattr.com/submit/auto?user_id=lucaskrause&url=https%3A%2F%2Fgithub.com%2Ffutape%2Fgustav" target="_blank"><img src="http://button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
+<a href="https://flattr.com/submit/auto?user_id=lucaskrause&amp;url=http%3A%2F%2Fgustav.futape.de" target="_blank"><img src="http://button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
 
 
 
