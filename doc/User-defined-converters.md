@@ -32,7 +32,7 @@ Gustav doesn't provide an option for defining aliases for user-defined converter
 One clever solution is to use [`GustavContent`](API#gustavcontent)'s [`convContent()` method](Private-API%3a-GustavContent#string-convcontent-string-content-string-converter--mixed-next_converter--) which is available publically via the `GustavContentHooks` class. To create an alias you have to create a new converter file named like the alias name that should be defined and containing something like the code below. The following code defines an alias for a user-defined converter named `markdown`.
 
     <?php
-    require_once implode(DIRECTORY_SEPARATOR, array(rtrim(__DIR__, DIRECTORY_SEPARATOR), "..", "..", "GustavContent.php"));
+    require_once rtrim(__DIR__, DIRECTORY_SEPARATOR)."/../../GustavContent.php";
 
     use futape\gustav\GustavHooks;
 
