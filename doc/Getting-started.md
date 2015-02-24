@@ -1,7 +1,7 @@
 ##Installing Gustav
 
 Installing Gustav is easy-peasy. Actually it's not even a real step.  
-The only thing to do is creating a FTP connection to the server or webspace and copying the [downloaded files](#) to the server. Done.
+The only thing to do is creating a FTP connection to the server or webspace and copying the [downloaded files](https://github.com/futape/gustav/archive/master.zip) to the server. Done.
 
 
 

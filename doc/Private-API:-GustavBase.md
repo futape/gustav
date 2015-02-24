@@ -181,7 +181,7 @@ Inlines a text or a HTML code.
 
 Removes HTML tags of a HTML code on basis of their display and semantic meaning (if enabled), decodes HTML entities and inlines the resulting plain text. *Inlining* means that whitespaces that aren't simple spaces (such as horizontal tabs or linefeed characters) are replaced with one.  
 If the content is treated as HTML code, sequences of whitespaces are stripped to 1 space.  
-For more information read the comments in the source code of this function.
+For more information read the comments in the [source code](https://github.com/futape/gustav/blob/master/src/futape/gustav/GustavBase.php) of this function.
 
 <dl>
     <dt><code>$text</code></dt>
