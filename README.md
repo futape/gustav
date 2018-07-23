@@ -1,4 +1,4 @@
-#Gustav
+# Gustav
 
 <img src="https://raw.githubusercontent.com/futape/gustav/master/misc/Gustav.png" alt="Gustav Logo" width="200" />
 
@@ -13,7 +13,7 @@ A demo of Gustav running in a production environment is avaiable on <http://demo
 
 
 
-##Table of contents
+## Table of contents
 
 1.  [Features](#features)
 2.  [A word about the master branch](#a-word-about-the-master-branch)
@@ -24,7 +24,7 @@ A demo of Gustav running in a production environment is avaiable on <http://demo
 
 
 
-##Features
+## Features
 
 +   [Fast installation and setup](https://github.com/futape/gustav/wiki/Getting-started)
 +   [Low system requirements](https://github.com/futape/gustav/wiki/System-requirements)
@@ -37,7 +37,7 @@ A demo of Gustav running in a production environment is avaiable on <http://demo
 
 
 
-##A word about the `master` branch
+## A word about the `master` branch
 
 This repository has two main branches, the `develop` branch and the `master` branch.  
 Branch management is done using [Vincent Driessen](http://nvie.com/posts/a-successful-git-branching-model/)'s branching model, meaning that all bleeding-edge features are available on the `develop` branch, while the `master` branch contains the stable releases only. Commits on the `master` branch introducing changes to the public API are tagged with a version number.
@@ -48,7 +48,7 @@ A list of releases can be seen [here](https://github.com/futape/gustav/releases)
 
 
 
-##License
+## License
 
 The Gustav source is published under the permissive [*New* BSD Open-Source-License](http://opensource.org/licenses/BSD-3-Clause).  
 A [copy of that license](https://github.com/futape/gustav/blob/master/src/futape/gustav/LICENSE) is located under `src/futape/gustav`.
@@ -58,19 +58,19 @@ Any other content like the Gustav logo or the documentation is, if not otherwise
 
 
 
-##Support
+## Support
 
 <a href="https://flattr.com/submit/auto?user_id=lucaskrause&amp;url=http%3A%2F%2Fgustav.futape.de" target="_blank"><img src="http://button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
 
 
 
-##Contributing
+## Contributing
 
-For information on contributing to Gustav, see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+For information on contributing to Gustav, see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 
 
-##Author
+## Author
 
 <table><tbody><tr><td>
     <img src="http://www.gravatar.com/avatar/118bcae2fda8b302155ad47a2bfda556.png?s=100&amp;d=monsterid" />

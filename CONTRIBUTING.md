@@ -1,4 +1,4 @@
-#Contributing
+# Contributing
 
 Everyone is welcome to contribute to this project. Just fork, clone, branch, edit, commit, push, request pull.
 
@@ -12,6 +12,6 @@ Moreover, please keep my coding style (variable naming etc.). I'm going to write
 
 
 
-##Contributing to the documentation
+## Contributing to the documentation
 
 When developing a new feature you may very likely also want to extend the documentation to document your feature. The documentation pages are contained in the `doc` directory.   When a pull requets is accepted, I will push the updated documentation to the GitHub wiki repository. Please note that a wiki page's title will become the corresponding file's filename, with `-`s replaced by spaces. Therefore `-`s in a wiki page's title aren't possible.
